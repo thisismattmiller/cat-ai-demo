@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cataloging Assistants</title>
+<meta name="description" content="Enter an LCCN: an LC record is fetched and three AI cataloging assistants run concurrently, streaming their work over a WebSocket.">
+<style>
+  :root {
+    --bg: #f6f4ef; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6963; --line: #e3dfd5;
+    --accent: #7b3b12; --accent-ink: #ffffff; --ok: #2f7d4f; --ok-bg: #e5f3ea; --warn: #9a6a00; --warn-bg: #fbf1d6;
+    --err: #a83232; --err-bg: #f9e4e4; --run: #2c5e9e; --run-bg: #e3ecf8; --chip: #efece4; --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17171a; --panel: #212125; --ink: #ecebe6; --muted: #a09e97; --line: #35353b;
+      --accent: #e08a52; --accent-ink: #1a1a1a; --ok: #7fd39b; --ok-bg: #1f3427; --warn: #f0c260; --warn-bg: #3a3019;
+      --err: #f08a8a; --err-bg: #3e2222; --run: #8fb8f0; --run-bg: #1e2b3d; --chip: #2c2c31;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17171a; --panel: #212125; --ink: #ecebe6; --muted: #a09e97; --line: #35353b;
+    --accent: #e08a52; --accent-ink: #1a1a1a; --ok: #7fd39b; --ok-bg: #1f3427; --warn: #f0c260; --warn-bg: #3a3019;
+    --err: #f08a8a; --err-bg: #3e2222; --run: #8fb8f0; --run-bg: #1e2b3d; --chip: #2c2c31;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  body { padding: 0 16px 48px; }
+  header { max-width: 1240px; margin: 0 auto; padding: 28px 0 12px; }
+  h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  header p { margin: 0; color: var(--muted); max-width: 70ch; }
+  form { max-width: 1240px; margin: 14px auto 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  input[type=text] { flex: 1 1 220px; max-width: 320px; font: inherit; font-family: var(--mono); font-size: 17px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); }
+  input[type=text]:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  button { font: inherit; font-weight: 600; padding: 9px 18px; border: 0; border-radius: 8px; background: var(--accent); color: var(--accent-ink); cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  .examples { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; color: var(--muted); font-size: 13px; }
+  .examples a { font-family: var(--mono); color: var(--ink); background: var(--chip); padding: 2px 8px; border-radius: 6px; text-decoration: none; }
+  .examples a:hover { outline: 1px solid var(--accent); }
+  .status { max-width: 1240px; margin: 10px auto 0; font-size: 13px; color: var(--muted); min-height: 20px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .status .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); margin-right: 6px; vertical-align: 1px; }
+  .status .dot.open { background: var(--ok); }
+  .status .dot.err { background: var(--err); }
+  main { max-width: 1240px; margin: 18px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; min-height: 160px; display: flex; flex-direction: column; }
+  .card h2 { font-size: 15px; margin: 0; display: flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .card h2 .pill { margin-left: auto; text-transform: none; letter-spacing: 0; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--chip); color: var(--muted); font-family: var(--mono); }
+  .pill.running { background: var(--run-bg); color: var(--run); }
+  .pill.done { background: var(--ok-bg); color: var(--ok); }
+  .pill.error { background: var(--err-bg); color: var(--err); }
+  .card .sub { font-size: 13px; color: var(--muted); margin: 2px 0 10px; }
+  .body { flex: 1; }
+  .empty { color: var(--muted); font-size: 14px; padding: 18px 0; }
+  .big { font-family: var(--mono); font-size: 28px; font-weight: 600; letter-spacing: .01em; margin: 6px 0 2px; word-break: break-word; }
+  .title { font-size: 20px; font-weight: 600; line-height: 1.3; margin: 6px 0 2px; }
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 3px 14px; font-size: 14px; margin: 8px 0; }
+  .kv dt { color: var(--muted); }
+  .kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+  .mono { font-family: var(--mono); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+  .chip { background: var(--chip); border-radius: 6px; padding: 2px 9px; font-size: 13px; line-height: 1.5; }
+  .chip.rec { background: var(--ok-bg); color: var(--ok); font-weight: 600; }
+  .chip.lc { outline: 1px dashed var(--muted); }
+  .chip.dim { color: var(--muted); }
+  .badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 999px; vertical-align: 2px; }
+  .badge.ok { background: var(--ok-bg); color: var(--ok); }
+  .badge.warn { background: var(--warn-bg); color: var(--warn); }
+  .badge.err { background: var(--err-bg); color: var(--err); }
+  .badge.info { background: var(--run-bg); color: var(--run); }
+  .section { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
+  .section h3 { font-size: 13px; margin: 0 0 6px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .reason { font-size: 14px; color: var(--ink); white-space: pre-wrap; }
+  details.more > summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+  .clamp { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .clamp.open { display: block; }
+  .toggle { background: none; border: 0; color: var(--run); padding: 0; font-size: 13px; font-weight: 500; cursor: pointer; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  td.num { font-family: var(--mono); white-space: nowrap; }
+  .person { padding: 8px 0; border-top: 1px solid var(--line); }
+  .person:first-child { border-top: 0; }
+  .person .name { font-weight: 600; }
+  .person .roles { color: var(--muted); font-size: 13px; }
+  .conf { display: inline-block; width: 70px; height: 6px; background: var(--chip); border-radius: 3px; vertical-align: middle; margin: 0 6px; overflow: hidden; }
+  .conf i { display: block; height: 100%; background: var(--ok); }
+  a { color: var(--run); }
+  .log { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 8px; }
+  .log summary { cursor: pointer; font-size: 13px; color: var(--muted); }
+  .log ol { list-style: none; margin: 6px 0 0; padding: 0; max-height: 220px; overflow: auto; font-size: 12.5px; font-family: var(--mono); }
+  .log li { display: grid; grid-template-columns: 52px 1fr; gap: 8px; padding: 2px 0; border-bottom: 1px dotted var(--line); }
+  .log li .t { color: var(--muted); }
+  .log li .m { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .log li.text .m { color: var(--muted); font-family: system-ui, sans-serif; }
+  .log li.partial .m { color: var(--ok); font-weight: 600; }
+  .log li.warning .m { color: var(--warn); }
+  footer { max-width: 1240px; margin: 28px auto 0; font-size: 13px; color: var(--muted); }
+  footer a { color: inherit; }
+  .spin { display: inline-block; width: 10px; height: 10px; border: 2px solid var(--run); border-right-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -1px; margin-right: 6px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Cataloging assistants</h1>
+  <p>Enter a Library of Congress Control Number. The record is pulled from id.loc.gov and three assistants run at once: subject headings from LC's catalog neighbours, a full LC call number built from the classification schedules and the shelflisting manual, and LCNAF links for the record's unlinked contributors. Results stream in as each one finishes.</p>
+</header>
+<form id="form">
+  <input type="text" id="lccn" placeholder="LCCN, e.g. 2025947561" autocomplete="off" spellcheck="false" autofocus>
+  <button type="submit" id="run">Run</button>
+  <span class="examples" id="examples">try:</span>
+</form>
+<div class="status"><span id="conn"><span class="dot"></span>not connected</span><span id="elapsed"></span><span id="note"></span></div>
+<main id="cards"></main>
+<footer>Sources: <a href="https://github.com/thisismattmiller/cat-ai-demo">cat-ai-demo</a> bundles <a href="https://github.com/thisismattmiller/shelflisting_manual">shelflister</a> and <a href="https://github.com/thisismattmiller/nar-auto-reconcile">nar-auto-reconcile</a>, and calls the embedded-catalog subject-suggest lambda. LC's own call number and subjects are shown for comparison: the assistants do not see LC's call number and the record is hidden from the shelflist while they work.</footer>
+<script src="config.js"></script>
+<script>
+(() => {
+  const EXAMPLES = ["2025947561", "2024398055", "2026386238", "2025934008", "2026328107", "2024345138"];
+  const TASKS = [
+    { id: "record",    title: "The record",       sub: "id.loc.gov BIBFRAME instance and work, enriched from ISBNdb where LC's record is thin" },
+    { id: "subjects",  title: "Subject headings", sub: "vector search over LC's catalog for the nearest records, then an LLM picks the headings and classes that fit" },
+    { id: "shelflist", title: "Call number",      sub: "class number from the 2024 LC schedules, then Cutter and date by the Classification and Shelflisting Manual, fitted among the shelflist neighbours" },
+    { id: "names",     title: "Name authorities", sub: "contributors without an LCNAF link: id.loc.gov searches, authority dossiers, an LLM decision, Wikidata as fallback" },
+  ];
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmt = t => (t == null ? "" : `${Number(t).toFixed(1)}s`);
+  const WS_URL = new URLSearchParams(location.search).get("ws") || window.CAT_AI_DEMO_WS || "";
+
+  // ------------------------------------------------------------------ cards
+  const cards = {};
+  const main = $("#cards");
+  for (const t of TASKS) {
+    const el = document.createElement("section");
+    el.className = "card"; el.id = `card-${t.id}`;
+    el.innerHTML = `<h2>${esc(t.title)}<span class="pill" data-pill>idle</span></h2><div class="sub">${esc(t.sub)}</div>
+      <div class="body" data-body><div class="empty">Waiting for an LCCN.</div></div>
+      <details class="log" data-log open><summary><span data-logsum>activity</span></summary><ol data-lines></ol></details>`;
+    main.appendChild(el);
+    cards[t.id] = { el, pill: $("[data-pill]", el), body: $("[data-body]", el), lines: $("[data-lines]", el), log: $("[data-log]", el),
+                    logsum: $("[data-logsum]", el), state: "idle", started: 0, timer: null, n: 0, partial: {} };
+  }
+  const ex = $("#examples");
+  for (const e of EXAMPLES) { const a = document.createElement("a"); a.href = `?lccn=${e}`; a.textContent = e; a.onclick = ev => { ev.preventDefault(); $("#lccn").value = e; start(); }; ex.appendChild(a); }
+
+  function setState(id, state) {
+    const c = cards[id]; c.state = state;
+    c.pill.className = `pill ${state}`;
+    if (state === "running") { c.started = Date.now(); c.pill.innerHTML = `<span class="spin"></span>0.0s`; clearInterval(c.timer);
+      c.timer = setInterval(() => { if (c.state === "running") c.pill.innerHTML = `<span class="spin"></span>${((Date.now() - c.started) / 1000).toFixed(1)}s`; }, 100); }
+    else { clearInterval(c.timer); c.pill.textContent = state === "idle" ? "idle" : `${state} · ${((Date.now() - c.started) / 1000).toFixed(1)}s`; }
+    if (state === "done") c.log.open = false;
+  }
+  function reset() {
+    for (const id in cards) { const c = cards[id]; c.lines.innerHTML = ""; c.n = 0; c.partial = {}; c.log.open = true; c.logsum.textContent = "activity";
+      c.body.innerHTML = `<div class="empty">Starting…</div>`; setState(id, "running"); }
+  }
+  function logLine(id, ev, cls = "") {
+    const c = cards[id]; c.n++;
+    const li = document.createElement("li"); li.className = cls || ev.kind || ev.level || "";
+    let msg = ev.message || "";
+    if (ev.kind === "tool" && ev.tool) msg = `${ev.tool}(${JSON.stringify(ev.input || {}).slice(0, 140)})${ev.output ? ` → ${ev.output.replace(/\s+/g, " ").slice(0, 160)}` : ""}`;
+    li.innerHTML = `<span class="t">${fmt(ev.t)}</span><span class="m">${esc(msg)}</span>`;
+    c.lines.appendChild(li); c.lines.scrollTop = c.lines.scrollHeight;
+    c.logsum.textContent = `activity (${c.n})`;
+  }
+
+  // ------------------------------------------------------------------ renderers
+  const chips = (arr, cls = "", mark = () => "") => arr && arr.length ? `<div class="chips">${arr.map(s => `<span class="chip ${cls} ${mark(s)}">${esc(typeof s === "string" ? s : s.label)}</span>`).join("")}</div>` : "";
+  const clampBlock = (text, id) => text ? `<div class="clamp" id="${id}">${esc(text)}</div><button class="toggle" onclick="document.getElementById('${id}').classList.toggle('open');this.textContent=this.textContent==='more'?'less':'more'">more</button>` : "";
+  const kv = rows => `<dl class="kv">${rows.filter(r => r[1] != null && r[1] !== "" && !(Array.isArray(r[1]) && !r[1].length)).map(([k, v, raw]) => `<dt>${esc(k)}</dt><dd>${raw ? v : esc(Array.isArray(v) ? v.join("; ") : v)}</dd>`).join("")}</dl>`;
+  const nal = uri => uri ? uri.replace(/^http:/, "https:") : "";
+
+  function renderRecord(d) {
+    const lc = (d.lc_call_numbers || []).map(c => `<span class="mono">${esc(c.call_number)}</span>`).join(", ");
+    return `<div class="title">${esc(d.title)}</div>
+      ${kv([["Creator", d.creator ? `${esc(d.creator)}${d.creator_type ? ` <span class="badge info">${esc(d.creator_type)}</span>` : ""}` : null, true],
+            ["Published", [d.publisher, d.date].filter(Boolean).join(", ")], ["Edition", d.edition], ["Series", d.series], ["Language", d.language],
+            ["ISBN", d.isbns], ["LC call number", lc || `<span class="badge warn">none on the record</span>`, true],
+            ["id.loc.gov", `<a href="${esc(nal(d.instance_url))}" target="_blank" rel="noopener">${esc(d.bibid)}</a>`, true]])}
+      ${d.subjects && d.subjects.length ? `<div class="section"><h3>LC subject headings on the record</h3>${chips(d.subjects, "lc")}${chips(d.genre_form, "dim")}</div>` : `<div class="section"><h3>LC subject headings on the record</h3><span class="badge warn">none yet</span></div>`}
+      ${d.summary ? `<div class="section"><h3>Summary${d.isbndb_added && d.isbndb_added.includes("summary") ? " (ISBNdb)" : ""}</h3>${clampBlock(d.summary, "rec-summary")}</div>` : ""}
+      ${d.contents ? `<div class="section"><h3>Contents</h3>${clampBlock(d.contents, "rec-contents")}</div>` : ""}
+      ${d.contributors && d.contributors.length ? `<div class="section"><h3>Contributors</h3>${chips(d.contributors)}</div>` : ""}
+      ${d.isbndb_subjects ? `<div class="section"><h3>Bookseller subjects (ISBNdb)</h3><div class="reason">${esc(d.isbndb_subjects)}</div></div>` : ""}`;
+  }
+
+  function renderSubjects(d) {
+    const rec = d.subjects.filter(s => s.recommended), rest = d.subjects.filter(s => !s.recommended);
+    const onLC = s => s.on_lc_record ? "lc" : "";
+    const recC = d.classifications.filter(c => c.recommended);
+    const agree = rec.filter(s => s.on_lc_record).length;
+    return `<div class="section" style="border-top:0;padding-top:0;margin-top:4px"><h3>Recommended headings</h3>
+        ${rec.length ? chips(rec, "rec", onLC) : `<span class="badge warn">none recommended</span>`}
+        ${d.lc_subjects.length ? `<div class="sub">${agree} of ${rec.length} recommended also on LC's record (dashed outline). LC's: ${esc(d.lc_subjects.join("; "))}</div>` : `<div class="sub">LC's record carries no subject headings yet.</div>`}</div>
+      ${recC.length ? `<div class="section"><h3>Recommended class numbers</h3>${recC.map(c => `<div><span class="mono">${esc(c.class_number)}</span>${c.on_lc_record ? ' <span class="badge ok">LC uses this</span>' : ""} <span class="sub" style="display:inline">${esc((c.hierarchy || []).join(" › "))}</span></div>`).join("")}</div>` : ""}
+      ${rest.length ? `<div class="section"><details class="more"><summary>${rest.length} other candidate headings from the neighbours</summary>${chips(rest, "dim", onLC)}</details></div>` : ""}
+      <div class="section"><h3>Nearest LC records</h3><table><tr><th>score</th><th>class</th><th>record</th></tr>
+        ${d.neighbours.map(n => `<tr><td class="num">${n.score.toFixed(3)}</td><td class="num">${esc(n.class_number || "")}</td><td>${esc(n.title)}${n.creator ? ` <span class="sub" style="display:inline">${esc(n.creator)}</span>` : ""}</td></tr>`).join("")}</table></div>`;
+  }
+
+  function renderShelflist(d) {
+    const cmp = d.comparison;
+    let badge = `<span class="badge warn">LC has no call number for this record yet</span>`;
+    if (cmp) badge = cmp.exact_match ? `<span class="badge ok">matches LC exactly</span>` : cmp.class_match ? `<span class="badge ok">class number matches LC</span> <span class="badge warn">book number differs: LC has ${esc(cmp.lc_call_number)}</span>` : `<span class="badge err">differs from LC: ${esc(cmp.lc_call_number)}</span>`;
+    const c = d.classification, k = d.compose;
+    const v = k && k.validation;
+    return `<div class="big">${esc(d.call_number || d.class_number || "(none)")}</div>
+      <div>${d.marc_050 ? `<span class="mono sub" style="display:inline">050 $a ${esc(d.marc_050.a)} $b ${esc(d.marc_050.b)}</span> ` : ""}${badge}</div>
+      ${c ? `<div class="section"><h3>Class number <span class="badge ${c.confidence === "high" ? "ok" : "warn"}">${esc(c.confidence)}</span>${c.needs_new_number ? ' <span class="badge info">new number</span>' : ""}</h3>
+        ${kv([["Caption", c.caption_path], ["Basis", c.schedule_basis], ["Subjects", c.subject_headings]])}
+        ${c.alternatives && c.alternatives.length ? `<details class="more"><summary>${c.alternatives.length} alternative${c.alternatives.length > 1 ? "s" : ""} rejected</summary>${c.alternatives.map(a => `<div><span class="mono">${esc(a.class_number)}</span>: ${esc(a.why_not)}</div>`).join("")}</details>` : ""}
+        <details class="more"><summary>reasoning</summary><div class="reason">${esc(c.reasoning)}</div></details>
+        ${c.open_questions && c.open_questions.length ? `<div class="sub">Open: ${esc(c.open_questions.join(" | "))}</div>` : ""}</div>` : (d.lc_call_numbers && d.lc_call_numbers.length && !d.hidden.class ? `<div class="section"><h3>Class number</h3>using LC's ${esc(d.class_number)}</div>` : "")}
+      ${k ? `<div class="section"><h3>Book number <span class="badge ${k.confidence === "high" ? "ok" : "warn"}">${esc(k.confidence)}</span>${k.needs_review ? ' <span class="badge warn">needs review</span>' : ""} ${v ? (v.ok ? '<span class="badge ok">validated</span>' : `<span class="badge err">${esc((v.errors || []).join("; "))}</span>`) : ""}</h3>
+        ${kv([["Citations", k.citations], ["Rule cards", d.cards], ["Profile", d.profile && d.profile.tags]])}
+        ${v && v.warnings && v.warnings.length ? `<div class="sub">${esc(v.warnings.slice(0, 3).join(" | "))}</div>` : ""}
+        <details class="more"><summary>reasoning</summary><div class="reason">${esc(k.reasoning)}</div></details>
+        ${k.open_questions && k.open_questions.length ? `<div class="sub">Open: ${esc(k.open_questions.join(" | "))}</div>` : ""}</div>` : ""}
+      <div class="sub" style="margin-top:10px">${esc(d.model)} · ${Object.entries(d.timing || {}).map(([a, b]) => `${a.replace("_s", "")} ${b}s`).join(", ")}${c ? ` · ${c.tool_calls} tool calls to classify` : ""}${k ? `, ${k.tool_calls} to shelflist` : ""}</div>`;
+  }
+
+  function personHtml(r) {
+    const d = r.decision, w = r.wikidata && r.wikidata.decision;
+    let rec;
+    if (r.recommended_authority_uri) rec = `<span class="badge ok">recommend</span> <a href="${esc(nal(r.recommended_authority_uri))}" target="_blank" rel="noopener">${esc(r.recommended_label)}</a> <span class="sub" style="display:inline">${esc(r.recommendation_source)}</span>`;
+    else if (r.recommended_wikidata_qid) rec = `<span class="badge ok">recommend</span> <a href="${esc(r.recommended_wikidata_uri)}" target="_blank" rel="noopener">${esc(r.recommended_wikidata_label)} (${esc(r.recommended_wikidata_qid)})</a> <span class="sub" style="display:inline">wikidata, no LCNAF record</span>`;
+    else if (r.error) rec = `<span class="badge err">error</span> ${esc(r.error)}`;
+    else rec = `<span class="badge warn">no link</span> <span class="sub" style="display:inline">no authority matched${d ? ` (${esc(d.decision)}, confidence ${(d.confidence * 100).toFixed(0)}%)` : ""}</span>`;
+    const conf = x => x ? `<span class="conf" title="confidence ${(x.confidence * 100).toFixed(0)}%"><i style="width:${(x.confidence * 100).toFixed(0)}%"></i></span>${(x.confidence * 100).toFixed(0)}%` : "";
+    return `<div class="person"><div><span class="name">${esc(r.label)}</span> <span class="roles">${esc((r.roles || []).join(", "))}</span></div>
+      <div>${rec}</div>
+      <div class="sub">${r.queries_run} searches, ${r.hits_total} distinct LCNAF hits, ${r.candidates_examined} dossiers read${r.wikidata ? `; Wikidata: ${r.wikidata.queries_run} searches, ${r.wikidata.hits.length} hits` : ""}</div>
+      ${d ? `<details class="more"><summary>LCNAF decision: ${esc(d.decision)} ${conf(d)}</summary><div class="reason">${esc(d.reasoning)}</div>${d.runner_ups && d.runner_ups.length ? `<div class="sub">runner-ups: ${esc(d.runner_ups.join(", "))}</div>` : ""}</details>` : ""}
+      ${w ? `<details class="more"><summary>Wikidata decision: ${esc(w.decision)} ${conf(w)}${r.wikidata.name_guard ? ` · name guard ${esc(r.wikidata.name_guard)}` : ""}</summary><div class="reason">${esc(w.reasoning)}</div></details>` : ""}
+      ${r.name_analysis ? `<details class="more"><summary>name analysis</summary><div class="reason">${esc(r.name_analysis)}</div></details>` : ""}</div>`;
+  }
+  function renderNamesBook(contribs) {
+    const linked = contribs.filter(c => c.linked), un = contribs.filter(c => !c.linked);
+    return `<div class="section" style="border-top:0;padding-top:0;margin-top:4px"><h3>On the record</h3>
+      ${contribs.map(c => `<div><span class="${c.linked ? "" : "name"}">${esc(c.label)}</span> <span class="sub" style="display:inline">${esc((c.roles || []).join(", "))}</span> ${c.linked ? `<a class="sub" href="${esc(nal(c.agent_uri))}" target="_blank" rel="noopener">linked</a>` : '<span class="badge warn">no LCNAF link</span>'}</div>`).join("")}
+      ${un.length ? "" : `<div class="sub">Every contributor is already linked; nothing to reconcile.</div>`}</div>
+      <div class="section" data-people><h3>Reconciliation</h3>${un.length ? `<div class="sub" data-people-wait>working through ${un.length} name${un.length > 1 ? "s" : ""}…</div>` : ""}</div>`;
+  }
+  function renderNames(d) {
+    const html = renderNamesBook(d.contributors);
+    const wrap = document.createElement("div"); wrap.innerHTML = html;
+    const people = $("[data-people]", wrap); const wait = $("[data-people-wait]", wrap); if (wait) wait.remove();
+    for (const r of d.results) people.insertAdjacentHTML("beforeend", personHtml(r));
+    if (!d.results.length && d.contributors.some(c => !c.linked)) people.insertAdjacentHTML("beforeend", `<div class="sub">no results</div>`);
+    wrap.insertAdjacentHTML("beforeend", `<div class="sub" style="margin-top:10px">${esc(d.provider)} / ${esc(d.model)}${d.isbndb_used ? " · ISBNdb consulted" : ""}</div>`);
+    return wrap.innerHTML;
+  }
+  const RENDER = { record: renderRecord, subjects: renderSubjects, shelflist: renderShelflist, names: renderNames };
+
+  function onPartial(id, ev) {
+    const c = cards[id]; const d = ev.data || {};
+    logLine(id, ev, "partial");
+    if (id === "shelflist" && d.stage === "classified") {
+      c.body.innerHTML = `<div class="big">${esc(d.class_number || "?")} <span class="sub" style="display:inline;font-family:system-ui">… building the book number</span></div><div class="sub">${esc(d.caption_path || "")}</div>${chips(d.subject_headings, "dim")}`;
+    } else if (id === "names" && d.stage === "book") {
+      c.body.innerHTML = renderNamesBook(d.contributors);
+    } else if (id === "names" && d.stage === "contributor") {
+      const people = $("[data-people]", c.body); if (people) { const w = $("[data-people-wait]", people); if (w) w.remove(); people.insertAdjacentHTML("beforeend", personHtml(d.result)); }
+    }
+  }
+
+  // ------------------------------------------------------------------ websocket
+  let ws = null, runStart = 0, elapsedTimer = null, pending = new Set();
+  const connEl = $("#conn"), noteEl = $("#note"), elapsedEl = $("#elapsed");
+  const setConn = (cls, text) => { connEl.innerHTML = `<span class="dot ${cls}"></span>${esc(text)}`; };
+
+  function connect() {
+    return new Promise((resolve, reject) => {
+      if (ws && ws.readyState === WebSocket.OPEN) return resolve(ws);
+      if (!WS_URL) return reject(new Error("no WebSocket URL: docs/config.js is missing (run deploy/setup_aws.sh) or add ?ws=wss://…"));
+      setConn("", "connecting…");
+      const s = new WebSocket(WS_URL);
+      s.onopen = () => { ws = s; setConn("open", "connected"); resolve(s); };
+      s.onerror = () => { setConn("err", "connection error"); reject(new Error("WebSocket connection failed")); };
+      s.onclose = () => { setConn("", "disconnected"); if (ws === s) ws = null; for (const id of pending) { if (cards[id].state === "running") { logLine(id, { t: null, message: "connection closed before this task finished" }, "warning"); setState(id, "error"); } } pending.clear(); };
+      s.onmessage = m => { let ev; try { ev = JSON.parse(m.data); } catch { return; } handle(ev); };
+    });
+  }
+  function handle(ev) {
+    const id = ev.task;
+    if (ev.type === "started") { pending = new Set(ev.tasks); for (const t in cards) if (!pending.has(t)) { cards[t].body.innerHTML = `<div class="empty">not requested</div>`; setState(t, "idle"); } return; }
+    if (ev.type === "pong" || (!ev.type && ev.message)) return;   // pong, or API Gateway's 29 s integration-timeout notice
+    if (!id || !cards[id]) { if (ev.type === "error") noteEl.textContent = ev.error; return; }
+    if (ev.type === "progress") logLine(id, ev);
+    else if (ev.type === "partial") onPartial(id, ev);
+    else if (ev.type === "result") { try { cards[id].body.innerHTML = RENDER[id](ev.data); } catch (e) { cards[id].body.innerHTML = `<pre class="reason">${esc(JSON.stringify(ev.data, null, 1))}</pre>`; console.error(e); } setState(id, "done"); pending.delete(id); }
+    else if (ev.type === "error") { logLine(id, { t: ev.t, message: ev.error }, "warning"); cards[id].body.innerHTML = `<div class="empty"><span class="badge err">failed</span> ${esc(ev.error)}</div>`; setState(id, "error"); pending.delete(id); }
+    if (!pending.size) { clearInterval(elapsedTimer); elapsedEl.textContent = `all done in ${((Date.now() - runStart) / 1000).toFixed(1)}s`; $("#run").disabled = false; }
+  }
+  async function start() {
+    const lccn = $("#lccn").value.replace(/[\s-]/g, "");
+    if (!/^([a-z]{0,3}\d{8,10}|in\d{5,})$/i.test(lccn)) { noteEl.textContent = "that does not look like an LCCN"; return; }
+    noteEl.textContent = ""; $("#run").disabled = true;
+    const qs = new URLSearchParams(location.search); qs.set("lccn", lccn); history.replaceState(null, "", `?${qs}`);
+    reset();
+    runStart = Date.now(); clearInterval(elapsedTimer);
+    elapsedTimer = setInterval(() => { elapsedEl.textContent = `${((Date.now() - runStart) / 1000).toFixed(0)}s`; }, 500);
+    try {
+      const s = await connect();
+      s.send(JSON.stringify({ action: "run", lccn }));
+    } catch (e) {
+      noteEl.textContent = e.message; $("#run").disabled = false; clearInterval(elapsedTimer);
+      for (const id in cards) { cards[id].body.innerHTML = `<div class="empty">${esc(e.message)}</div>`; setState(id, "error"); }
+    }
+  }
+  $("#form").addEventListener("submit", e => { e.preventDefault(); start(); });
+  setInterval(() => { if (ws && ws.readyState === WebSocket.OPEN && pending.size) ws.send(JSON.stringify({ action: "ping" })); }, 60000);
+  const q = new URLSearchParams(location.search).get("lccn");
+  if (q) { $("#lccn").value = q; start(); }
+})();
+</script>
+</body>
+</html>

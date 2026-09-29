@@ -1,0 +1,393 @@
+[
+ {
+  "name": "Alabama",
+  "cutter": ".A2",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Alaska",
+  "cutter": ".A4",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Arizona",
+  "cutter": ".A6",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Arkansas",
+  "cutter": ".A8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "California",
+  "cutter": ".C2",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Colorado",
+  "cutter": ".C6",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Connecticut",
+  "cutter": ".C8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Delaware",
+  "cutter": ".D3",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "District of Columbia",
+  "cutter": null,
+  "kind": "district",
+  "see": "Washington (D.C.)",
+  "notes": "see Washington (D.C.)"
+ },
+ {
+  "name": "Florida",
+  "cutter": ".F6",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Georgia",
+  "cutter": ".G4",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Hawaii",
+  "cutter": ".H3",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Idaho",
+  "cutter": ".I2",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Illinois",
+  "cutter": ".I3",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Indiana",
+  "cutter": ".I6",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Iowa",
+  "cutter": ".I8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Kansas",
+  "cutter": ".K2",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Kentucky",
+  "cutter": ".K4",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Louisiana",
+  "cutter": ".L8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Maine",
+  "cutter": ".M2",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Maryland",
+  "cutter": ".M3",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Massachusetts",
+  "cutter": ".M4",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Michigan",
+  "cutter": ".M5",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Minnesota",
+  "cutter": ".M6",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Mississippi",
+  "cutter": ".M7",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Missouri",
+  "cutter": ".M8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Montana",
+  "cutter": ".M9",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Nebraska",
+  "cutter": ".N2",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Nevada",
+  "cutter": ".N3",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "New Hampshire",
+  "cutter": ".N4",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "New Jersey",
+  "cutter": ".N5",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "New Mexico",
+  "cutter": ".N6",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "New York",
+  "cutter": ".N7",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "North Carolina",
+  "cutter": ".N8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "North Dakota",
+  "cutter": ".N9",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Ohio",
+  "cutter": ".O3",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Oklahoma",
+  "cutter": ".O5",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Oregon",
+  "cutter": ".O7",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Pennsylvania",
+  "cutter": ".P4",
+  "kind": "state",
+  "notes": "Printed as \".P4\" in the manual (stray leading period); the Cutter is P4."
+ },
+ {
+  "name": "Rhode Island",
+  "cutter": ".R4",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "South Carolina",
+  "cutter": ".S6",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "South Dakota",
+  "cutter": ".S8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Tennessee",
+  "cutter": ".T2",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Texas",
+  "cutter": ".T4",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Utah",
+  "cutter": ".U8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Vermont",
+  "cutter": ".V5",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Virginia",
+  "cutter": ".V8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Washington (D.C.)",
+  "cutter": ".W18",
+  "kind": "district",
+  "notes": ""
+ },
+ {
+  "name": "Washington (State)",
+  "cutter": ".W2",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "West Virginia",
+  "cutter": ".W4",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Wisconsin",
+  "cutter": ".W6",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Wyoming",
+  "cutter": ".W8",
+  "kind": "state",
+  "notes": ""
+ },
+ {
+  "name": "Alberta",
+  "cutter": ".A3",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "British Columbia",
+  "cutter": ".B8",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "Manitoba",
+  "cutter": ".M3",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "New Brunswick",
+  "cutter": ".N5",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "Newfoundland and Labrador",
+  "cutter": ".N6",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "Northwest Territories",
+  "cutter": ".N7",
+  "kind": "territory",
+  "notes": "Listed under \"Canadian Provinces\" in the manual."
+ },
+ {
+  "name": "Nova Scotia",
+  "cutter": ".N8",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "Nunavut",
+  "cutter": ".N9",
+  "kind": "territory",
+  "notes": "Listed under \"Canadian Provinces\" in the manual."
+ },
+ {
+  "name": "Ontario",
+  "cutter": ".O6",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "Prince Edward Island",
+  "cutter": ".P8",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "Quebec (Province)",
+  "cutter": ".Q3",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "Saskatchewan",
+  "cutter": ".S2",
+  "kind": "province",
+  "notes": ""
+ },
+ {
+  "name": "Yukon",
+  "cutter": ".Y8",
+  "kind": "territory",
+  "notes": "Listed under \"Canadian Provinces\" in the manual."
+ }
+]

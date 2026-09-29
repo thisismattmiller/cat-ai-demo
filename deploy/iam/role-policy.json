@@ -1,0 +1,9 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {"Sid": "PostToWebSocketClients", "Effect": "Allow", "Action": "execute-api:ManageConnections",
+     "Resource": "arn:aws:execute-api:REGION:ACCOUNT:*/@connections/*"},
+    {"Sid": "OptionalSelfInvokeForTASKFANOUTlambda", "Effect": "Allow", "Action": "lambda:InvokeFunction",
+     "Resource": "arn:aws:lambda:REGION:ACCOUNT:function:FUNCTION_NAME"}
+  ]
+}

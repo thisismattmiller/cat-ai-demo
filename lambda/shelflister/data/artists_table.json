@@ -1,0 +1,34 @@
+{
+ "N6": {
+  "caption": "Table N6 (First Cutter number for artist)",
+  "use_when": "Where indicated in the N schedule, for classes with the form caption Special artists, A-Z; the first Cutter designates the artist, the second Cutter is taken from this table.",
+  "rows": [
+   {"suffix": "A2", "meaning": "Autobiography. By date", "notes": "Translation Table not applied."},
+   {"suffix": "A3", "meaning": "Letters. By date", "notes": "Translation Table not applied."},
+   {"suffix": "A35", "meaning": "Speeches, essays, interviews, etc. of the artist. By date", "notes": "Translation Table not applied."},
+   {"suffix": "A4", "meaning": "Reproductions (Collections). By date", "notes": "Including exhibition catalogs [even if the main entry is not the artist]. Translation Table not applied."},
+   {"suffix": "A6-79", "meaning": "Individual works of art", "notes": "Alphabetically by title of work of art and date. Translation Table may be applied."},
+   {"suffix": "A8-Z", "meaning": "Biography and criticism", "notes": "Translation Table may be applied."}
+  ]
+ },
+ "N7": {
+  "caption": "Table N7 (Second Cutter number for artist)",
+  "use_when": "Where indicated in the N schedule, when the first Cutter represents a region or country and the artist is represented by a second Cutter.",
+  "rows": [
+   {"suffix": "x", "meaning": "Autobiography, letters, speeches, essays, interviews, etc. By date", "notes": "Translation Table not applied."},
+   {"suffix": "x2", "meaning": "Reproductions. By date", "notes": "Including collections, individual works of art, exhibition catalogs [even if the main entry is not the artist]. Translation Table not applied."},
+   {"suffix": "x3-39", "meaning": "Biography and criticism", "notes": "Alphabetically by main entry. Translation Table may be applied."}
+  ]
+ },
+ "obsolete_artists_table_pre_1977": {
+  "caption": "ARTISTS (CLASS N) - obsolete, used prior to November 22, 1977; reference only",
+  "use_when": "Do not use for new work; included only to interpret older call numbers in the shelflist.",
+  "rows": [
+   {"suffix": "A2", "meaning": "Autobiography. By title", "notes": ""},
+   {"suffix": "A3", "meaning": "Letters. By title", "notes": ""},
+   {"suffix": "A35", "meaning": "Miscellaneous. Speeches, essays, etc. By title", "notes": ""},
+   {"suffix": "A4-59", "meaning": "Reproductions cataloged under artist's name when there is no editor. By title", "notes": ""},
+   {"suffix": "A6-Z", "meaning": "Reproductions (by editor); Catalogs (by editor or corporate body responsible for preparation); Biography and criticism (by main entry); Title entries (by title); etc.", "notes": ""}
+  ]
+ }
+}

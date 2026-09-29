@@ -1,0 +1,2039 @@
+[
+ {
+  "name": "Abyssinia",
+  "cutter": null,
+  "see": "Ethiopia",
+  "notes": "see Ethiopia"
+ },
+ {
+  "name": "Afghanistan",
+  "cutter": ".A3",
+  "notes": ""
+ },
+ {
+  "name": "Africa",
+  "cutter": ".A35",
+  "notes": ""
+ },
+ {
+  "name": "Africa, Central",
+  "cutter": ".A352",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Africa, East",
+  "cutter": ".A353",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Africa, Eastern",
+  "cutter": ".A354",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Africa, French-Speaking West",
+  "cutter": ".A3545",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Africa, North",
+  "cutter": ".A355",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Africa, Northeast",
+  "cutter": ".A3553",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Africa, Northwest",
+  "cutter": ".A3554",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Africa, South",
+  "cutter": null,
+  "see": "South Africa",
+  "notes": "see South Africa"
+ },
+ {
+  "name": "Africa, Southern",
+  "cutter": ".A356",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Africa, Sub-Saharan",
+  "cutter": ".A357",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Africa, West",
+  "cutter": ".A358",
+  "notes": "Listed as an indented subentry under Africa in the manual."
+ },
+ {
+  "name": "Albania",
+  "cutter": ".A38",
+  "notes": ""
+ },
+ {
+  "name": "Algeria",
+  "cutter": ".A4",
+  "notes": ""
+ },
+ {
+  "name": "Alps",
+  "cutter": ".A43",
+  "notes": ""
+ },
+ {
+  "name": "America",
+  "cutter": ".A45",
+  "notes": ""
+ },
+ {
+  "name": "American Samoa",
+  "cutter": ".A46",
+  "notes": ""
+ },
+ {
+  "name": "Andorra",
+  "cutter": ".A48",
+  "notes": ""
+ },
+ {
+  "name": "Angola",
+  "cutter": ".A5",
+  "notes": ""
+ },
+ {
+  "name": "Anguilla",
+  "cutter": ".A54",
+  "notes": ""
+ },
+ {
+  "name": "Antarctica",
+  "cutter": ".A6",
+  "notes": ""
+ },
+ {
+  "name": "Antigua",
+  "cutter": null,
+  "see": "Antigua and Barbuda",
+  "notes": "see Antigua and Barbuda"
+ },
+ {
+  "name": "Antigua and Barbuda",
+  "cutter": ".A63",
+  "notes": ""
+ },
+ {
+  "name": "Arab countries",
+  "cutter": ".A65",
+  "notes": ""
+ },
+ {
+  "name": "Arctic regions",
+  "cutter": ".A68",
+  "notes": ""
+ },
+ {
+  "name": "Argentina",
+  "cutter": ".A7",
+  "notes": ""
+ },
+ {
+  "name": "Armenia",
+  "cutter": ".A75",
+  "notes": ""
+ },
+ {
+  "name": "Armenia (Republic)",
+  "cutter": ".A76",
+  "notes": ""
+ },
+ {
+  "name": "Aruba",
+  "cutter": ".A77",
+  "notes": ""
+ },
+ {
+  "name": "Asia",
+  "cutter": ".A78",
+  "notes": ""
+ },
+ {
+  "name": "Asia, Central",
+  "cutter": ".A783",
+  "notes": "Listed as an indented subentry under Asia in the manual."
+ },
+ {
+  "name": "Asia, East",
+  "cutter": null,
+  "see": "East Asia",
+  "notes": "see East Asia"
+ },
+ {
+  "name": "Asia, South",
+  "cutter": null,
+  "see": "South Asia",
+  "notes": "see South Asia"
+ },
+ {
+  "name": "Asia, Southeastern",
+  "cutter": null,
+  "see": "Southeast Asia",
+  "notes": "see Southeast Asia"
+ },
+ {
+  "name": "Asia, Southwestern",
+  "cutter": null,
+  "see": "Middle East",
+  "notes": "see Middle East"
+ },
+ {
+  "name": "Australasia",
+  "cutter": ".A788",
+  "notes": ""
+ },
+ {
+  "name": "Australia",
+  "cutter": ".A8",
+  "notes": ""
+ },
+ {
+  "name": "Austria",
+  "cutter": ".A9",
+  "notes": ""
+ },
+ {
+  "name": "Azerbaijan",
+  "cutter": ".A98",
+  "notes": ""
+ },
+ {
+  "name": "Bahamas",
+  "cutter": ".B24",
+  "notes": ""
+ },
+ {
+  "name": "Bahrain",
+  "cutter": ".B26",
+  "notes": ""
+ },
+ {
+  "name": "Balkan Peninsula",
+  "cutter": ".B28",
+  "notes": ""
+ },
+ {
+  "name": "Baltic States",
+  "cutter": ".B29",
+  "notes": ""
+ },
+ {
+  "name": "Bangladesh",
+  "cutter": ".B3",
+  "notes": ""
+ },
+ {
+  "name": "Barbados",
+  "cutter": ".B35",
+  "notes": ""
+ },
+ {
+  "name": "Barbuda",
+  "cutter": null,
+  "see": "Antigua and Barbuda",
+  "notes": "see Antigua and Barbuda"
+ },
+ {
+  "name": "Belarus",
+  "cutter": ".B38",
+  "notes": ""
+ },
+ {
+  "name": "Belgium",
+  "cutter": ".B4",
+  "notes": ""
+ },
+ {
+  "name": "Belize",
+  "cutter": ".B42",
+  "notes": ""
+ },
+ {
+  "name": "Benelux Countries",
+  "cutter": ".B425",
+  "notes": ""
+ },
+ {
+  "name": "Bengal",
+  "cutter": ".B43",
+  "notes": ""
+ },
+ {
+  "name": "Benin",
+  "cutter": ".B45",
+  "notes": ""
+ },
+ {
+  "name": "Bermuda",
+  "cutter": ".B46",
+  "notes": ""
+ },
+ {
+  "name": "Bhutan",
+  "cutter": ".B47",
+  "notes": ""
+ },
+ {
+  "name": "Bolivia",
+  "cutter": ".B5",
+  "notes": ""
+ },
+ {
+  "name": "Bonaire",
+  "cutter": ".B52",
+  "notes": ""
+ },
+ {
+  "name": "Bosnia and Herzegovina",
+  "cutter": ".B54",
+  "notes": ""
+ },
+ {
+  "name": "Botswana",
+  "cutter": ".B55",
+  "notes": ""
+ },
+ {
+  "name": "Brazil",
+  "cutter": ".B6",
+  "notes": ""
+ },
+ {
+  "name": "British Guiana",
+  "cutter": null,
+  "see": "Guyana",
+  "notes": "see Guyana"
+ },
+ {
+  "name": "British Honduras",
+  "cutter": null,
+  "see": "Belize",
+  "notes": "see Belize"
+ },
+ {
+  "name": "British Isles",
+  "cutter": ".B65",
+  "notes": ""
+ },
+ {
+  "name": "British Virgin Islands",
+  "cutter": null,
+  "see": "Virgin Islands",
+  "notes": "see Virgin Islands"
+ },
+ {
+  "name": "Brunei",
+  "cutter": ".B7",
+  "notes": ""
+ },
+ {
+  "name": "Bulgaria",
+  "cutter": ".B9",
+  "notes": ""
+ },
+ {
+  "name": "Burkina Faso",
+  "cutter": ".B92",
+  "notes": ""
+ },
+ {
+  "name": "Burma",
+  "cutter": ".B93",
+  "notes": ""
+ },
+ {
+  "name": "Burundi",
+  "cutter": ".B94",
+  "notes": ""
+ },
+ {
+  "name": "Byzantine Empire",
+  "cutter": ".B97",
+  "notes": ""
+ },
+ {
+  "name": "Cabo Verde",
+  "cutter": ".C15",
+  "notes": ""
+ },
+ {
+  "name": "Cambodia",
+  "cutter": ".C16",
+  "notes": ""
+ },
+ {
+  "name": "Cameroon",
+  "cutter": ".C17",
+  "notes": ""
+ },
+ {
+  "name": "Canada",
+  "cutter": ".C2",
+  "notes": ""
+ },
+ {
+  "name": "Canary Islands",
+  "cutter": ".C23",
+  "notes": ""
+ },
+ {
+  "name": "Cape Verde",
+  "cutter": null,
+  "see": "Cabo Verde",
+  "notes": "see Cabo Verde"
+ },
+ {
+  "name": "Caribbean Area",
+  "cutter": ".C27",
+  "notes": ""
+ },
+ {
+  "name": "Caroline Islands",
+  "cutter": ".C275",
+  "notes": ""
+ },
+ {
+  "name": "Caucasus",
+  "cutter": ".C28",
+  "notes": ""
+ },
+ {
+  "name": "Cayman Islands",
+  "cutter": ".C29",
+  "notes": ""
+ },
+ {
+  "name": "Central African Republic",
+  "cutter": ".C33",
+  "notes": ""
+ },
+ {
+  "name": "Central America",
+  "cutter": ".C35",
+  "notes": ""
+ },
+ {
+  "name": "Central Europe",
+  "cutter": null,
+  "see": "Europe, Central",
+  "notes": "see Europe, Central"
+ },
+ {
+  "name": "Ceylon",
+  "cutter": null,
+  "see": "Sri Lanka",
+  "notes": "see Sri Lanka"
+ },
+ {
+  "name": "Chad",
+  "cutter": ".C45",
+  "notes": ""
+ },
+ {
+  "name": "Channel Islands",
+  "cutter": ".C48",
+  "notes": ""
+ },
+ {
+  "name": "Chile",
+  "cutter": ".C5",
+  "notes": ""
+ },
+ {
+  "name": "China",
+  "cutter": ".C6",
+  "notes": ""
+ },
+ {
+  "name": "Colombia",
+  "cutter": ".C7",
+  "notes": ""
+ },
+ {
+  "name": "Commonwealth countries",
+  "cutter": ".C723",
+  "notes": ""
+ },
+ {
+  "name": "Communist countries",
+  "cutter": ".C725",
+  "notes": ""
+ },
+ {
+  "name": "Communist countries, Former",
+  "cutter": ".C727",
+  "notes": ""
+ },
+ {
+  "name": "Comoros",
+  "cutter": ".C73",
+  "notes": ""
+ },
+ {
+  "name": "Congo (Brazzaville)",
+  "cutter": ".C74",
+  "notes": ""
+ },
+ {
+  "name": "Congo (Democratic Republic)",
+  "cutter": ".C75",
+  "notes": ""
+ },
+ {
+  "name": "Cook Islands",
+  "cutter": ".C76",
+  "notes": ""
+ },
+ {
+  "name": "Costa Rica",
+  "cutter": ".C8",
+  "notes": ""
+ },
+ {
+  "name": "Côte d'Ivoire",
+  "cutter": ".C85",
+  "notes": ""
+ },
+ {
+  "name": "Croatia",
+  "cutter": ".C87",
+  "notes": ""
+ },
+ {
+  "name": "Cuba",
+  "cutter": ".C9",
+  "notes": ""
+ },
+ {
+  "name": "Curaçao",
+  "cutter": ".C92",
+  "notes": ""
+ },
+ {
+  "name": "Cyprus",
+  "cutter": ".C93",
+  "notes": ""
+ },
+ {
+  "name": "Czech Republic",
+  "cutter": ".C94",
+  "notes": ""
+ },
+ {
+  "name": "Czechoslovakia",
+  "cutter": ".C95",
+  "notes": ""
+ },
+ {
+  "name": "Dahomey",
+  "cutter": null,
+  "see": "Benin",
+  "notes": "see Benin"
+ },
+ {
+  "name": "Denmark",
+  "cutter": ".D4",
+  "notes": ""
+ },
+ {
+  "name": "Developing countries",
+  "cutter": ".D44",
+  "notes": ""
+ },
+ {
+  "name": "Djibouti",
+  "cutter": ".D5",
+  "notes": ""
+ },
+ {
+  "name": "Dominica",
+  "cutter": ".D6",
+  "notes": ""
+ },
+ {
+  "name": "Dominican Republic",
+  "cutter": ".D65",
+  "notes": ""
+ },
+ {
+  "name": "Dutch East Indies",
+  "cutter": null,
+  "see": "Indonesia",
+  "notes": "see Indonesia"
+ },
+ {
+  "name": "Dutch Guiana",
+  "cutter": null,
+  "see": "Suriname",
+  "notes": "see Suriname"
+ },
+ {
+  "name": "East Asia",
+  "cutter": ".E18",
+  "notes": ""
+ },
+ {
+  "name": "East Timor",
+  "cutter": null,
+  "see": "Timor-Leste",
+  "notes": "see Timor-Leste"
+ },
+ {
+  "name": "Ecuador",
+  "cutter": ".E2",
+  "notes": ""
+ },
+ {
+  "name": "Egypt",
+  "cutter": ".E3",
+  "notes": ""
+ },
+ {
+  "name": "El Salvador",
+  "cutter": null,
+  "see": "Salvador",
+  "notes": "see Salvador"
+ },
+ {
+  "name": "Ellice Islands",
+  "cutter": null,
+  "see": "Tuvalu",
+  "notes": "see Tuvalu"
+ },
+ {
+  "name": "England",
+  "cutter": null,
+  "see": "GreatBritain",
+  "notes": "see GreatBritain"
+ },
+ {
+  "name": "Equatorial Guinea",
+  "cutter": ".E6",
+  "notes": ""
+ },
+ {
+  "name": "Eritrea",
+  "cutter": ".E65",
+  "notes": ""
+ },
+ {
+  "name": "Estonia",
+  "cutter": ".E75",
+  "notes": ""
+ },
+ {
+  "name": "Eswatini",
+  "cutter": ".E77",
+  "notes": ""
+ },
+ {
+  "name": "Ethiopia",
+  "cutter": ".E8",
+  "notes": ""
+ },
+ {
+  "name": "Eurasia",
+  "cutter": ".E83",
+  "notes": ""
+ },
+ {
+  "name": "Europe",
+  "cutter": ".E85",
+  "notes": ""
+ },
+ {
+  "name": "Europe, Central",
+  "cutter": ".E8515",
+  "notes": "Listed as an indented subentry under Europe in the manual."
+ },
+ {
+  "name": "Europe, Eastern",
+  "cutter": ".E852",
+  "notes": "Listed as an indented subentry under Europe in the manual."
+ },
+ {
+  "name": "Europe, Northern",
+  "cutter": ".E853",
+  "notes": "Listed as an indented subentry under Europe in the manual."
+ },
+ {
+  "name": "Europe, Southern",
+  "cutter": ".E854",
+  "notes": "Listed as an indented subentry under Europe in the manual."
+ },
+ {
+  "name": "Europe, Western",
+  "cutter": null,
+  "see": "Europe",
+  "notes": "see Europe"
+ },
+ {
+  "name": "European Economic Community countries",
+  "cutter": ".E86",
+  "notes": ""
+ },
+ {
+  "name": "European Free Trade Association countries",
+  "cutter": ".E87",
+  "notes": ""
+ },
+ {
+  "name": "European Union countries",
+  "cutter": null,
+  "see": "Europe",
+  "notes": "see Europe"
+ },
+ {
+  "name": "Falkland Islands",
+  "cutter": ".F3",
+  "notes": ""
+ },
+ {
+  "name": "Faroe Islands",
+  "cutter": ".F32",
+  "notes": ""
+ },
+ {
+  "name": "Fiji",
+  "cutter": ".F4",
+  "notes": ""
+ },
+ {
+  "name": "Finland",
+  "cutter": ".F5",
+  "notes": ""
+ },
+ {
+  "name": "Former Communist countries",
+  "cutter": null,
+  "see": "Communist countries, Former",
+  "notes": "see Communist countries, Former"
+ },
+ {
+  "name": "Former Soviet republics",
+  "cutter": ".F6",
+  "notes": ""
+ },
+ {
+  "name": "Formosa",
+  "cutter": null,
+  "see": "Taiwan",
+  "notes": "see Taiwan"
+ },
+ {
+  "name": "France",
+  "cutter": ".F8",
+  "notes": ""
+ },
+ {
+  "name": "French Guiana",
+  "cutter": ".F9",
+  "notes": ""
+ },
+ {
+  "name": "French Polynesia",
+  "cutter": ".F93",
+  "notes": ""
+ },
+ {
+  "name": "Gabon",
+  "cutter": ".G2",
+  "notes": ""
+ },
+ {
+  "name": "Galapagos Islands",
+  "cutter": ".G23",
+  "notes": ""
+ },
+ {
+  "name": "Gambia",
+  "cutter": ".G25",
+  "notes": ""
+ },
+ {
+  "name": "Georgia (Republic)",
+  "cutter": ".G28",
+  "notes": ""
+ },
+ {
+  "name": "Germany",
+  "cutter": ".G3",
+  "notes": ""
+ },
+ {
+  "name": "Germany (Democratic Republic)",
+  "cutter": null,
+  "see": "Germany",
+  "notes": "see Germany"
+ },
+ {
+  "name": "Germany (East)",
+  "cutter": null,
+  "see": "Germany",
+  "notes": "see Germany"
+ },
+ {
+  "name": "Germany (Federal Republic)",
+  "cutter": null,
+  "see": "Germany",
+  "notes": "see Germany"
+ },
+ {
+  "name": "Germany (West)",
+  "cutter": null,
+  "see": "Germany",
+  "notes": "see Germany"
+ },
+ {
+  "name": "Ghana",
+  "cutter": ".G4",
+  "notes": ""
+ },
+ {
+  "name": "Gibraltar",
+  "cutter": ".G5",
+  "notes": ""
+ },
+ {
+  "name": "Gilbert Islands",
+  "cutter": null,
+  "see": "Kiribati",
+  "notes": "see Kiribati"
+ },
+ {
+  "name": "Great Britain",
+  "cutter": ".G7",
+  "notes": ""
+ },
+ {
+  "name": "Greece",
+  "cutter": ".G8",
+  "notes": ""
+ },
+ {
+  "name": "Greenland",
+  "cutter": ".G83",
+  "notes": ""
+ },
+ {
+  "name": "Grenada",
+  "cutter": ".G84",
+  "notes": ""
+ },
+ {
+  "name": "Guadeloupe",
+  "cutter": ".G845",
+  "notes": ""
+ },
+ {
+  "name": "Guam",
+  "cutter": ".G85",
+  "notes": ""
+ },
+ {
+  "name": "Guatemala",
+  "cutter": ".G9",
+  "notes": ""
+ },
+ {
+  "name": "Guiana",
+  "cutter": ".G915",
+  "notes": ""
+ },
+ {
+  "name": "Guinea",
+  "cutter": ".G92",
+  "notes": ""
+ },
+ {
+  "name": "Guinea-Bissau",
+  "cutter": ".G93",
+  "notes": ""
+ },
+ {
+  "name": "Guyana",
+  "cutter": ".G95",
+  "notes": ""
+ },
+ {
+  "name": "Haiti",
+  "cutter": ".H2",
+  "notes": ""
+ },
+ {
+  "name": "Hispaniola",
+  "cutter": ".H55",
+  "notes": ""
+ },
+ {
+  "name": "Holland",
+  "cutter": null,
+  "see": "Netherlands",
+  "notes": "see Netherlands"
+ },
+ {
+  "name": "Honduras",
+  "cutter": ".H8",
+  "notes": ""
+ },
+ {
+  "name": "Hong Kong",
+  "cutter": null,
+  "see": "China",
+  "notes": "see China"
+ },
+ {
+  "name": "Hungary",
+  "cutter": ".H9",
+  "notes": ""
+ },
+ {
+  "name": "Iceland",
+  "cutter": ".I2",
+  "notes": ""
+ },
+ {
+  "name": "India",
+  "cutter": ".I4",
+  "notes": ""
+ },
+ {
+  "name": "Indochina",
+  "cutter": ".I48",
+  "notes": ""
+ },
+ {
+  "name": "Indonesia",
+  "cutter": ".I5",
+  "notes": ""
+ },
+ {
+  "name": "Inner Mongolia",
+  "cutter": null,
+  "see": "China",
+  "notes": "see China"
+ },
+ {
+  "name": "Iran",
+  "cutter": ".I7",
+  "notes": ""
+ },
+ {
+  "name": "Iraq",
+  "cutter": ".I72",
+  "notes": ""
+ },
+ {
+  "name": "Ireland",
+  "cutter": ".I73",
+  "notes": ""
+ },
+ {
+  "name": "Islamic countries",
+  "cutter": ".I74",
+  "notes": ""
+ },
+ {
+  "name": "Islamic Empire",
+  "cutter": ".I742",
+  "notes": ""
+ },
+ {
+  "name": "Islands of the Indian Ocean",
+  "cutter": ".I743",
+  "notes": ""
+ },
+ {
+  "name": "Israel",
+  "cutter": ".I75",
+  "notes": ""
+ },
+ {
+  "name": "Italy",
+  "cutter": ".I8",
+  "notes": ""
+ },
+ {
+  "name": "Ivory Coast",
+  "cutter": null,
+  "see": "Côte d'Ivoire",
+  "notes": "see Côte d'Ivoire"
+ },
+ {
+  "name": "Jamaica",
+  "cutter": ".J25",
+  "notes": ""
+ },
+ {
+  "name": "Japan",
+  "cutter": ".J3",
+  "notes": ""
+ },
+ {
+  "name": "Java",
+  "cutter": null,
+  "see": "Indonesia",
+  "notes": "see Indonesia"
+ },
+ {
+  "name": "Jerusalem",
+  "cutter": ".J4",
+  "notes": ""
+ },
+ {
+  "name": "Jordan",
+  "cutter": ".J6",
+  "notes": ""
+ },
+ {
+  "name": "Jugoslavia",
+  "cutter": null,
+  "see": "Yugoslavia",
+  "notes": "see Yugoslavia"
+ },
+ {
+  "name": "Jutland",
+  "cutter": null,
+  "see": "Denmark",
+  "notes": "see Denmark"
+ },
+ {
+  "name": "Kampuchea",
+  "cutter": null,
+  "see": "Cambodia",
+  "notes": "see Cambodia"
+ },
+ {
+  "name": "Kazakhstan",
+  "cutter": ".K3",
+  "notes": ""
+ },
+ {
+  "name": "Kenya",
+  "cutter": ".K4",
+  "notes": ""
+ },
+ {
+  "name": "Kerguelen Islands",
+  "cutter": ".K43",
+  "notes": ""
+ },
+ {
+  "name": "Kiribati",
+  "cutter": ".K5",
+  "notes": ""
+ },
+ {
+  "name": "Korea",
+  "cutter": ".K6",
+  "notes": ""
+ },
+ {
+  "name": "Korea (Democratic People's Republic)",
+  "cutter": null,
+  "see": "Korea (North)",
+  "notes": "see Korea (North)"
+ },
+ {
+  "name": "Korea (North)",
+  "cutter": ".K7",
+  "notes": ""
+ },
+ {
+  "name": "Korea (Republic)",
+  "cutter": null,
+  "see": "Korea",
+  "notes": "see Korea"
+ },
+ {
+  "name": "Korea (South)",
+  "cutter": null,
+  "see": "Korea",
+  "notes": "see Korea"
+ },
+ {
+  "name": "Kosovo",
+  "cutter": ".K8",
+  "notes": ""
+ },
+ {
+  "name": "Kuwait",
+  "cutter": ".K9",
+  "notes": ""
+ },
+ {
+  "name": "Kyrgyzstan",
+  "cutter": ".K98",
+  "notes": ""
+ },
+ {
+  "name": "Laos",
+  "cutter": ".L28",
+  "notes": ""
+ },
+ {
+  "name": "Latin America",
+  "cutter": ".L29",
+  "notes": ""
+ },
+ {
+  "name": "Latvia",
+  "cutter": ".L35",
+  "notes": ""
+ },
+ {
+  "name": "Lebanon",
+  "cutter": ".L4",
+  "notes": ""
+ },
+ {
+  "name": "Lesotho",
+  "cutter": ".L5",
+  "notes": ""
+ },
+ {
+  "name": "Liberia",
+  "cutter": ".L7",
+  "notes": ""
+ },
+ {
+  "name": "Libya",
+  "cutter": ".L75",
+  "notes": ""
+ },
+ {
+  "name": "Liechtenstein",
+  "cutter": ".L76",
+  "notes": ""
+ },
+ {
+  "name": "Lithuania",
+  "cutter": ".L78",
+  "notes": ""
+ },
+ {
+  "name": "Luxembourg",
+  "cutter": ".L9",
+  "notes": ""
+ },
+ {
+  "name": "Macao",
+  "cutter": null,
+  "see": "China",
+  "notes": "see China"
+ },
+ {
+  "name": "Macaronesia",
+  "cutter": ".M26",
+  "notes": ""
+ },
+ {
+  "name": "Macedonia",
+  "cutter": ".M27",
+  "notes": ""
+ },
+ {
+  "name": "Macedonia (Republic)",
+  "cutter": null,
+  "see": "North Macedonia",
+  "notes": "see North Macedonia"
+ },
+ {
+  "name": "Madagascar",
+  "cutter": ".M28",
+  "notes": ""
+ },
+ {
+  "name": "Malagasy Republic",
+  "cutter": null,
+  "see": "Madagascar",
+  "notes": "see Madagascar"
+ },
+ {
+  "name": "Malawi",
+  "cutter": ".M3",
+  "notes": ""
+ },
+ {
+  "name": "Malay Archipelago",
+  "cutter": ".M35",
+  "notes": ""
+ },
+ {
+  "name": "Malaya",
+  "cutter": null,
+  "see": "Malaysia",
+  "notes": "see Malaysia"
+ },
+ {
+  "name": "Malaysia",
+  "cutter": ".M4",
+  "notes": ""
+ },
+ {
+  "name": "Maldives",
+  "cutter": ".M415",
+  "notes": ""
+ },
+ {
+  "name": "Mali",
+  "cutter": ".M42",
+  "notes": ""
+ },
+ {
+  "name": "Malta",
+  "cutter": ".M43",
+  "notes": ""
+ },
+ {
+  "name": "Marshall Islands",
+  "cutter": ".M433",
+  "notes": ""
+ },
+ {
+  "name": "Martinique",
+  "cutter": ".M435",
+  "notes": ""
+ },
+ {
+  "name": "Mauritania",
+  "cutter": ".M44",
+  "notes": ""
+ },
+ {
+  "name": "Mauritius",
+  "cutter": ".M45",
+  "notes": ""
+ },
+ {
+  "name": "Melanesia",
+  "cutter": ".M5",
+  "notes": ""
+ },
+ {
+  "name": "Mexican-American Border Region",
+  "cutter": ".M58",
+  "notes": ""
+ },
+ {
+  "name": "Mexico",
+  "cutter": ".M6",
+  "notes": ""
+ },
+ {
+  "name": "Micronesia",
+  "cutter": ".M625",
+  "notes": ""
+ },
+ {
+  "name": "Micronesia (Federated States)",
+  "cutter": ".M626",
+  "notes": ""
+ },
+ {
+  "name": "Middle East",
+  "cutter": ".M628",
+  "notes": ""
+ },
+ {
+  "name": "Moldova",
+  "cutter": ".M629",
+  "notes": ""
+ },
+ {
+  "name": "Monaco",
+  "cutter": ".M63",
+  "notes": ""
+ },
+ {
+  "name": "Mongolia",
+  "cutter": ".M65",
+  "notes": ""
+ },
+ {
+  "name": "Mongolia (Mongolian People's Republic)",
+  "cutter": null,
+  "see": "Mongolia",
+  "notes": "see Mongolia"
+ },
+ {
+  "name": "Montenegro",
+  "cutter": ".M68",
+  "notes": ""
+ },
+ {
+  "name": "Montserrat",
+  "cutter": ".M7",
+  "notes": ""
+ },
+ {
+  "name": "Morocco",
+  "cutter": ".M8",
+  "notes": ""
+ },
+ {
+  "name": "Mozambique",
+  "cutter": ".M85",
+  "notes": ""
+ },
+ {
+  "name": "Myanmar",
+  "cutter": null,
+  "see": "Burma",
+  "notes": "see Burma"
+ },
+ {
+  "name": "Namibia",
+  "cutter": ".N3",
+  "notes": ""
+ },
+ {
+  "name": "Nauru",
+  "cutter": ".N32",
+  "notes": ""
+ },
+ {
+  "name": "Near East",
+  "cutter": null,
+  "see": "Middle East",
+  "notes": "see Middle East"
+ },
+ {
+  "name": "Nepal",
+  "cutter": ".N35",
+  "notes": ""
+ },
+ {
+  "name": "Netherlands",
+  "cutter": ".N4",
+  "notes": ""
+ },
+ {
+  "name": "Netherlands Antilles",
+  "cutter": ".N42",
+  "notes": ""
+ },
+ {
+  "name": "New Caledonia",
+  "cutter": ".N425",
+  "notes": ""
+ },
+ {
+  "name": "New Guinea",
+  "cutter": ".N43",
+  "notes": ""
+ },
+ {
+  "name": "New Hebrides",
+  "cutter": null,
+  "see": "Vanuatu",
+  "notes": "see Vanuatu"
+ },
+ {
+  "name": "New Zealand",
+  "cutter": ".N45",
+  "notes": ""
+ },
+ {
+  "name": "Nicaragua",
+  "cutter": ".N5",
+  "notes": ""
+ },
+ {
+  "name": "Niger",
+  "cutter": ".N55",
+  "notes": ""
+ },
+ {
+  "name": "Nigeria",
+  "cutter": ".N6",
+  "notes": ""
+ },
+ {
+  "name": "North America",
+  "cutter": ".N7",
+  "notes": ""
+ },
+ {
+  "name": "North Macedonia",
+  "cutter": ".N74",
+  "notes": ""
+ },
+ {
+  "name": "Northern Ireland",
+  "cutter": null,
+  "see": "Great Britain",
+  "notes": "see Great Britain"
+ },
+ {
+  "name": "Northern Rhodesia",
+  "cutter": null,
+  "see": "Zambia",
+  "notes": "see Zambia"
+ },
+ {
+  "name": "Norway",
+  "cutter": ".N8",
+  "notes": ""
+ },
+ {
+  "name": "Nyasaland",
+  "cutter": null,
+  "see": "Malawi",
+  "notes": "see Malawi"
+ },
+ {
+  "name": "Oceania",
+  "cutter": ".O3",
+  "notes": ""
+ },
+ {
+  "name": "Oman",
+  "cutter": ".O5",
+  "notes": ""
+ },
+ {
+  "name": "Outer Mongolia",
+  "cutter": null,
+  "see": "Mongolia",
+  "notes": "see Mongolia"
+ },
+ {
+  "name": "Pacific Area",
+  "cutter": ".P16",
+  "notes": ""
+ },
+ {
+  "name": "Pakistan",
+  "cutter": ".P18",
+  "notes": ""
+ },
+ {
+  "name": "Palau",
+  "cutter": ".P185",
+  "notes": ""
+ },
+ {
+  "name": "Palestine",
+  "cutter": ".P19",
+  "notes": ""
+ },
+ {
+  "name": "Panama",
+  "cutter": ".P2",
+  "notes": ""
+ },
+ {
+  "name": "Papua New Guinea",
+  "cutter": ".P26",
+  "notes": ""
+ },
+ {
+  "name": "Paraguay",
+  "cutter": ".P3",
+  "notes": ""
+ },
+ {
+  "name": "Persia",
+  "cutter": null,
+  "see": "Iran",
+  "notes": "see Iran"
+ },
+ {
+  "name": "Persian Gulf Region",
+  "cutter": ".P35",
+  "notes": ""
+ },
+ {
+  "name": "Peru",
+  "cutter": ".P4",
+  "notes": ""
+ },
+ {
+  "name": "Philippines",
+  "cutter": ".P6",
+  "notes": ""
+ },
+ {
+  "name": "Poland",
+  "cutter": ".P7",
+  "notes": ""
+ },
+ {
+  "name": "Polynesia",
+  "cutter": ".P75",
+  "notes": ""
+ },
+ {
+  "name": "Portugal",
+  "cutter": ".P8",
+  "notes": ""
+ },
+ {
+  "name": "Prussia",
+  "cutter": null,
+  "see": "Germany",
+  "notes": "see Germany"
+ },
+ {
+  "name": "Prussia, East (Poland and Russia)",
+  "cutter": ".P85",
+  "notes": ""
+ },
+ {
+  "name": "Puerto Rico",
+  "cutter": ".P9",
+  "notes": ""
+ },
+ {
+  "name": "Qatar",
+  "cutter": ".Q2",
+  "notes": ""
+ },
+ {
+  "name": "Réunion",
+  "cutter": ".R4",
+  "notes": ""
+ },
+ {
+  "name": "Rhodesia, Northern",
+  "cutter": null,
+  "see": "Zambia",
+  "notes": "see Zambia"
+ },
+ {
+  "name": "Rhodesia, Southern",
+  "cutter": null,
+  "see": "Zimbabwe",
+  "notes": "see Zimbabwe"
+ },
+ {
+  "name": "Roman Empire",
+  "cutter": ".R57",
+  "notes": ""
+ },
+ {
+  "name": "Romania",
+  "cutter": ".R6",
+  "notes": ""
+ },
+ {
+  "name": "Rumania",
+  "cutter": null,
+  "see": "Romania",
+  "notes": "see Romania"
+ },
+ {
+  "name": "Russia",
+  "cutter": ".R8",
+  "notes": ""
+ },
+ {
+  "name": "Russia (Federation)",
+  "cutter": null,
+  "see": "Russia",
+  "notes": "see Russia"
+ },
+ {
+  "name": "Rwanda",
+  "cutter": ".R95",
+  "notes": ""
+ },
+ {
+  "name": "Sahel",
+  "cutter": ".S15",
+  "notes": ""
+ },
+ {
+  "name": "Saint Kitts-Nevis",
+  "cutter": ".S16",
+  "notes": ""
+ },
+ {
+  "name": "Saint Lucia",
+  "cutter": ".S17",
+  "notes": ""
+ },
+ {
+  "name": "Saint Vincent and the Grenadines",
+  "cutter": ".S18",
+  "notes": ""
+ },
+ {
+  "name": "Salvador",
+  "cutter": ".S2",
+  "notes": ""
+ },
+ {
+  "name": "Samoa",
+  "cutter": ".S23",
+  "notes": ""
+ },
+ {
+  "name": "Samoa, American",
+  "cutter": null,
+  "see": "American Samoa",
+  "notes": "see American Samoa"
+ },
+ {
+  "name": "Samoan Islands",
+  "cutter": ".S24",
+  "notes": ""
+ },
+ {
+  "name": "San Marino",
+  "cutter": ".S27",
+  "notes": ""
+ },
+ {
+  "name": "Sao Tome and Principe",
+  "cutter": ".S3",
+  "notes": ""
+ },
+ {
+  "name": "Saudi Arabia",
+  "cutter": ".S33",
+  "notes": ""
+ },
+ {
+  "name": "Scandinavia",
+  "cutter": ".S34",
+  "notes": ""
+ },
+ {
+  "name": "Scotland",
+  "cutter": null,
+  "see": "Great Britain",
+  "notes": "see Great Britain"
+ },
+ {
+  "name": "Senegal",
+  "cutter": ".S38",
+  "notes": ""
+ },
+ {
+  "name": "Serbia",
+  "cutter": ".S4",
+  "notes": ""
+ },
+ {
+  "name": "Seychelles",
+  "cutter": ".S45",
+  "notes": ""
+ },
+ {
+  "name": "Siam",
+  "cutter": null,
+  "see": "Thailand",
+  "notes": "see Thailand"
+ },
+ {
+  "name": "Siberia",
+  "cutter": null,
+  "see": "Russia",
+  "notes": "see Russia"
+ },
+ {
+  "name": "Sierra Leone",
+  "cutter": ".S5",
+  "notes": ""
+ },
+ {
+  "name": "Singapore",
+  "cutter": ".S55",
+  "notes": ""
+ },
+ {
+  "name": "Slovakia",
+  "cutter": ".S56",
+  "notes": ""
+ },
+ {
+  "name": "Slovenia",
+  "cutter": ".S57",
+  "notes": ""
+ },
+ {
+  "name": "Solomon Islands",
+  "cutter": ".S575",
+  "notes": ""
+ },
+ {
+  "name": "Somalia",
+  "cutter": ".S58",
+  "notes": ""
+ },
+ {
+  "name": "South Africa",
+  "cutter": ".S6",
+  "notes": ""
+ },
+ {
+  "name": "South America",
+  "cutter": ".S63",
+  "notes": ""
+ },
+ {
+  "name": "South Asia",
+  "cutter": ".S64",
+  "notes": ""
+ },
+ {
+  "name": "South Sudan",
+  "cutter": ".S643",
+  "notes": ""
+ },
+ {
+  "name": "Southeast Asia",
+  "cutter": ".S644",
+  "notes": ""
+ },
+ {
+  "name": "Southern Cone of South America",
+  "cutter": null,
+  "see": "South America",
+  "notes": "see South America"
+ },
+ {
+  "name": "Soviet Union",
+  "cutter": ".S65",
+  "notes": ""
+ },
+ {
+  "name": "Spain",
+  "cutter": ".S7",
+  "notes": ""
+ },
+ {
+  "name": "Sri Lanka",
+  "cutter": ".S72",
+  "notes": ""
+ },
+ {
+  "name": "Sudan",
+  "cutter": ".S73",
+  "notes": ""
+ },
+ {
+  "name": "Sudan (Region)",
+  "cutter": ".S74",
+  "notes": ""
+ },
+ {
+  "name": "Suriname",
+  "cutter": ".S75",
+  "notes": ""
+ },
+ {
+  "name": "Swaziland",
+  "cutter": null,
+  "see": "Eswatini",
+  "notes": "see Eswatini"
+ },
+ {
+  "name": "Sweden",
+  "cutter": ".S8",
+  "notes": ""
+ },
+ {
+  "name": "Switzerland",
+  "cutter": ".S9",
+  "notes": ""
+ },
+ {
+  "name": "Syria",
+  "cutter": ".S95",
+  "notes": ""
+ },
+ {
+  "name": "Taiwan",
+  "cutter": ".T28",
+  "notes": ""
+ },
+ {
+  "name": "Tajikistan",
+  "cutter": ".T3",
+  "notes": ""
+ },
+ {
+  "name": "Tamil Nadu",
+  "cutter": null,
+  "see": "India",
+  "notes": "see India"
+ },
+ {
+  "name": "Tanganyika",
+  "cutter": null,
+  "see": "Tanzania",
+  "notes": "see Tanzania"
+ },
+ {
+  "name": "Tanzania",
+  "cutter": ".T34",
+  "notes": ""
+ },
+ {
+  "name": "Tasmania",
+  "cutter": null,
+  "see": "Australia",
+  "notes": "see Australia"
+ },
+ {
+  "name": "Terres australes et antarctiques françaises",
+  "cutter": ".T47",
+  "notes": ""
+ },
+ {
+  "name": "Thailand",
+  "cutter": ".T5",
+  "notes": ""
+ },
+ {
+  "name": "Tibet",
+  "cutter": null,
+  "see": "China",
+  "notes": "see China"
+ },
+ {
+  "name": "Timor-Leste",
+  "cutter": ".T56",
+  "notes": ""
+ },
+ {
+  "name": "Tobago",
+  "cutter": null,
+  "see": "Trinidad and Tobago",
+  "notes": "see Trinidad and Tobago"
+ },
+ {
+  "name": "Togo",
+  "cutter": ".T6",
+  "notes": ""
+ },
+ {
+  "name": "Tonga",
+  "cutter": ".T63",
+  "notes": ""
+ },
+ {
+  "name": "Transvaal",
+  "cutter": null,
+  "see": "South Africa",
+  "notes": "see South Africa"
+ },
+ {
+  "name": "Trinidad",
+  "cutter": null,
+  "see": "Trinidad and Tobago",
+  "notes": "see Trinidad and Tobago"
+ },
+ {
+  "name": "Trinidad and Tobago",
+  "cutter": ".T7",
+  "notes": ""
+ },
+ {
+  "name": "Tropics",
+  "cutter": ".T73",
+  "notes": ""
+ },
+ {
+  "name": "Tubuai Islands",
+  "cutter": ".T77",
+  "notes": ""
+ },
+ {
+  "name": "Tunisia",
+  "cutter": ".T8",
+  "notes": ""
+ },
+ {
+  "name": "Turkey",
+  "cutter": ".T9",
+  "notes": ""
+ },
+ {
+  "name": "Turkmenistan",
+  "cutter": ".T93",
+  "notes": ""
+ },
+ {
+  "name": "Turks and Caicos Islands",
+  "cutter": ".T94",
+  "notes": ""
+ },
+ {
+  "name": "Tuvalu",
+  "cutter": ".T95",
+  "notes": ""
+ },
+ {
+  "name": "Uganda",
+  "cutter": ".U33",
+  "notes": ""
+ },
+ {
+  "name": "Ukraine",
+  "cutter": ".U38",
+  "notes": ""
+ },
+ {
+  "name": "United Arab Emirates",
+  "cutter": ".U5",
+  "notes": ""
+ },
+ {
+  "name": "United States",
+  "cutter": ".U6",
+  "notes": ""
+ },
+ {
+  "name": "United States Virgin Islands",
+  "cutter": null,
+  "see": "Virgin Islands of the United States",
+  "notes": "see Virgin Islands of the United States"
+ },
+ {
+  "name": "Upper Volta",
+  "cutter": null,
+  "see": "Burkina Faso",
+  "notes": "see Burkina Faso"
+ },
+ {
+  "name": "Uruguay",
+  "cutter": ".U8",
+  "notes": ""
+ },
+ {
+  "name": "Uzbekistan",
+  "cutter": ".U9",
+  "notes": ""
+ },
+ {
+  "name": "Vanuatu",
+  "cutter": ".V26",
+  "notes": ""
+ },
+ {
+  "name": "Vatican City",
+  "cutter": ".V3",
+  "notes": ""
+ },
+ {
+  "name": "Venezuela",
+  "cutter": ".V4",
+  "notes": ""
+ },
+ {
+  "name": "Vietnam",
+  "cutter": ".V5",
+  "notes": ""
+ },
+ {
+  "name": "Vietnam (Democratic Republic)",
+  "cutter": null,
+  "see": "Vietnam",
+  "notes": "see Vietnam"
+ },
+ {
+  "name": "Virgin Islands",
+  "cutter": ".V6",
+  "notes": ""
+ },
+ {
+  "name": "Virgin Islands, British",
+  "cutter": null,
+  "see": "Virgin Islands",
+  "notes": "see Virgin Islands"
+ },
+ {
+  "name": "Virgin Islands of the United States",
+  "cutter": ".V63",
+  "notes": ""
+ },
+ {
+  "name": "Wales",
+  "cutter": null,
+  "see": "Great Britain",
+  "notes": "see Great Britain"
+ },
+ {
+  "name": "West Indies, British",
+  "cutter": ".W47",
+  "notes": ""
+ },
+ {
+  "name": "West Indies, French",
+  "cutter": ".W48",
+  "notes": ""
+ },
+ {
+  "name": "Western Australia",
+  "cutter": null,
+  "see": "Australia",
+  "notes": "see Australia"
+ },
+ {
+  "name": "Western Samoa",
+  "cutter": null,
+  "see": "Samoa",
+  "notes": "see Samoa"
+ },
+ {
+  "name": "Xianggang",
+  "cutter": null,
+  "see": "China",
+  "notes": "see China"
+ },
+ {
+  "name": "Yemen",
+  "cutter": ".Y4",
+  "notes": ""
+ },
+ {
+  "name": "Yemen (People's Democratic Republic)",
+  "cutter": null,
+  "see": "Yemen",
+  "notes": "see Yemen"
+ },
+ {
+  "name": "Yugoslavia",
+  "cutter": ".Y8",
+  "notes": ""
+ },
+ {
+  "name": "Zaire",
+  "cutter": null,
+  "see": "Congo (Democratic Republic)",
+  "notes": "see Congo (Democratic Republic)"
+ },
+ {
+  "name": "Zambezi River Region",
+  "cutter": ".Z32",
+  "notes": ""
+ },
+ {
+  "name": "Zambia",
+  "cutter": ".Z33",
+  "notes": ""
+ },
+ {
+  "name": "Zimbabwe",
+  "cutter": ".Z55",
+  "notes": ""
+ }
+]

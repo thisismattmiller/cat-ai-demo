@@ -1,0 +1,9 @@
+[
+ {"suffix": "x", "meaning": "Cutter for the biographee", "notes": "The first Cutter; the biographee's name must be the first subject heading."},
+ {"suffix": "A2", "meaning": "Collected works. By date", "notes": ""},
+ {"suffix": "A25", "meaning": "Selected works. Selections. By date", "notes": "Including quotations"},
+ {"suffix": "A3", "meaning": "Autobiography, diaries, etc. By date", "notes": "Formerly .xA3-39 with an added digit for the title of the autobiographical work; that practice has been discontinued."},
+ {"suffix": "A4", "meaning": "Letters. By date", "notes": ""},
+ {"suffix": "A5", "meaning": "Speeches, essays, and lectures. By date", "notes": "Including interviews"},
+ {"suffix": "A6-Z", "meaning": "Individual biography and criticism. By main entry", "notes": "Including criticism of selected works, autobiography, quotations, letters, speeches, interviews, etc. Do not Cutter lower than A6. Suggested Cutters for entries beginning with A: Aa-Af = A6-699; Ag-Al = A7-799; Am-Ar = A8-899; As-Az = A9-999. The Translation Table may be applied here (not to .xA2-.xA5)."}
+]
