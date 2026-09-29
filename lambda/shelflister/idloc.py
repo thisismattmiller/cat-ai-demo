@@ -50,6 +50,7 @@ class IdLocRecord:
     isbns: list[str] = field(default_factory=list)
     lcc: list[tuple[str, str]] = field(default_factory=list)     # (classificationPortion, itemPortion) as LC assigned
     contributors: list[str] = field(default_factory=list)        # everyone, "Label (role)"
+    creator_uri: str | None = None                               # the PrimaryContribution agent's URI, when LC linked it
     isbndb: dict | None = None                                   # the ISBNdb book record, if fetched
     isbndb_added: list[str] = field(default_factory=list)        # which Resource fields ISBNdb filled
 
@@ -221,6 +222,7 @@ def parse_cbd(xml: bytes) -> tuple[Resource, IdLocRecord]:
             rec.contributors.append(f"{lab}" + (f" ({role})" if role else ""))
             if "PrimaryContribution" in _types(contrib) and r.creator is None:
                 r.creator, r.creator_type = lab.rstrip(" ,."), ctype
+                rec.creator_uri = agent.get(RDF_ABOUT) if agent is not None else None
                 if role:
                     r.extra["creator_role"] = role
         others = [c for c in rec.contributors if r.creator is None or not c.startswith(r.creator)]

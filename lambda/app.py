@@ -9,7 +9,8 @@ WebSocket (API Gateway, routes $connect / $disconnect / $default):
         finishes (API Gateway stops waiting for the integration after 29 s, but the invocation keeps running and
         keeps posting). Needs only logs + execute-api:ManageConnections.
     TASK_FANOUT=lambda: the function invokes itself asynchronously once per task (event {"task", "lccn", ...}).
-        Needs lambda:InvokeFunction on itself, which the deploying user could not grant here.
+        Needs lambda:InvokeFunction on itself. In this mode the tasks cannot coordinate: the shelflister will
+        not wait for the name reconciler's heading (see tasks.RunContext).
 
 Direct invocation with {"lccn": "..."} (no connection) runs every task in-process and returns their results,
 which is handy for `aws lambda invoke` smoke tests.
@@ -29,7 +30,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from tasks import RUNNERS, TASKS, normalize_lccn  # noqa: E402
+from tasks import RUNNERS, TASKS, RunContext, normalize_lccn  # noqa: E402
 from ws import Connection, Emitter, PrintConnection  # noqa: E402
 
 FUNCTION_NAME = os.environ.get("AWS_LAMBDA_FUNCTION_NAME")
@@ -110,27 +111,32 @@ def _task_options(options: dict, task: str) -> dict:
 
 def run_all(tasks: list[str], lccn: str, options: dict, conn) -> dict:
     """Run the tasks concurrently (threads) on one connection; returns {task: result or None}."""
+    ctx = RunContext(tasks)
     with ThreadPoolExecutor(max_workers=max(1, len(tasks)), thread_name_prefix="task") as ex:
-        futs = {t: ex.submit(run_task, t, lccn, _task_options(options, t), conn) for t in tasks}
+        futs = {t: ex.submit(run_task, t, lccn, _task_options(options, t), conn, ctx) for t in tasks}
         return {t: f.result() for t, f in futs.items()}
 
 
 # --------------------------------------------------------------------------- worker
-def run_task(task: str, lccn: str, options: dict, conn) -> dict | None:
+def run_task(task: str, lccn: str, options: dict, conn, ctx: RunContext | None = None) -> dict | None:
     em = Emitter(conn, task, lccn)
     runner = RUNNERS.get(task)
     if not runner:
         em.error(f"unknown task {task!r}")
         return None
     em.progress("started")
+    data = None
     try:
-        data = runner(lccn, options or {}, em)
+        data = runner(lccn, options or {}, em, ctx) if task == "shelflist" else runner(lccn, options or {}, em)
         em.result(data)
         return data
     except Exception as e:  # noqa: BLE001
         traceback.print_exc()
         em.error(f"{type(e).__name__}: {e}")
         return None
+    finally:
+        if task == "names" and ctx:
+            ctx.finish_names(data)      # also on failure, so a waiting shelflister proceeds
 
 
 def _worker(event: dict, context) -> dict:

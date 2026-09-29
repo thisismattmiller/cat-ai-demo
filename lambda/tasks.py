@@ -14,7 +14,10 @@ from __future__ import annotations
 import logging
 import os
 import re
+import threading
 from dataclasses import asdict
+
+import time
 
 import httpx
 
@@ -22,6 +25,42 @@ from ws import Emitter
 
 SUBJECT_SUGGEST_URL = os.environ.get("SUBJECT_SUGGEST_URL") or "https://abeniabvmaysz2npcr3sr47fxq0xgoes.lambda-url.us-east-1.on.aws/"
 TASKS = ["record", "subjects", "shelflist", "names"]
+NAMES_WAIT_S = float(os.environ.get("NAMES_WAIT_S", "600"))
+
+
+class RunContext:
+    """Shared between the tasks of one run (threads mode): lets the shelflister wait for the name
+    reconciler when the record's main entry has no authority link, and use the heading it recommends."""
+
+    def __init__(self, tasks: list[str]):
+        self.tasks = list(tasks)
+        self.names_done = threading.Event()
+        self.names_result: dict | None = None
+
+    def finish_names(self, result: dict | None) -> None:
+        self.names_result = result
+        self.names_done.set()
+
+    def wait_for_names(self, timeout: float = NAMES_WAIT_S) -> dict | None:
+        if "names" not in self.tasks:
+            return None
+        self.names_done.wait(timeout)
+        return self.names_result
+
+
+def _name_key(s: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", (s or "").lower())
+
+
+def recommended_heading(names_result: dict | None, label: str) -> dict | None:
+    """The LCNAF recommendation the name reconciler made for this contributor label, if any."""
+    if not names_result:
+        return None
+    want = _name_key(label)
+    for r in names_result.get("results", []):
+        if _name_key(r.get("label")) == want and r.get("recommended_authority_uri") and r.get("recommended_label"):
+            return r
+    return None
 
 
 # --------------------------------------------------------------------------- the record
@@ -124,13 +163,42 @@ def _tool_message(ev: dict) -> str:
     return _short(ev.get("text", ""), 200)
 
 
-def run_shelflist(lccn: str, options: dict, em: Emitter) -> dict:
+def run_shelflist(lccn: str, options: dict, em: Emitter, ctx: "RunContext | None" = None) -> dict:
     from shelflister.pipeline import Pipeline
     hide_class = bool(options.get("hide_class", True))
     hide_subjects = bool(options.get("hide_subjects", False))
     em.progress("fetching the record from id.loc.gov")
     resource, rec = load_record(lccn, use_isbndb=options.get("isbndb", True))
     lc_own = [{"class_number": a, "item": b} for a, b in rec.lcc]
+
+    # The Cutter is built from the main entry. If LC has not linked the main entry to an authority, the name on
+    # the record may not be the authorized heading (a pseudonym, a wrong romanization ...), so wait for the name
+    # reconciler and use the heading it recommends.
+    main_entry = {"as_transcribed": resource.creator, "authority_uri": rec.creator_uri, "used": resource.creator, "source": "record"}
+    heading_note = None
+    if resource.creator and not rec.creator_uri and ctx and "names" in ctx.tasks and options.get("wait_for_names", True):
+        em.progress(f"main entry '{resource.creator}' has no authority link on the record; waiting for name reconciliation "
+                    f"before building the Cutter", stage="waiting_for_names")
+        t0 = time.time()
+        names = ctx.wait_for_names()
+        hit = recommended_heading(names, resource.creator)
+        if hit:
+            main_entry.update({"used": hit["recommended_label"], "authority_uri": hit["recommended_authority_uri"],
+                               "source": hit.get("recommendation_source") or "lcnaf", "waited_s": round(time.time() - t0, 1)})
+            if _name_key(hit["recommended_label"]) != _name_key(resource.creator):
+                # the model must Cutter and number the author by the heading as established, not the real surname
+                heading_note = (f"The main entry's authorized LC name heading is '{hit['recommended_label']}' "
+                                f"({hit['recommended_authority_uri']}). The record transcribes the name as "
+                                f"'{resource.creator}', which is not the established heading. Base the individual "
+                                f"author number, the author Cutter, and any main-entry Cutter on the authorized heading "
+                                f"exactly as it reads (its first letters), never on the transcribed or real surname.")
+            resource.creator = hit["recommended_label"]
+            em.progress(f"name reconciliation recommends the authorized heading '{resource.creator}' "
+                        f"({hit['recommended_authority_uri']}); using it as the main entry", stage="main_entry")
+        else:
+            main_entry["waited_s"] = round(time.time() - t0, 1)
+            em.progress("name reconciliation found no LCNAF heading for the main entry; using the name as transcribed"
+                        if names else "name reconciliation did not finish; using the name as transcribed", stage="main_entry")
     class_number = None
     if rec.lcc and not hide_class:
         class_number = rec.lcc[0][0]
@@ -162,12 +230,15 @@ def run_shelflist(lccn: str, options: dict, em: Emitter) -> dict:
     pipe.provider.on_event = on_event
     em.progress(f"model {pipe.provider.model}: " + ("searching the LC schedules for the class number" if class_number is None
                                                      else "profiling the resource for the CSM rules"), phase=phase["name"])
-    res = pipe.run(resource, class_number, exclude_bibids={rec.bibid} if rec.bibid else None, on_stage=on_stage)
+    extra = "\n\n".join(x for x in (options.get("context"), heading_note) if x) or None
+    res = pipe.run(resource, class_number, extra_context=extra, exclude_bibids={rec.bibid} if rec.bibid else None,
+                   on_stage=on_stage)
 
     out = {
         "class_number": res.class_number,
         "book_number": res.book_number,
         "call_number": res.call_number,
+        "main_entry": main_entry,
         "marc_050": {"a": res.marc_050[0], "b": res.marc_050[1]} if res.marc_050 else None,
         "lc_call_numbers": lc_own,
         "hidden": {"class": hide_class and bool(rec.lcc), "subjects": hide_subjects},
@@ -188,6 +259,13 @@ def run_shelflist(lccn: str, options: dict, em: Emitter) -> dict:
         out["compose"] = {k: cp.get(k) for k in ("call_number", "reasoning", "citations", "confidence", "open_questions",
                                                  "needs_review", "validation")}
         out["compose"]["tool_calls"] = sum(1 for t in cp.get("trace", []) if "tool" in t)
+    if res.call_number:
+        try:
+            out["shelflist_window"] = shelflist_window(pipe.shelflist, res.call_number,
+                                                       f"{lc_own[0]['class_number']} {lc_own[0]['item']}".strip() if lc_own else None,
+                                                       rec.bibid)
+        except Exception as e:  # noqa: BLE001  (the call number stands even if the browse fails)
+            em.progress(f"could not fetch the shelflist window: {type(e).__name__}: {e}", level="warning")
     if lc_own:
         from shelflister import callnum
         lc_class = lc_own[0]["class_number"]
@@ -200,6 +278,42 @@ def run_shelflist(lccn: str, options: dict, em: Emitter) -> dict:
             "exact_match": bool(ours and theirs and ours.format() == theirs.format()),
         }
     return out
+
+
+def shelflist_window(client, call_number: str, lc_call_number: str | None, bibid: str | None, n: int = 12) -> dict:
+    """The shelflist entries just before and after where `call_number` files, as LC's browse shows them, with a
+    row for our number ('ours') and, when LC already assigned a different number, one for LC's ('lc')."""
+    from shelflister import callnum
+    ours_parsed = callnum.parse(call_number)
+    target = ours_parsed.sort_key()
+    # LC's browse is already in shelf order and centred on the query; keep that order, drop the
+    # "classification number reserved" placeholders (terms ending in +) and copy statements
+    entries = [e for e in client.browse(call_number) if e.parsed and not e.term.endswith("+")
+               and not re.search(r"\bCopy \d+$", e.term) and not e.title.startswith("Classification number reserved")]
+    idx = next((i for i, e in enumerate(entries) if e.parsed.sort_key() >= target), len(entries))
+    before, after = entries[max(0, idx - n):idx], entries[idx:idx + n]
+
+    def row(e, kind="entry"):
+        return {"kind": kind, "call_number": e.term, "creator": e.creator, "title": e.title, "pubdate": e.pubdate,
+                "subject": e.subject, "bibid": e.bibid,
+                "url": f"https://id.loc.gov/resources/instances/{e.bibid}" if e.bibid else None}
+    rows = [row(e) for e in before] + [{"kind": "ours", "call_number": ours_parsed.format()}] + [row(e) for e in after]
+    if lc_call_number:
+        theirs = callnum.try_parse(lc_call_number)
+        ours = callnum.try_parse(call_number)
+        if theirs and ours and theirs.format() != ours.format():
+            key = theirs.sort_key()
+            lc_row = {"kind": "lc", "call_number": theirs.format(), "bibid": bibid,
+                      "url": f"https://id.loc.gov/resources/instances/{bibid}" if bibid else None}
+            # place LC's number among the rows by sort key (the record itself is hidden from the browse)
+            pos = len(rows)
+            for i, r in enumerate(rows):
+                p = callnum.try_parse(r["call_number"]) if r["kind"] != "ours" else ours
+                if p and p.sort_key() > key:
+                    pos = i
+                    break
+            rows.insert(pos, lc_row)
+    return {"rows": rows, "before": len(before), "after": len(after)}
 
 
 # --------------------------------------------------------------------------- name reconciliation

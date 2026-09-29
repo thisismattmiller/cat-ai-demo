@@ -164,7 +164,9 @@ class Schedules:
         if not db_path.exists():
             self.build()
         # read-only + immutable: no journal/shm files, so it works on a read-only filesystem (Lambda image)
-        self.db = sqlite3.connect(f"file:{db_path}?mode=ro&immutable=1", uri=True)
+        # check_same_thread=False: the shared instance is reused across Lambda invocations, whose worker threads
+        # differ; the DB is immutable and only the shelflist task reads it, so this is safe.
+        self.db = sqlite3.connect(f"file:{db_path}?mode=ro&immutable=1", uri=True, check_same_thread=False)
         self.db.row_factory = sqlite3.Row
 
     # -- build ----------------------------------------------------------

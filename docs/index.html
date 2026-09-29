@@ -79,6 +79,10 @@
   th, td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
   th { color: var(--muted); font-weight: 600; }
   td.num { font-family: var(--mono); white-space: nowrap; }
+  table.shelf { font-size: 12.5px; margin-top: 6px; }
+  table.shelf td { padding: 3px 6px; }
+  table.shelf tr.ours td { background: #fff36b; color: #1d1d1b; font-weight: 600; }
+  table.shelf tr.lc td { background: var(--ok-bg); color: var(--ok); font-weight: 600; }
   .person { padding: 8px 0; border-top: 1px solid var(--line); }
   .person:first-child { border-top: 0; }
   .person .name { font-weight: 600; }
@@ -207,8 +211,15 @@
     if (cmp) badge = cmp.exact_match ? `<span class="badge ok">matches LC exactly</span>` : cmp.class_match ? `<span class="badge ok">class number matches LC</span> <span class="badge warn">book number differs: LC has ${esc(cmp.lc_call_number)}</span>` : `<span class="badge err">differs from LC: ${esc(cmp.lc_call_number)}</span>`;
     const c = d.classification, k = d.compose;
     const v = k && k.validation;
+    const me = d.main_entry;
+    let meHtml = "";
+    if (me && me.as_transcribed) {
+      if (me.source !== "record") meHtml = `<div class="sub">Main entry: <b>${esc(me.used)}</b> <span class="badge ok">authorized heading from name reconciliation</span>${me.used !== me.as_transcribed ? ` — the record has <i>${esc(me.as_transcribed)}</i>, unlinked` : ""}${me.waited_s ? ` · waited ${me.waited_s}s` : ""}</div>`;
+      else if (!me.authority_uri) meHtml = `<div class="sub">Main entry: <b>${esc(me.used)}</b> <span class="badge warn">unlinked on the record, no authority found</span></div>`;
+      else meHtml = `<div class="sub">Main entry: <b>${esc(me.used)}</b> <span class="badge info">linked on the record</span></div>`;
+    }
     return `<div class="big">${esc(d.call_number || d.class_number || "(none)")}</div>
-      <div>${d.marc_050 ? `<span class="mono sub" style="display:inline">050 $a ${esc(d.marc_050.a)} $b ${esc(d.marc_050.b)}</span> ` : ""}${badge}</div>
+      <div>${d.marc_050 ? `<span class="mono sub" style="display:inline">050 $a ${esc(d.marc_050.a)} $b ${esc(d.marc_050.b)}</span> ` : ""}${badge}</div>${meHtml}
       ${c ? `<div class="section"><h3>Class number <span class="badge ${c.confidence === "high" ? "ok" : "warn"}">${esc(c.confidence)}</span>${c.needs_new_number ? ' <span class="badge info">new number</span>' : ""}</h3>
         ${kv([["Caption", c.caption_path], ["Basis", c.schedule_basis], ["Subjects", c.subject_headings]])}
         ${c.alternatives && c.alternatives.length ? `<details class="more"><summary>${c.alternatives.length} alternative${c.alternatives.length > 1 ? "s" : ""} rejected</summary>${c.alternatives.map(a => `<div><span class="mono">${esc(a.class_number)}</span>: ${esc(a.why_not)}</div>`).join("")}</details>` : ""}
@@ -219,6 +230,10 @@
         ${v && v.warnings && v.warnings.length ? `<div class="sub">${esc(v.warnings.slice(0, 3).join(" | "))}</div>` : ""}
         <details class="more"><summary>reasoning</summary><div class="reason">${esc(k.reasoning)}</div></details>
         ${k.open_questions && k.open_questions.length ? `<div class="sub">Open: ${esc(k.open_questions.join(" | "))}</div>` : ""}</div>` : ""}
+      ${d.shelflist_window ? `<div class="section"><details class="more"><summary>where it files in LC's shelflist (${d.shelflist_window.before} before, ${d.shelflist_window.after} after)</summary>
+        <table class="shelf">${d.shelflist_window.rows.map(r => r.kind === "entry"
+          ? `<tr><td class="num">${esc(r.call_number)}</td><td>${esc(r.creator)}</td><td title="${esc(r.subject || "")}">${esc(r.title)}</td><td class="num">${esc(r.pubdate || "")}</td><td>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">view</a>` : ""}</td></tr>`
+          : `<tr class="${r.kind}"><td class="num">${esc(r.call_number)}</td><td colspan="3">${r.kind === "ours" ? "This work would appear here." : "LC's own call number for this record files here."}</td><td>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">view</a>` : ""}</td></tr>`).join("")}</table></details></div>` : ""}
       <div class="sub" style="margin-top:10px">${esc(d.model)} · ${Object.entries(d.timing || {}).map(([a, b]) => `${a.replace("_s", "")} ${b}s`).join(", ")}${c ? ` · ${c.tool_calls} tool calls to classify` : ""}${k ? `, ${k.tool_calls} to shelflist` : ""}</div>`;
   }
 
@@ -289,7 +304,7 @@
     if (ev.type === "started") { pending = new Set(ev.tasks); for (const t in cards) if (!pending.has(t)) { cards[t].body.innerHTML = `<div class="empty">not requested</div>`; setState(t, "idle"); } return; }
     if (ev.type === "pong" || (!ev.type && ev.message)) return;   // pong, or API Gateway's 29 s integration-timeout notice
     if (!id || !cards[id]) { if (ev.type === "error") noteEl.textContent = ev.error; return; }
-    if (ev.type === "progress") logLine(id, ev);
+    if (ev.type === "progress") { logLine(id, ev); if (ev.stage === "waiting_for_names") cards[id].body.innerHTML = `<div class="empty"><span class="spin"></span>${esc(ev.message)}</div>`; else if (ev.stage === "main_entry") cards[id].body.innerHTML = `<div class="empty">${esc(ev.message)}</div>`; }
     else if (ev.type === "partial") onPartial(id, ev);
     else if (ev.type === "result") { try { cards[id].body.innerHTML = RENDER[id](ev.data); } catch (e) { cards[id].body.innerHTML = `<pre class="reason">${esc(JSON.stringify(ev.data, null, 1))}</pre>`; console.error(e); } setState(id, "done"); pending.delete(id); }
     else if (ev.type === "error") { logLine(id, { t: ev.t, message: ev.error }, "warning"); cards[id].body.innerHTML = `<div class="empty"><span class="badge err">failed</span> ${esc(ev.error)}</div>`; setState(id, "error"); pending.delete(id); }

@@ -92,6 +92,14 @@ Server → client, every event carries `task`, `lccn` and `t` (seconds since the
 | `result` | `data`: the task's full result (see `lambda/tasks.py`) |
 | `error` | `error` text |
 
+**Main entry gate.** The Cutter is built from the main entry, so when the record's primary contributor has no
+authority link (LC has not yet established the heading, or it is a pseudonym like *MrBeast, 1998-* transcribed as
+*Donaldson, James, 1998-*), the shelflist task waits for the `names` task and uses the LCNAF heading it recommends,
+telling the model to number and Cutter by the heading as established. Progress events with `stage:
+waiting_for_names` / `main_entry` show this, and the result carries `main_entry` (`as_transcribed`, `used`,
+`authority_uri`, `source`, `waited_s`). Options `wait_for_names: false` turns it off; it only applies in threads mode
+(`TASK_FANOUT=threads`) and when both tasks are requested.
+
 By default the shelflister does **not** see LC's own call number and the record is hidden from the shelflist
 (`hide_class: true`), so a record LC has already classified is a real test; the result carries a `comparison` with
 LC's number. The subject task likewise reports which candidates are already on LC's record.
