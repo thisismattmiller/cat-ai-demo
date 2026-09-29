@@ -95,7 +95,7 @@ Server → client, every event carries `task`, `lccn` and `t` (seconds since the
 By default the shelflister does **not** see LC's own call number and the record is hidden from the shelflist
 (`hide_class: true`), so a record LC has already classified is a real test; the result carries a `comparison` with
 LC's number. The subject task likewise reports which candidates are already on LC's record.
-
+.
 ## GitHub Pages
 
 The page is `docs/index.html`; publish `main` / `docs` under the repository's Pages settings
