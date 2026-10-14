@@ -1,0 +1,41 @@
+20 records to check (20 already done)
+still_no_shelfmark   2022335759   ours None                     LC None                           
+compared             2026406417   ours ML189.T553 Q28 2026      LC ML189.T55 Q28 2026             
+compared             2026406784   ours BP173.7.B259 2026        LC BP173.7 .B356 2026       CLASS 
+compared             2026325763   ours GR98.Y87 2025            LC GR98 .S25 2025           CLASS 
+compared             2023315302   ours PK2200.I4885 Z48 2023    LC PK2200.I4885 A4 2023+    CLASS 
+compared             2026329965   ours B154.M88 2026            LC B755 .M88 2026                 
+compared             2026325734   ours BM538.S43 M34 2026       LC BM538.S43 M3 2026        CLASS 
+compared             2026406917   ours PJ8390.M3 M8255 2024     LC PN99.M44 M868 2024             
+still_no_shelfmark   2025360126   ours None                     LC None                           
+still_no_shelfmark   2024314096   ours None                     LC None                           
+compared             2025316931   ours BP186.15.M34 2025        LC BP186.15 .M34 2025       CLASS EXACT
+compared             2026042096   ours MT146.L64 2027           LC MT146 .L64 2027          CLASS EXACT
+compared             2026044746   ours HC189.S33 S324 2027      LC HG3756.B6 S26 2027             
+compared             2026325622   ours HC830.Z9 E56 2026        LC HC830.Z7 M3 2026               
+still_no_shelfmark   2022312486   ours None                     LC None                           
+compared             2026045121   ours HM742.M3252 2027         LC HM742 .M3253 2027        CLASS 
+still_no_shelfmark   2025357865   ours None                     LC None                           
+compared             2026406914   ours HM758.B56 2026           LC HM758 .B56 2026          CLASS EXACT
+still_no_shelfmark   2023348499   ours None                     LC None                           
+compared             2026044671   ours HV9960.S7 S28 2027       LC HV9960.S7 S36 2027       CLASS 
+40 records: {'still_no_shelfmark': 10, 'compared': 30}
+  class letters                24/30   80.0%
+  class number (050 $a)        19/30   63.3%
+  book number (050 $b)         14/30   46.7%
+  date                         27/30   90.0%
+  whole call number            10/30   33.3%
+  mean seconds/record          69.8
+
+misses (class number):
+  2025378172  ours DS597.2.O589 2026          LC JQ1062.A91 O557 2026       Passing glimpses of the present : Penang, Malaysia
+  2026406540  ours None                       LC PN4759 .M39 2026           Mawqif al-ṣiḥāfah al-ʻArabīyah min al-Ṭāhir al-Ḥad
+  2026321275  ours JA88.I5 L36 2025           LC JA88.I46 L36 2025          Sketsa politik pinggiran : catatan orang biasa seh
+  2026416036  ours TD195.E4 S79 2022          LC TJ400 .S74 2022            Melihat ulang dampak PLTU di tiga wilayah : PLTU P
+  2025447172  ours None                       LC HG5710.5.A3 Q26 2025       Dirāsah ḥawla al-nazāhah wa-al-shafāfiyyah wa-al-m
+  2026416198  ours BX1654.P35 P68 2026        LC BX1655.P345 P68 2026       Potret Keuskupan Palangka Raya : lustrum V, pesta 
+  2026406417  ours ML189.T553 Q28 2026        LC ML189.T55 Q28 2026         al-Wajh al-ākhar lil-funūn al-musīqīyah al-ʻArabīy
+  2026329965  ours B154.M88 2026              LC B755 .M88 2026             al-Fikr al-Yahūdī bayna al-naṣṣ wa-al-ʻaql al-fals
+  2026406917  ours PJ8390.M3 M8255 2024       LC PN99.M44 M868 2024         Ittijāhāt al-naqd al-adabī al-muʻāṣir fī Mūrītāniy
+  2026044746  ours HC189.S33 S324 2027        LC HG3756.B6 S26 2027         Financing poverty : consumption and debt dynamics 
+  2026325622  ours HC830.Z9 E56 2026          LC HC830.Z7 M3 2026           al-Manẓūr al-siyāsī wa-al-iqtiṣādī li-bināʼ al-ins

@@ -59,8 +59,13 @@ may not create roles, create it in the console from those files or run with `ROL
 CloudWatch logs and `execute-api:ManageConnections`.
 
 Function environment: `CLAUDE_PAID_API` (or `ANTHROPIC_API_KEY`), `GOOGLE_AI`, `ISBNDB_API_KEY`,
-`SUBJECT_SUGGEST_URL`, `SHELFLISTER_LCC_DB`, `SHELFLISTER_CACHE_DIR=/tmp/cache`, `TASK_FANOUT`; optional
-`SHELFLISTER_MODEL` (default gemini-3.8-flash), `NAR_PROVIDER` / `NAR_MODEL` (default claude / claude-sonnet-5-5).
+`SUBJECT_SUGGEST_URL`, `SHELFLISTER_LCC_DB`, `SHELFLISTER_CACHE_DIR=/tmp/cache`, `TASK_FANOUT`, `CAT_AI_MODEL` (the model both
+tools use, default `claude-haiku-5-5`); per-tool overrides `SHELFLISTER_MODEL`, `NAR_PROVIDER` / `NAR_MODEL`.
+
+The shelflister's semantic search over the schedules (Titan embeddings via Bedrock, S3 Vectors bucket
+`shelflister-lcc-vectors`) needs the function's role to carry the account's `vectors-and-inference` managed policy
+(`bedrock:InvokeModel` + `s3vectors:QueryVectors`/`GetVectors`); without it the search degrades silently to full-text.
+`SHELFLISTER_SEMANTIC=0` turns it off.
 
 ### How a run flows
 
@@ -99,6 +104,18 @@ telling the model to number and Cutter by the heading as established. Progress e
 waiting_for_names` / `main_entry` show this, and the result carries `main_entry` (`as_transcribed`, `used`,
 `authority_uri`, `source`, `waited_s`). Options `wait_for_names: false` turns it off; it only applies in threads mode
 (`TASK_FANOUT=threads`) and when both tasks are requested.
+
+The shelflister also has its own mechanical NAF lookup (`idloc.apply_naf`: exact label, then a keyword search whose
+authorized or variant heading contains every word of the name). Here it is the **fallback**, not the default: the
+record is loaded with `use_naf=False`, the name reconciler's verdict wins when it ran (a match is used, a considered
+"no match" is respected), and the lookup runs only when the `names` task is not in the run or failed
+(`main_entry.source: "naf-lookup"`; option `naf_lookup: false` disables it).
+
+**Re-vendoring the shelflister.** Copy `~/git/shelflisting_manual/shelflister/*.py` and `rules/` over `lambda/`, then
+reapply the local patches: `schedule.py` (DB path from `SHELFLISTER_LCC_DB`, read-only immutable connection usable
+across threads), `idloc.py` / `marc.py` / `shelflist_api.py` (`SHELFLISTER_CACHE_DIR`, atomic cache writes),
+`classify.py` (`SUBJECT_SUGGEST_URL`), `llm.py` (`Provider.on_event`), `pipeline.py` (`on_stage`). Last synced 2026-10-13
+(semantic search, fusion board, forced decision, NAF lookup, Haiku 5.5 alias).
 
 By default the shelflister does **not** see LC's own call number and the record is hidden from the shelflist
 (`hide_class: true`), so a record LC has already classified is a real test; the result carries a `comparison` with

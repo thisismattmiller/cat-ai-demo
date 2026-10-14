@@ -1,0 +1,431 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/in00024906538">
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
+      </bf:Issuance>
+    </bf:issuance>
+    <bf:provisionActivity>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
+	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2026</bf:date>
+	<bf:place>
+	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/nyu">
+	    <rdfs:label xml:lang="en">New York (State)</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nyu</bf:code>
+	  </bf:Place>
+	</bf:place>
+	<bflc:simplePlace>New York</bflc:simplePlace>
+	<bflc:simpleAgent>T&amp;T Clark</bflc:simpleAgent>
+	<bflc:simpleDate>2026</bflc:simpleDate>
+      </bf:ProvisionActivity>
+    </bf:provisionActivity>
+    <bf:publicationStatement>New York: T&amp;T Clark, 2026</bf:publicationStatement>
+    <bf:identifiedBy>
+      <bf:Lccn>
+	<rdf:value>  2026044978</rdf:value>
+      </bf:Lccn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9780567728111</rdf:value>
+	<bf:qualifier>hardcover</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9780567728159</rdf:value>
+	<bf:qualifier>paperback</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9780567728128</rdf:value>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/cancinv">
+	    <rdfs:label>canceled or invalid</rdfs:label>
+	    <bf:code>cancinv</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:qualifier>pdf</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9780567728142</rdf:value>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/cancinv">
+	    <rdfs:label>canceled or invalid</rdfs:label>
+	    <bf:code>cancinv</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:qualifier>epub</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:responsibilityStatement>Agana-Nsiire Agana</bf:responsibilityStatement>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>The multiform self</bf:mainTitle>
+	<bf:subtitle>re-theologising personhood in the digital</bf:subtitle>
+	<bflc:nonSortNum>4</bflc:nonSortNum>
+      </bf:Title>
+    </bf:title>
+    <bflc:projectedProvisionDate>2612</bflc:projectedProvisionDate>
+    <bf:extent>
+      <bf:Extent>
+	<rdfs:label>pages cm</rdfs:label>
+      </bf:Extent>
+    </bf:extent>
+    <bf:media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+	<rdfs:label>unmediated</rdfs:label>
+	<bf:code>n</bf:code>
+      </bf:Media>
+    </bf:media>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+	<rdfs:label>volume</rdfs:label>
+	<bf:code>nc</bf:code>
+      </bf:Carrier>
+    </bf:carrier>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/biblio"/>
+	<rdfs:label>Includes bibliographical references and index.</rdfs:label>
+      </bf:Note>
+    </bf:note>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/in00024906538"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-26T00:00:00</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-27T01:54:45.546182-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-3-0-1/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/8">
+	    <rdfs:label>prepublication</rdfs:label>
+	    <bf:code>8</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>in00024906538</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$corignew$d1$eecip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d 1 $e ecip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $brk01 2026-09-26</bflc:marcKey>
+	<lclocal:d955>=955     $b rk01 2026-09-26</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$erda$cDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+	<bflc:marcKey>999ff$ib9e604ac-fd55-4ae8-9b49-83a3d2d2a8f1$s73d69182-791d-4bcd-af18-28be6dcd60b1</bflc:marcKey>
+	<lclocal:d999>=999  ff $i b9e604ac-fd55-4ae8-9b49-83a3d2d2a8f1 $s 73d69182-791d-4bcd-af18-28be6dcd60b1</lclocal:d999>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Instance>
+  <bf:Work rdf:about="http://id.loc.gov/resources/works/in00024906538">
+    <bflc:aap>Agana, Agana-Nsiire. The multiform self : re-theologising personhood in the digital</bflc:aap>
+    <bflc:aap-normalized>aganaaganansiirethemultiformself:retheologisingpersonhoodinthedigital</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	<rdfs:label xml:lang="en">English</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+      </bf:Language>
+    </bf:language>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/bibliography">
+	<rdfs:label>bibliography</rdfs:label>
+	<bf:code>bibliography</bf:code>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/index">
+	<rdfs:label>index</rdfs:label>
+	<bf:code>index</bf:code>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:contribution>
+      <bf:Contribution>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	<bf:agent>
+	  <bf:Agent>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Agana, Agana-Nsiire</rdfs:label>
+	    <bflc:marcKey>1001 $aAgana, Agana-Nsiire,$eauthor.</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
+	    <rdfs:label>author</rdfs:label>
+	    <bf:code>aut</bf:code>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>The multiform self : re-theologising personhood in the digital</bf:mainTitle>
+	<bflc:nonSortNum>4</bflc:nonSortNum>
+      </bf:Title>
+    </bf:title>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+	<bf:code>txt</bf:code>
+      </bf:Content>
+    </bf:content>
+    <bf:summary>
+      <bf:Summary>
+	<rdfs:label>"Drawing on Kierkegaard's theological anthropology and Ghana's online Christianity, this book unearths a theological basis for re-imagining Christian personhood in the digital"-- Provided by publisher.</rdfs:label>
+      </bf:Summary>
+    </bf:summary>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otherphysicalformat">
+	    <rdfs:label>other physical format</rdfs:label>
+	    <bf:code>otherphysicalformat</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/entities/relationships/onlineversion">
+	    <rdfs:label>Online version</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work>
+	    <bflc:aap>Agana, Agana-Nsiire. Multiform self</bflc:aap>
+	    <bflc:aap-normalized>aganaaganansiiremultiformself</bflc:aap-normalized>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Multiform self</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:contribution>
+	      <bf:PrimaryContribution>
+		<bf:agent>
+		  <bf:Agent>
+		    <rdfs:label>Agana, Agana-Nsiire</rdfs:label>
+		  </bf:Agent>
+		</bf:agent>
+	      </bf:PrimaryContribution>
+	    </bf:contribution>
+	    <bf:hasInstance>
+	      <bf:Instance>
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Multiform self</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:provisionActivityStatement>New York : T&amp;T Clark, 2026</bf:provisionActivityStatement>
+		<bf:identifiedBy>
+		  <bf:Isbn>
+		    <rdf:value>9780567728128</rdf:value>
+		  </bf:Isbn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value> 2026044979</rdf:value>
+		    <bf:assigner>
+		      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+			<rdfs:label>United States, Library of Congress</rdfs:label>
+			<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+			<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+			<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+		      </madsrdf:CorporateName>
+		    </bf:assigner>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/in00024906538"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-26T00:00:00</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-27T01:54:45.546182-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-3-0-1/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/8">
+	    <rdfs:label>prepublication</rdfs:label>
+	    <bf:code>8</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>in00024906538</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$corignew$d1$eecip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d 1 $e ecip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $brk01 2026-09-26</bflc:marcKey>
+	<lclocal:d955>=955     $b rk01 2026-09-26</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$erda$cDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+	<bflc:marcKey>999ff$ib9e604ac-fd55-4ae8-9b49-83a3d2d2a8f1$s73d69182-791d-4bcd-af18-28be6dcd60b1</bflc:marcKey>
+	<lclocal:d999>=999  ff $i b9e604ac-fd55-4ae8-9b49-83a3d2d2a8f1 $s 73d69182-791d-4bcd-af18-28be6dcd60b1</lclocal:d999>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Work>
+</rdf:RDF>

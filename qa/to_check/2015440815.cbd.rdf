@@ -1,0 +1,345 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/18766089">
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
+      </bf:Issuance>
+    </bf:issuance>
+    <bf:provisionActivity>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
+	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2014</bf:date>
+	<bf:place>
+	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/bl">
+	    <rdfs:label xml:lang="en">Brazil</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bl</bf:code>
+	  </bf:Place>
+	</bf:place>
+	<bflc:simplePlace>Belo Horizonte, MG</bflc:simplePlace>
+	<bflc:simpleAgent>Sirius cultura</bflc:simpleAgent>
+	<bflc:simpleDate>2014</bflc:simpleDate>
+      </bf:ProvisionActivity>
+    </bf:provisionActivity>
+    <bf:publicationStatement>Belo Horizonte, MG: Sirius cultura, 2014</bf:publicationStatement>
+    <bf:identifiedBy>
+      <bf:Lccn>
+	<rdf:value>  2015440815</rdf:value>
+      </bf:Lccn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9788567235059</rdf:value>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:responsibilityStatement>Arthur Senra, Simone Senra, organizadores</bf:responsibilityStatement>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Vitória aos Montes Gerais</bf:mainTitle>
+	<bf:subtitle>o irrevelável segredo chamado de terém</bf:subtitle>
+      </bf:Title>
+    </bf:title>
+    <bf:editionStatement>Primeira edição</bf:editionStatement>
+    <bf:extent>
+      <bf:Extent>
+	<rdfs:label>99 pages</rdfs:label>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
+	    <rdfs:label>illustration</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+      </bf:Extent>
+    </bf:extent>
+    <bf:dimensions>31 cm</bf:dimensions>
+    <bf:media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+	<rdfs:label>unmediated</rdfs:label>
+	<bf:code>n</bf:code>
+      </bf:Media>
+    </bf:media>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+	<rdfs:label>volume</rdfs:label>
+	<bf:code>nc</bf:code>
+      </bf:Carrier>
+    </bf:carrier>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/18766089"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-09-01T00:00:00</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-09-01T10:06:07</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-14T19:38:20.014669-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-3-0-1/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
+	    <rdfs:label>preliminary</rdfs:label>
+	    <bf:code>5</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>18766089</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$corigode$d2$encip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c origode $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $bwr16 2015-09-01 (ITEM STILL IN PROCESS IN RIO OFF.)</bflc:marcKey>
+	<lclocal:d955>=955     $b wr16 2015-09-01 (ITEM STILL IN PROCESS IN RIO OFF.)</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$cDLC$erda</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lcode">
+	    <rdfs:label>LC Overseas Data Entry</rdfs:label>
+	    <bf:code>lcode</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+	<lclocal:d985>=985     $e ODE-rj</lclocal:d985>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Instance>
+  <bf:Work rdf:about="http://id.loc.gov/resources/works/18766089">
+    <bflc:aap>Vitória aos Montes Gerais : o irrevelável segredo chamado de terém</bflc:aap>
+    <bflc:aap-normalized>vitóriaaosmontesgerais:oirrevelávelsegredochamadodeterém</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/por">
+	<rdfs:label xml:lang="en">Portuguese</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">por</bf:code>
+      </bf:Language>
+    </bf:language>
+    <bf:illustrativeContent>
+      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
+	<rdfs:label>illustrations</rdfs:label>
+	<bf:code>ill</bf:code>
+      </bf:Illustration>
+    </bf:illustrativeContent>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Vitória aos Montes Gerais : o irrevelável segredo chamado de terém</bf:mainTitle>
+      </bf:Title>
+    </bf:title>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+	<bf:code>txt</bf:code>
+      </bf:Content>
+    </bf:content>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/18766089"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-09-01T00:00:00</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2015-09-01T10:06:07</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-05-14T19:38:20.014669-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-3-0-1/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
+	    <rdfs:label>preliminary</rdfs:label>
+	    <bf:code>5</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>18766089</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$corigode$d2$encip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c origode $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $bwr16 2015-09-01 (ITEM STILL IN PROCESS IN RIO OFF.)</bflc:marcKey>
+	<lclocal:d955>=955     $b wr16 2015-09-01 (ITEM STILL IN PROCESS IN RIO OFF.)</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aDLC$beng$cDLC$erda</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lcode">
+	    <rdfs:label>LC Overseas Data Entry</rdfs:label>
+	    <bf:code>lcode</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+	<lclocal:d985>=985     $e ODE-rj</lclocal:d985>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Work>
+</rdf:RDF>

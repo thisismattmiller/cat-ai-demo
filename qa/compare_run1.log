@@ -1,0 +1,36 @@
+20 records to check (0 already done)
+still_no_shelfmark   2025352295   ours None                     LC None                           
+compared             2026325693   ours BP195.A8 I27 2026        LC BP195.A8 I37 2026        CLASS 
+compared             2025378172   ours DS597.2.O589 2026        LC JQ1062.A91 O557 2026           
+compared             2025338921   ours RA395.I55 H37 2026       LC RA395.I55 H37 2026       CLASS EXACT
+compared             2016359112   ours BP170.25.I73 2015        LC BP170.25 .I73 2015       CLASS EXACT
+compared             2026325797   ours DS247.Y48 S253 2026      LC DS247.Y48 S2655 2026     CLASS 
+compared             2026340486   ours PL5086.D57 2025          LC PL5086 .D564 2025        CLASS 
+compared             2026340267   ours HQ799.2.M3 K37 2024      LC HQ799.2.M3 K37 2024      CLASS EXACT
+compared             2026406540   ours None                     LC PN4759 .M39 2026               
+compared             2026321275   ours JA88.I5 L36 2025         LC JA88.I46 L36 2025              
+still_no_shelfmark   2025360133   ours None                     LC None                           
+compared             2024333530   ours BP188.8.S38 B36 2018     LC BP188.8.S38 B36 2018     CLASS EXACT
+compared             2026416036   ours TD195.E4 S79 2022        LC TJ400 .S74 2022                
+compared             2025375707   ours HD9940.I52 G37 2025      LC HD9940.I52 G37 2025      CLASS EXACT
+still_no_shelfmark   2025340254   ours None                     LC None                           
+compared             2025447172   ours None                     LC HG5710.5.A3 Q26 2025           
+compared             2026416198   ours BX1654.P35 P68 2026      LC BX1655.P345 P68 2026           
+compared             2026416168   ours JS7197.3.P34 2025        LC JS7197.3 .P34 2025       CLASS EXACT
+compared             2025451501   ours G155.Y46 H36 2024        LC G155.Y46 H36 2024        CLASS EXACT
+still_no_shelfmark   2023336472   ours None                     LC None                           
+20 records: {'still_no_shelfmark': 4, 'compared': 16}
+  class letters                12/16   75.0%
+  class number (050 $a)        10/16   62.5%
+  book number (050 $b)          9/16   56.2%
+  date                         14/16   87.5%
+  whole call number             7/16   43.8%
+  mean seconds/record          64.7
+
+misses (class number):
+  2025378172  ours DS597.2.O589 2026          LC JQ1062.A91 O557 2026       Passing glimpses of the present : Penang, Malaysia
+  2026406540  ours None                       LC PN4759 .M39 2026           Mawqif al-ṣiḥāfah al-ʻArabīyah min al-Ṭāhir al-Ḥad
+  2026321275  ours JA88.I5 L36 2025           LC JA88.I46 L36 2025          Sketsa politik pinggiran : catatan orang biasa seh
+  2026416036  ours TD195.E4 S79 2022          LC TJ400 .S74 2022            Melihat ulang dampak PLTU di tiga wilayah : PLTU P
+  2025447172  ours None                       LC HG5710.5.A3 Q26 2025       Dirāsah ḥawla al-nazāhah wa-al-shafāfiyyah wa-al-m
+  2026416198  ours BX1654.P35 P68 2026        LC BX1655.P345 P68 2026       Potret Keuskupan Palangka Raya : lustrum V, pesta 

@@ -1,0 +1,770 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/23008584">
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
+      </bf:Issuance>
+    </bf:issuance>
+    <bf:provisionActivity>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
+	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2022</bf:date>
+	<bf:place>
+	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/nyu">
+	    <rdfs:label xml:lang="en">New York (State)</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nyu</bf:code>
+	  </bf:Place>
+	</bf:place>
+	<bflc:simplePlace>New York</bflc:simplePlace>
+	<bflc:simpleAgent>Penguin Young Readers</bflc:simpleAgent>
+	<bflc:simpleDate>2022</bflc:simpleDate>
+      </bf:ProvisionActivity>
+    </bf:provisionActivity>
+    <bf:publicationStatement>New York: Penguin Young Readers, 2022</bf:publicationStatement>
+    <bf:copyrightDate rdf:datatype="http://id.loc.gov/datatypes/edtf">2022</bf:copyrightDate>
+    <bf:identifiedBy>
+      <bf:Lccn>
+	<rdf:value>  2023286305</rdf:value>
+      </bf:Lccn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Nbn>
+	<rdf:value>GBC2B5185</rdf:value>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/nationalbibschemes/bnb">
+	    <rdfs:label>British national bibliography</rdfs:label>
+	    <bf:code>bnb</bf:code>
+	  </bf:Source>
+	</bf:source>
+      </bf:Nbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Local>
+	<rdf:value>020668075</rdf:value>
+	<bf:source rdf:resource="http://id.loc.gov/vocabulary/organizations/uk"/>
+      </bf:Local>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9780593386859</rdf:value>
+	<bf:qualifier>hardcover</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>059338685X</rdf:value>
+	<bf:qualifier>hardcover</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:OclcNumber>
+	<rdf:value>on1338662402</rdf:value>
+      </bf:OclcNumber>
+    </bf:identifiedBy>
+    <bf:responsibilityStatement>by Brooke Vitale ; illustrated by Junissa Bianda</bf:responsibilityStatement>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Alex can't sleep</bf:mainTitle>
+	<bf:subtitle>a bedtime yoga story</bf:subtitle>
+      </bf:Title>
+    </bf:title>
+    <bf:extent>
+      <bf:Extent>
+	<rdfs:label>1 volume (unpaged)</rdfs:label>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/physical"/>
+	    <rdfs:label>color illustrations</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+      </bf:Extent>
+    </bf:extent>
+    <bf:dimensions>24 cm</bf:dimensions>
+    <bf:media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+	<rdfs:label>unmediated</rdfs:label>
+	<bf:code>n</bf:code>
+      </bf:Media>
+    </bf:media>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+	<rdfs:label>volume</rdfs:label>
+	<bf:code>nc</bf:code>
+      </bf:Carrier>
+    </bf:carrier>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/23008584"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-03-08</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>UKMGB</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-07T09:57:47</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.0.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-13T04:27:40.292012-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-6-0/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
+	    <rdfs:label>preliminary</rdfs:label>
+	    <bf:code>5</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>23008584</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$ccopycat$d2$encip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c copycat $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $bxn19 2023-03-08 z-processor to USPRLL$axk41 2023-11-07 to cl orignew</bflc:marcKey>
+	<lclocal:d955>=955     $b xn19 2023-03-08 z-processor to USPRLL $a xk41 2023-11-07 to cl orignew</lclocal:d955>
+	<bflc:marcKey>955  $aLCAP batch update 2025-06-02-04:00: LCAPM-893</bflc:marcKey>
+	<lclocal:d955>=955     $a LCAP batch update 2025-06-02-04:00: LCAPM-893</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aUKMGB$beng$erda$cUKMGB$dOCLCF$dJBI$dMJ8$dIMF$dIMD$dT7L$dFHP$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
+	    <rdfs:label>LC Copy Cataloging</rdfs:label>
+	    <bf:code>lccopycat</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Instance>
+  <bf:Work rdf:about="http://id.loc.gov/resources/works/23008584">
+    <bflc:aap>Vitale, Brooke. Alex can't sleep</bflc:aap>
+    <bflc:aap-normalized>vitalebrookealexcan'tsleep</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	<rdfs:label xml:lang="en">English</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+      </bf:Language>
+    </bf:language>
+    <bf:illustrativeContent>
+      <bf:Illustration rdf:about="http://id.loc.gov/vocabulary/millus/ill">
+	<rdfs:label>illustrations</rdfs:label>
+	<bf:code>ill</bf:code>
+      </bf:Illustration>
+    </bf:illustrativeContent>
+    <bf:intendedAudience>
+      <bf:IntendedAudience rdf:about="http://id.loc.gov/vocabulary/maudience/pri">
+	<rdfs:label>primary</rdfs:label>
+	<bf:code>pri</bf:code>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/maudience">
+	    <rdfs:label>MARC Audience</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:IntendedAudience>
+    </bf:intendedAudience>
+    <bf:classification>
+      <bf:ClassificationDdc>
+	<bf:classificationPortion>813.6</bf:classificationPortion>
+	<bf:source>
+	  <bf:Source>
+	    <bf:code>23</bf:code>
+	  </bf:Source>
+	</bf:source>
+	<bf:edition>full</bf:edition>
+      </bf:ClassificationDdc>
+    </bf:classification>
+    <bf:classification>
+      <bf:ClassificationLcc>
+	<bf:classificationPortion>PZ</bf:classificationPortion>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/nuba">
+	    <rdfs:label>not used by assigner</rdfs:label>
+	    <bf:code>nuba</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/p">
+	    <rdfs:label>upgraded prepub</rdfs:label>
+	    <bf:code>p</bf:code>
+	  </bf:Status>
+	</bf:status>
+      </bf:ClassificationLcc>
+    </bf:classification>
+    <bf:contribution>
+      <bf:Contribution>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/no2017061624">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Vitale, Brooke</rdfs:label>
+	    <bflc:marcKey>1001 $aVitale, Brooke</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
+	    <rdfs:label>author</rdfs:label>
+	    <bf:code>aut</bf:code>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Alex can't sleep</bf:mainTitle>
+      </bf:Title>
+    </bf:title>
+    <bf:title>
+      <bf:VariantTitle>
+	<bf:mainTitle>Alex cannot sleep</bf:mainTitle>
+      </bf:VariantTitle>
+    </bf:title>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+	<bf:code>txt</bf:code>
+      </bf:Content>
+    </bf:content>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/sti">
+	<rdfs:label>still image</rdfs:label>
+	<bf:code>sti</bf:code>
+      </bf:Content>
+    </bf:content>
+    <bf:summary>
+      <bf:Summary>
+	<rdfs:label>Alex had a bad day at school. Everything that could go wrong did! And now he cant sleep because he's so worried that tomorrow will be worse! What is they run out of red crayons or he drops his lunch int he dirt? What if, what if, what if! Can Alex go to sleep with the help of his mom?</rdfs:label>
+      </bf:Summary>
+    </bf:summary>
+    <bf:intendedAudience>
+      <bf:IntendedAudience>
+	<rdfs:label>Ages 4-8.</rdfs:label>
+      </bf:IntendedAudience>
+    </bf:intendedAudience>
+    <bf:contribution>
+      <bf:Contribution>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n2018028030">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Bianda, Junissa</rdfs:label>
+	    <bflc:marcKey>1001 $aBianda, Junissa</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/ill">
+	    <rdfs:label>illustrator</rdfs:label>
+	    <bf:code>ill</bf:code>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2015026020">
+	<rdfs:label xml:lang="en">Novels</rdfs:label>
+	<bflc:marcKey>155  $aNovels</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/genreForms">
+	    <rdfs:label>LC Genre/Forms</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2016026096">
+	<rdfs:label xml:lang="en">Picture books</rdfs:label>
+	<bflc:marcKey>155  $aPicture books</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/genreForms">
+	    <rdfs:label>LC Genre/Forms</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026339">
+	<rdfs:label xml:lang="en">Fiction</rdfs:label>
+	<bflc:marcKey>155  $aFiction</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/genreForms">
+	    <rdfs:label>LC Genre/Forms</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026339">
+	<rdfs:label xml:lang="en">Fiction</rdfs:label>
+	<bflc:marcKey>155  $aFiction</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/genreForms">
+	    <rdfs:label>LC Genre/Forms</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026111">
+	<rdfs:label xml:lang="en">Illustrated works</rdfs:label>
+	<bflc:marcKey>155  $aIllustrated works</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/genreForms">
+	    <rdfs:label>LC Genre/Forms</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:intendedAudience>
+      <bf:IntendedAudience rdf:about="http://id.loc.gov/authorities/demographicTerms/dg2015060010">
+	<rdfs:label xml:lang="en">Children</rdfs:label>
+	<bflc:marcKey>150  $aChildren</bflc:marcKey>
+	<bflc:demographicGroup>
+	  <bflc:DemographicGroup rdf:about="http://id.loc.gov/authorities/demographicTerms/age">
+	    <rdfs:label>Age group</rdfs:label>
+	  </bflc:DemographicGroup>
+	</bflc:demographicGroup>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/demographicTerms">
+	    <rdfs:label>LC Demographic Terms</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:IntendedAudience>
+    </bf:intendedAudience>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdfs:label>Juvenile fiction</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85149177">
+	<rdfs:label xml:lang="en">Hatha yoga</rdfs:label>
+	<bflc:marcKey>150  $aHatha yoga</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label>LC Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2015000815">
+	<rdfs:label xml:lang="en">Mindfulness (Psychology)</rdfs:label>
+	<bflc:marcKey>150  $aMindfulness (Psychology)</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label>LC Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85149174">
+	<rdfs:label xml:lang="en">Yoga</rdfs:label>
+	<bflc:marcKey>150  $aYoga</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label>LC Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh98007157">
+	<rdfs:label xml:lang="en">Bedtime</rdfs:label>
+	<bflc:marcKey>150 0$aBedtime</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label>LC Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/childrensSubjects/sj2021058375">
+	<rdfs:label xml:lang="en">Hatha yoga</rdfs:label>
+	<bflc:marcKey>150  $aHatha yoga</bflc:marcKey>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/childrensSubjects/sj2021050329">
+	<rdfs:label xml:lang="en">Bedtime</rdfs:label>
+	<bflc:marcKey>150  $aBedtime</bflc:marcKey>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/childrensSubjects/sj2021052673">
+	<rdfs:label xml:lang="en">Mindfulness</rdfs:label>
+	<bflc:marcKey>150  $aMindfulness</bflc:marcKey>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdfs:label>JUVENILE FICTION / Bedtime &amp; Dreams</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">JUVENILE FICTION / Bedtime &amp; Dreams</madsrdf:authoritativeLabel>
+	<bflc:aap-normalized>juvenilefiction/bedtime&amp;dreams</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
+	    <bf:code>bisacsh</bf:code>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
+	    <bf:code>bisacsh</bf:code>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdfs:label>JUVENILE FICTION / Health &amp; Daily Living / Daily Activities</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">JUVENILE FICTION / Health &amp; Daily Living / Daily Activities</madsrdf:authoritativeLabel>
+	<bflc:aap-normalized>juvenilefiction/health&amp;dailyliving/dailyactivities</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
+	    <bf:code>bisacsh</bf:code>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
+	    <bf:code>bisacsh</bf:code>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Topic"/>
+	<rdfs:label>JUVENILE FICTION / Media Tie-In</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">JUVENILE FICTION / Media Tie-In</madsrdf:authoritativeLabel>
+	<bflc:aap-normalized>juvenilefiction/mediatiein</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
+	    <bf:code>bisacsh</bf:code>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/bisacsh">
+	    <rdfs:label>BISAC subject headings</rdfs:label>
+	    <bf:code>bisacsh</bf:code>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1199434">
+	<bflc:marcKey>150  $aHatha yoga</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Hatha yoga</madsrdf:authoritativeLabel>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/fast">
+	    <rdfs:label>Faceted application of subject terminology</rdfs:label>
+	    <bf:code>fast</bf:code>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.worldcat.org/fast/1921242">
+	<bflc:marcKey>150  $aMindfulness (Psychology)</bflc:marcKey>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Mindfulness (Psychology)</madsrdf:authoritativeLabel>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/subjectSchemes/fast">
+	    <rdfs:label>Faceted application of subject terminology</rdfs:label>
+	    <bf:code>fast</bf:code>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Children's stories--Pictorial works</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Children's stories--Pictorial works</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Children's stories</madsrdf:authoritativeLabel>
+	  </madsrdf:GenreForm>
+	  <madsrdf:GenreForm>
+	    <madsrdf:authoritativeLabel>Pictorial works</madsrdf:authoritativeLabel>
+	  </madsrdf:GenreForm>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>children'sstoriespictorialworks</bflc:aap-normalized>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Authority rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gsafd">
+	    <rdfs:label>Guidelines on subject access to individual works of fiction, drama, etc</rdfs:label>
+	    <bf:code>gsafd</bf:code>
+	  </madsrdf:Authority>
+	</madsrdf:isMemberOfMADSScheme>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/vocabulary/genreFormSchemes/gsafd">
+	    <rdfs:label>Guidelines on subject access to individual works of fiction, drama, etc</rdfs:label>
+	    <bf:code>gsafd</bf:code>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/series">
+	    <rdfs:label>series</rdfs:label>
+	    <bf:code>series</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Series>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bflc/Uncontrolled"/>
+	    <bf:status>
+	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
+		<rdfs:label>transcribed</rdfs:label>
+		<bf:code>t</bf:code>
+	      </bf:Status>
+	    </bf:status>
+	    <bf:status>
+	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/tr">
+		<rdfs:label>traced</rdfs:label>
+		<bf:code>tr</bf:code>
+	      </bf:Status>
+	    </bf:status>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Cosmic kids!</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	  </bf:Series>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/series">
+	    <rdfs:label>series</rdfs:label>
+	    <bf:code>series</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Hub rdf:about="http://id.loc.gov/resources/hubs/a72ed65f-e28e-bc28-0f9e-11951c4b1ba6">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Series"/>
+	    <rdfs:label>Cosmic kids!</rdfs:label>
+	    <bflc:marcKey>1300 $aCosmic kids!</bflc:marcKey>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Cosmic kids!</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:title>
+	      <bf:VariantTitle>
+		<bf:mainTitle xml:lang="zxx-latn">Cosmic kids series</bf:mainTitle>
+	      </bf:VariantTitle>
+	    </bf:title>
+	  </bf:Hub>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/23008584"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2023-03-08</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>UKMGB</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2023-11-07T09:57:47</bf:date>
+	<bf:descriptionModifier>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Organization>
+	</bf:descriptionModifier>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/releases/tag/v3.0.0"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-03-13T04:27:40.292012-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-2-6-0/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/5">
+	    <rdfs:label>preliminary</rdfs:label>
+	    <bf:code>5</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>23008584</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$ccopycat$d2$encip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c copycat $d 2 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $bxn19 2023-03-08 z-processor to USPRLL$axk41 2023-11-07 to cl orignew</bflc:marcKey>
+	<lclocal:d955>=955     $b xn19 2023-03-08 z-processor to USPRLL $a xk41 2023-11-07 to cl orignew</lclocal:d955>
+	<bflc:marcKey>955  $aLCAP batch update 2025-06-02-04:00: LCAPM-893</bflc:marcKey>
+	<lclocal:d955>=955     $a LCAP batch update 2025-06-02-04:00: LCAPM-893</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aUKMGB$beng$erda$cUKMGB$dOCLCF$dJBI$dMJ8$dIMF$dIMD$dT7L$dFHP$dDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/lccopycat">
+	    <rdfs:label>LC Copy Cataloging</rdfs:label>
+	    <bf:code>lccopycat</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Work>
+</rdf:RDF>

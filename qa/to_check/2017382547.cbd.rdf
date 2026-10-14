@@ -1,0 +1,797 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/19623385">
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
+      </bf:Issuance>
+    </bf:issuance>
+    <bf:provisionActivity>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
+	<bflc:simplePlace>Paris</bflc:simplePlace>
+	<bflc:simplePlace>Budapest</bflc:simplePlace>
+	<bflc:simplePlace>Szeged</bflc:simplePlace>
+	<bflc:simpleAgent>Institut Hongrois</bflc:simpleAgent>
+      </bf:ProvisionActivity>
+    </bf:provisionActivity>
+    <bf:publicationStatement>Paris; Budapest; Szeged: Institut Hongrois</bf:publicationStatement>
+    <bf:provisionActivity>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
+	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2007</bf:date>
+	<bf:place>
+	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/hu">
+	    <rdfs:label xml:lang="en">Hungary</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hu</bf:code>
+	  </bf:Place>
+	</bf:place>
+	<bflc:simplePlace>Bibliothéque nationale Széchényi</bflc:simplePlace>
+	<bflc:simpleDate>2007</bflc:simpleDate>
+      </bf:ProvisionActivity>
+    </bf:provisionActivity>
+    <bf:publicationStatement>Bibliothéque nationale Széchényi: 2007</bf:publicationStatement>
+    <bf:identifiedBy>
+      <bf:Lccn>
+	<rdf:value>  2017382547</rdf:value>
+      </bf:Lccn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9789632005386</rdf:value>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9632005384</rdf:value>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Local>
+	<rdf:value>19623385</rdf:value>
+      </bf:Local>
+    </bf:identifiedBy>
+    <bf:responsibilityStatement>sajtó alá rendezte, a bevezetőt írta Kerekes Dóra</bf:responsibilityStatement>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Pierre de Girardin francia követ feljegyzései az Oszmán Birodalomról, 1685-1689 =</bf:mainTitle>
+	<bf:subtitle>Mémoires sur l'Empire ottoman par Pierre de Girardin ambassadeur français à Constantinople, 1685-1689</bf:subtitle>
+      </bf:Title>
+    </bf:title>
+    <bf:extent>
+      <bf:Extent>
+	<rdfs:label>180 pages</rdfs:label>
+      </bf:Extent>
+    </bf:extent>
+    <bf:dimensions>24 cm</bf:dimensions>
+    <bf:media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+	<rdfs:label>unmediated</rdfs:label>
+	<bf:code>n</bf:code>
+      </bf:Media>
+    </bf:media>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+	<rdfs:label>volume</rdfs:label>
+	<bf:code>nc</bf:code>
+      </bf:Carrier>
+    </bf:carrier>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/biblio"/>
+	<rdfs:label>Includes bibliographical references and index.</rdfs:label>
+      </bf:Note>
+    </bf:note>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/19623385"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-05-05T00:00:00</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/hubpbkp">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>Batthyány Kultúr-Press Ltd.</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">HU-BpBKP</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">hubpbkp</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-10T14:14:16.019316-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-3-0-1/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+	    <rdfs:label>full</rdfs:label>
+	    <bf:code>f</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>19623385</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$corigres$d3$encip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c origres $d 3 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $bfc15 2017-05-05 z-processor$afc00 2017-05-05 to GS/ECE</bflc:marcKey>
+	<lclocal:d955>=955     $b fc15 2017-05-05 z-processor $a fc00 2017-05-05 to GS/ECE</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aHU-BpBKP$beng$erda$cHU-BpBKP</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+	<bflc:marcKey>999ff$ifc88473f-c550-5c90-befd-8afc7e88b9e5$scdf38aea-8978-46c6-9bda-c7e67150ef04</bflc:marcKey>
+	<lclocal:d999>=999  ff $i fc88473f-c550-5c90-befd-8afc7e88b9e5 $s cdf38aea-8978-46c6-9bda-c7e67150ef04</lclocal:d999>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Instance>
+  <bf:Work rdf:about="http://id.loc.gov/resources/works/19623385">
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/hun">
+	<rdfs:label xml:lang="en">Hungarian</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hun</bf:code>
+      </bf:Language>
+    </bf:language>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/bibliography">
+	<rdfs:label>bibliography</rdfs:label>
+	<bf:code>bibliography</bf:code>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/index">
+	<rdfs:label>index</rdfs:label>
+	<bf:code>index</bf:code>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/fre">
+	<rdfs:label xml:lang="en">French</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">fre</bf:code>
+      </bf:Language>
+    </bf:language>
+    <bf:geographicCoverage>
+      <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/e-fr">
+	<rdfs:label xml:lang="en">France</rdfs:label>
+	<bf:code rdf:datatype="http://id.loc.gov/datatypes/codes/gac">e-fr---</bf:code>
+      </bf:GeographicCoverage>
+    </bf:geographicCoverage>
+    <bf:geographicCoverage>
+      <bf:GeographicCoverage rdf:about="http://id.loc.gov/vocabulary/geographicAreas/a-tu">
+	<rdfs:label xml:lang="en">Turkey</rdfs:label>
+	<bf:code rdf:datatype="http://id.loc.gov/datatypes/codes/gac">a-tu---</bf:code>
+      </bf:GeographicCoverage>
+    </bf:geographicCoverage>
+    <bf:contribution>
+      <bf:Contribution>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	<bf:agent>
+	  <bf:Agent>
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Girardin, Pierre de</rdfs:label>
+	    <bflc:marcKey>1001 $aGirardin, Pierre de,$eauthor.</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
+	    <rdfs:label>author</rdfs:label>
+	    <bf:code>aut</bf:code>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <bf:title>
+      <bf:ParallelTitle>
+	<bf:mainTitle>Pierre de Girardin francia követ feljegyzései az Oszmán Birodalomról, 1685-1689</bf:mainTitle>
+      </bf:ParallelTitle>
+    </bf:title>
+    <bf:title>
+      <bf:ParallelTitle>
+	<bf:mainTitle>Mémoires sur l'Empire ottoman par Pierre de Girardin ambassadeur français à Constantinople, 1685-1689</bf:mainTitle>
+      </bf:ParallelTitle>
+    </bf:title>
+    <bf:title>
+      <bf:VariantTitle>
+	<bf:mainTitle>Mémoires sur L'Empire Ottoman par Pierre de Girardin, ambassadeur Franc̦ais à Constantinopole 1685-1689</bf:mainTitle>
+      </bf:VariantTitle>
+    </bf:title>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+	<bf:code>txt</bf:code>
+      </bf:Content>
+    </bf:content>
+    <bf:contribution>
+      <bf:Contribution>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/n2022056388">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Kerekes, Dóra</rdfs:label>
+	    <bflc:marcKey>1001 $aKerekes, Dóra</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/com">
+	    <rdfs:label>compiler</rdfs:label>
+	    <bf:code>com</bf:code>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2022026079">
+	<rdfs:label xml:lang="en">Primary sources</rdfs:label>
+	<bflc:marcKey>155  $aPrimary sources</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/genreForms">
+	    <rdfs:label>LC Genre/Forms</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/genreForms">
+	    <rdfs:label xml:lang="en">Library of Congress Genre/Form Terms</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+	<rdfs:label>Early works</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm>
+	<rdfs:label>Early works to 1800</rdfs:label>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:genreForm>
+      <bf:GenreForm rdf:about="http://id.loc.gov/authorities/genreForms/gf2014026085">
+	<rdfs:label xml:lang="en">Diaries</rdfs:label>
+	<bflc:marcKey>155  $aDiaries</bflc:marcKey>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/genreForms">
+	    <rdfs:label>LC Genre/Forms</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:GenreForm>
+    </bf:genreForm>
+    <bf:subject>
+      <bf:Person rdf:about="http://id.loc.gov/rwo/agents/no2018046088">
+	<rdfs:label>Girardin, Pierre de, -1689</rdfs:label>
+	<bflc:marcKey>1001 $aGirardin, Pierre de,$d-1689</bflc:marcKey>
+      </bf:Person>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Diplomats--France</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Diplomats--France</madsrdf:authoritativeLabel>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85038202">
+	    <rdfs:label xml:lang="en">Diplomats</rdfs:label>
+	    <bflc:marcKey>150  $aDiplomats</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n79006404-781">
+	    <rdfs:label>France</rdfs:label>
+	    <bflc:marcKey>181  $zFrance</bflc:marcKey>
+	  </madsrdf:Geographic>
+	</madsrdf:componentList>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<bflc:aap-normalized>diplomatsfrance</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Diplomacy--History--France</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Diplomacy--History--France</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85038179">
+	    <rdfs:label xml:lang="en">Diplomacy</rdfs:label>
+	    <bflc:marcKey>150  $aDiplomacy</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh99005024">
+	    <rdfs:label xml:lang="en">History</rdfs:label>
+	    <bflc:marcKey>180  $xHistory</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n79006404-781">
+	    <rdfs:label>France</rdfs:label>
+	    <bflc:marcKey>181  $zFrance</bflc:marcKey>
+	  </madsrdf:Geographic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>diplomacyhistoryfrance</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2008115089">
+	<rdfs:label xml:lang="en">France--Foreign relations--Turkey</rdfs:label>
+	<bflc:marcKey>151  $aFrance$xForeign relations$zTurkey</bflc:marcKey>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">France</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">France</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Geographic>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Foreign relations</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Foreign relations</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Turkey</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">Turkey</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Geographic>
+	</madsrdf:componentList>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label>LC Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2008117309">
+	<rdfs:label xml:lang="en">Turkey--Foreign relations--France</rdfs:label>
+	<bflc:marcKey>151  $aTurkey$xForeign relations$zFrance</bflc:marcKey>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Turkey</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">Turkey</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Geographic>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Foreign relations</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Foreign relations</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Topic>
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">France</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">France</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Geographic>
+	</madsrdf:componentList>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label>LC Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85051233">
+	<rdfs:label xml:lang="en">France--Foreign relations--1643-1715</rdfs:label>
+	<bflc:marcKey>151 0$aFrance$xForeign relations$y1643-1715</bflc:marcKey>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">France</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">France</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Geographic>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Foreign relations</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">Foreign relations</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Topic>
+	  <madsrdf:Temporal>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">1643-1715</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TemporalElement>
+		<madsrdf:elementValue xml:lang="en">1643-1715</madsrdf:elementValue>
+	      </madsrdf:TemporalElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Temporal>
+	</madsrdf:componentList>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label>LC Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85051304">
+	<rdfs:label xml:lang="en">France--History--Louis XIV, 1643-1715</rdfs:label>
+	<bflc:marcKey>151 0$aFrance$xHistory$yLouis XIV, 1643-1715</bflc:marcKey>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">France</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:GeographicElement>
+		<madsrdf:elementValue xml:lang="en">France</madsrdf:elementValue>
+	      </madsrdf:GeographicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Geographic>
+	  <madsrdf:Topic>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">History</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TopicElement>
+		<madsrdf:elementValue xml:lang="en">History</madsrdf:elementValue>
+	      </madsrdf:TopicElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Topic>
+	  <madsrdf:Temporal>
+	    <rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+	    <madsrdf:authoritativeLabel xml:lang="en">Louis XIV, 1643-1715</madsrdf:authoritativeLabel>
+	    <madsrdf:elementList rdf:parseType="Collection">
+	      <madsrdf:TemporalElement>
+		<madsrdf:elementValue xml:lang="en">Louis XIV, 1643-1715</madsrdf:elementValue>
+	      </madsrdf:TemporalElement>
+	    </madsrdf:elementList>
+	  </madsrdf:Temporal>
+	</madsrdf:componentList>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label>LC Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Hungary--History, Military--17th century--Sources</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Hungary--History, Military--17th century--Sources</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n79053090">
+	    <rdfs:label>Hungary</rdfs:label>
+	    <bflc:marcKey>151  $aHungary</bflc:marcKey>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/codes/gac">e-hu---</bf:code>
+	  </madsrdf:Geographic>
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh00005863">
+	    <rdfs:label xml:lang="en">History, Military</rdfs:label>
+	    <bflc:marcKey>180  $xHistory, Military</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	  <madsrdf:Temporal rdf:about="http://id.loc.gov/authorities/subjects/sh2002012473">
+	    <rdfs:label xml:lang="en">17th century</rdfs:label>
+	    <bflc:marcKey>182  $y17th century</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Temporal>
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2002012010">
+	    <rdfs:label xml:lang="en">Sources</rdfs:label>
+	    <bflc:marcKey>180  $xSources</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>hungaryhistorymilitary17thcenturysources</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Turkey--History--Ottoman Empire, 1288-1918--Sources</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Turkey--History--Ottoman Empire, 1288-1918--Sources</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Geographic rdf:about="http://id.loc.gov/rwo/agents/n80070818">
+	    <rdfs:label>Turkey</rdfs:label>
+	    <bflc:marcKey>151  $aTurkey</bflc:marcKey>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/codes/gac">a-tu---</bf:code>
+	  </madsrdf:Geographic>
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh99005024">
+	    <rdfs:label xml:lang="en">History</rdfs:label>
+	    <bflc:marcKey>180  $xHistory</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	  <madsrdf:Temporal>
+	    <madsrdf:authoritativeLabel>Ottoman Empire, 1288-1918</madsrdf:authoritativeLabel>
+	  </madsrdf:Temporal>
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh2002012010">
+	    <rdfs:label xml:lang="en">Sources</rdfs:label>
+	    <bflc:marcKey>180  $xSources</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>turkeyhistoryottomanempire12881918sources</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/series">
+	    <rdfs:label>series</rdfs:label>
+	    <bf:code>series</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:seriesEnumeration>3</bf:seriesEnumeration>
+	<bf:associatedResource>
+	  <bf:Series>
+	    <bf:status>
+	      <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/t">
+		<rdfs:label>transcribed</rdfs:label>
+		<bf:code>t</bf:code>
+	      </bf:Status>
+	    </bf:status>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Documenta Hungarorum in Gallia</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:identifiedBy>
+	      <bf:Issn>
+		<rdf:value>1588-6034</rdf:value>
+	      </bf:Issn>
+	    </bf:identifiedBy>
+	  </bf:Series>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/19623385"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-05-05T00:00:00</bf:date>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/hubpbkp">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>Batthyány Kultúr-Press Ltd.</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">HU-BpBKP</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">hubpbkp</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-10T14:14:16.019316-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-3-0-1/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/f">
+	    <rdfs:label>full</rdfs:label>
+	    <bf:code>f</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>19623385</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$corigres$d3$encip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c origres $d 3 $e ncip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $bfc15 2017-05-05 z-processor$afc00 2017-05-05 to GS/ECE</bflc:marcKey>
+	<lclocal:d955>=955     $b fc15 2017-05-05 z-processor $a fc00 2017-05-05 to GS/ECE</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aHU-BpBKP$beng$erda$cHU-BpBKP</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+	<bflc:marcKey>999ff$ifc88473f-c550-5c90-befd-8afc7e88b9e5$scdf38aea-8978-46c6-9bda-c7e67150ef04</bflc:marcKey>
+	<lclocal:d999>=999  ff $i fc88473f-c550-5c90-befd-8afc7e88b9e5 $s cdf38aea-8978-46c6-9bda-c7e67150ef04</lclocal:d999>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Work>
+</rdf:RDF>

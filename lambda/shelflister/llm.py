@@ -27,6 +27,9 @@ MODEL_ALIASES = {
     "opus": "claude-opus-5-5",
     "opus-5.5": "claude-opus-5-5",
     "opus-5": "claude-opus-5",
+    "haiku": "claude-haiku-5-5",
+    "haiku-5.5": "claude-haiku-5-5",
+    "haiku-4.5": "claude-haiku-4-5-20251001",
 }
 
 
@@ -108,7 +111,8 @@ class AnthropicProvider(Provider):
         if resp.stop_reason == "refusal":
             raise RuntimeError(f"refused: {resp.stop_details}")
         return resp.parsed_output, {"input": resp.usage.input_tokens, "output": resp.usage.output_tokens,
-                                    "cache_read": getattr(resp.usage, "cache_read_input_tokens", 0) or 0}
+                                    "cache_read": getattr(resp.usage, "cache_read_input_tokens", 0) or 0,
+                                    "cache_write": getattr(resp.usage, "cache_creation_input_tokens", 0) or 0}
 
     def tool_loop(self, system_blocks, user, tools, run, *, submit_tool="submit", max_turns=24, max_tokens=16000, check_submit=None):
         system = [{"type": "text", "text": b, "cache_control": {"type": "ephemeral"}} for b in system_blocks[:2]]
@@ -117,7 +121,8 @@ class AnthropicProvider(Provider):
                   "input_schema": _strict_schema(t.schema) if t.strict else t.schema,
                   **({"strict": True} if t.strict else {})} for t in tools]
         messages = [{"role": "user", "content": user}]
-        trace, usage = [], {"input": 0, "output": 0, "cache_read": 0, "turns": 0}
+        trace, usage = [], {"input": 0, "output": 0, "cache_read": 0, "cache_write": 0, "turns": 0,
+                            "max_prompt": 0, "prompts_over_100k": 0}
         submitted = None
         for turn in range(max_turns):
             if turn == max_turns - 4:
@@ -130,6 +135,11 @@ class AnthropicProvider(Provider):
             usage["input"] += resp.usage.input_tokens
             usage["output"] += resp.usage.output_tokens
             usage["cache_read"] += getattr(resp.usage, "cache_read_input_tokens", 0) or 0
+            usage["cache_write"] += getattr(resp.usage, "cache_creation_input_tokens", 0) or 0
+            prompt = (resp.usage.input_tokens + (getattr(resp.usage, "cache_read_input_tokens", 0) or 0)
+                      + (getattr(resp.usage, "cache_creation_input_tokens", 0) or 0))
+            usage["max_prompt"] = max(usage["max_prompt"], prompt)   # Anthropic prices by prompt size (>100K tier)
+            usage["prompts_over_100k"] += prompt > 100_000
             if resp.stop_reason == "refusal":
                 raise RuntimeError(f"refused: {resp.stop_details}")
             messages.append({"role": "assistant", "content": resp.content})

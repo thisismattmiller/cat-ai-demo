@@ -41,9 +41,13 @@ _SPECIAL = {"æ": "ae", "Æ": "ae", "œ": "oe", "Œ": "oe", "ð": "d", "Ð": "d"
             "ı": "i", "α": "a", "β": "b", "γ": "g", "ß": "ss", "ø": "o", "Ø": "o", "ł": "l", "Ł": "l"}
 
 
+_IGNORED = "\u02bb\u02bc\u02be\u02bf\u02b9\u2018\u2019\u201b\u02c8\u0060\u00b4"   # ayn, hamza, primes, curly quotes
+
+
 def normalize_letters(s: str) -> str:
-    """G 100 sec. 2: strip diacritics, map special letters."""
-    s = "".join(_SPECIAL.get(ch, ch) for ch in s)
+    """G 100 sec. 2: strip diacritics, map special letters. Ayn/hamza and other modifier marks
+    (romanized Arabic, Hebrew ...) are dropped rather than treated as word breaks (Balʻīd -> Balid)."""
+    s = "".join(_SPECIAL.get(ch, ch) for ch in s if ch not in _IGNORED)
     s = unicodedata.normalize("NFKD", s)
     s = "".join(ch for ch in s if not unicodedata.combining(ch))
     return unidecode(s)

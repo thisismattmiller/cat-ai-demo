@@ -99,6 +99,8 @@ def parse(s: str) -> CallNumber:
     raw = s
     s = re.sub(r"\$[ab]\s*", " ", s).strip()
     s = re.sub(r"\s+", " ", s)
+    oversize = s.endswith("+")                  # LC's oversize / reserved-number mark, e.g. 'PS3604.O534+'
+    s = s.rstrip("+ ")
     m = _CLASS_RE.match(s)
     if not m:
         raise ValueError(f"not an LC call number: {raw!r}")
@@ -119,7 +121,7 @@ def parse(s: str) -> CallNumber:
     if i < len(tokens) and _DATE_TOKEN.match(tokens[i]):
         cn.date = tokens[i]
         i += 1
-    cn.extras = tokens[i:]
+    cn.extras = tokens[i:] + (["+"] if oversize else [])
     return cn
 
 

@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -20,7 +21,6 @@ import httpx
 from . import callnum
 
 BASE = "https://id.loc.gov/controllers/xqapi-shelflist.xqy"
-import os
 CACHE_DIR = Path(os.environ.get("SHELFLISTER_CACHE_DIR", Path(__file__).resolve().parent.parent / ".cache")) / "shelflist"
 
 

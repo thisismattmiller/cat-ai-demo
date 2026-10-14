@@ -1,0 +1,595 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:bf="http://id.loc.gov/ontologies/bibframe/" xmlns:bflc="http://id.loc.gov/ontologies/bflc/" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:pmo="http://performedmusicontology.org/ontology/" xmlns:lclocal="http://id.loc.gov/ontologies/lclocal/" xmlns:ri="http://id.loc.gov/ontologies/RecordInfo#">
+  <bf:Instance rdf:about="http://id.loc.gov/resources/instances/in00024905054">
+    <bf:issuance>
+      <bf:Issuance rdf:about="http://id.loc.gov/vocabulary/issuance/mono">
+	<rdfs:label>single unit</rdfs:label>
+	<bf:code>mono</bf:code>
+      </bf:Issuance>
+    </bf:issuance>
+    <bf:provisionActivity>
+      <bf:ProvisionActivity>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Publication"/>
+	<bf:date rdf:datatype="http://id.loc.gov/datatypes/edtf">2027</bf:date>
+	<bf:place>
+	  <bf:Place rdf:about="http://id.loc.gov/vocabulary/countries/cau">
+	    <rdfs:label xml:lang="en">California</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cau</bf:code>
+	  </bf:Place>
+	</bf:place>
+	<bflc:simplePlace>Oakland, California</bflc:simplePlace>
+	<bflc:simpleAgent>University of California Press</bflc:simpleAgent>
+	<bflc:simpleDate>[2027]</bflc:simpleDate>
+      </bf:ProvisionActivity>
+    </bf:provisionActivity>
+    <bf:publicationStatement>Oakland, California: University of California Press, [2027]</bf:publicationStatement>
+    <bf:copyrightDate rdf:datatype="http://id.loc.gov/datatypes/edtf">2027</bf:copyrightDate>
+    <bf:identifiedBy>
+      <bf:Lccn>
+	<rdf:value>  2026044746</rdf:value>
+      </bf:Lccn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9780520427211</rdf:value>
+	<bf:qualifier>cloth</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9780520427235</rdf:value>
+	<bf:qualifier>paperback</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:identifiedBy>
+      <bf:Isbn>
+	<rdf:value>9780520427242</rdf:value>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/cancinv">
+	    <rdfs:label>canceled or invalid</rdfs:label>
+	    <bf:code>cancinv</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:qualifier>epub</bf:qualifier>
+      </bf:Isbn>
+    </bf:identifiedBy>
+    <bf:responsibilityStatement>Kauê Lopes dos Santos</bf:responsibilityStatement>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Financing poverty</bf:mainTitle>
+	<bf:subtitle>consumption and debt dynamics in racialized São Paulo</bf:subtitle>
+      </bf:Title>
+    </bf:title>
+    <bflc:projectedProvisionDate>2702</bflc:projectedProvisionDate>
+    <bf:extent>
+      <bf:Extent>
+	<rdfs:label>pages cm</rdfs:label>
+      </bf:Extent>
+    </bf:extent>
+    <bf:media>
+      <bf:Media rdf:about="http://id.loc.gov/vocabulary/mediaTypes/n">
+	<rdfs:label>unmediated</rdfs:label>
+	<bf:code>n</bf:code>
+      </bf:Media>
+    </bf:media>
+    <bf:carrier>
+      <bf:Carrier rdf:about="http://id.loc.gov/vocabulary/carriers/nc">
+	<rdfs:label>volume</rdfs:label>
+	<bf:code>nc</bf:code>
+      </bf:Carrier>
+    </bf:carrier>
+    <bf:note>
+      <bf:Note>
+	<rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/biblio"/>
+	<rdfs:label>Includes bibliographical references and index.</rdfs:label>
+      </bf:Note>
+    </bf:note>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/instances"/>
+    <bf:instanceOf rdf:resource="http://id.loc.gov/resources/works/in00024905054"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-18T00:00:00</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>CU-S/DLC</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-25T01:44:45.789594-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-3-0-1/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/8">
+	    <rdfs:label>prepublication</rdfs:label>
+	    <bf:code>8</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>in00024905054</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$corignew$d1$eecip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d 1 $e ecip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $bCU-S 2026-09-18</bflc:marcKey>
+	<lclocal:d955>=955     $b CU-S 2026-09-18</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aCU-S/DLC$beng$erda$cDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+	<lclocal:d985>=985     $a CU-SCIP $d 2026-09-18</lclocal:d985>
+	<bflc:marcKey>999ff$i48b94b4a-8e0c-4f53-822f-4b5f360762c9$saebe647b-084d-440d-a0f0-9e649ea61830</bflc:marcKey>
+	<lclocal:d999>=999  ff $i 48b94b4a-8e0c-4f53-822f-4b5f360762c9 $s aebe647b-084d-440d-a0f0-9e649ea61830</lclocal:d999>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Instance>
+  <bf:Work rdf:about="http://id.loc.gov/resources/works/in00024905054">
+    <bflc:aap>Santos, Kauê Lopes dos. Financing poverty : consumption and debt dynamics in racialized São Paulo</bflc:aap>
+    <bflc:aap-normalized>santoskauêlopesdosfinancingpoverty:consumptionanddebtdynamicsinracializedsãopaulo</bflc:aap-normalized>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Text"/>
+    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Monograph"/>
+    <bf:language>
+      <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	<rdfs:label xml:lang="en">English</rdfs:label>
+	<bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+      </bf:Language>
+    </bf:language>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/bibliography">
+	<rdfs:label>bibliography</rdfs:label>
+	<bf:code>bibliography</bf:code>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:supplementaryContent>
+      <bf:SupplementaryContent rdf:about="http://id.loc.gov/vocabulary/msupplcont/index">
+	<rdfs:label>index</rdfs:label>
+	<bf:code>index</bf:code>
+      </bf:SupplementaryContent>
+    </bf:supplementaryContent>
+    <bf:classification>
+      <bf:ClassificationLcc>
+	<bf:classificationPortion>HG3756.B6</bf:classificationPortion>
+	<bf:assigner>
+	  <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+	    <rdfs:label>United States, Library of Congress</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	  </bf:Organization>
+	</bf:assigner>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/uba">
+	    <rdfs:label>used by assigner</rdfs:label>
+	    <bf:code>uba</bf:code>
+	  </bf:Status>
+	</bf:status>
+      </bf:ClassificationLcc>
+    </bf:classification>
+    <bf:contribution>
+      <bf:Contribution>
+	<rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/PrimaryContribution"/>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/rwo/agents/no2018074748">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Person"/>
+	    <rdfs:label>Santos, Kauê Lopes dos</rdfs:label>
+	    <bflc:marcKey>1001 $aSantos, Kauê Lopes dos</bflc:marcKey>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:role>
+	  <bf:Role rdf:about="http://id.loc.gov/vocabulary/relators/aut">
+	    <rdfs:label>author</rdfs:label>
+	    <bf:code>aut</bf:code>
+	  </bf:Role>
+	</bf:role>
+      </bf:Contribution>
+    </bf:contribution>
+    <bf:title>
+      <bf:Title>
+	<bf:mainTitle>Financing poverty : consumption and debt dynamics in racialized São Paulo</bf:mainTitle>
+      </bf:Title>
+    </bf:title>
+    <bf:content>
+      <bf:Content rdf:about="http://id.loc.gov/vocabulary/contentTypes/txt">
+	<rdfs:label>text</rdfs:label>
+	<bf:code>txt</bf:code>
+      </bf:Content>
+    </bf:content>
+    <bf:tableOfContents>
+      <bf:TableOfContents>
+	<rdfs:label>Introduction -- São Paulo : a city of superlatives -- Housing, labor, and wage in São Paulo's periphery -- Between needs and desires : scarcity and unsatisfied basic needs in Brasilândia, Jardim Ângela and Jardim Helene -- Contrasts under the same roof : consumer durables in black households in São Paulo's periphery -- The first payment is in 30 days : the spread of credit to lower-income population -- "They may be late, but they pay" : default, insolvency, and the mathematics of everyday life -- Conclusion : financing poverty.</rdfs:label>
+      </bf:TableOfContents>
+    </bf:tableOfContents>
+    <bf:summary>
+      <bf:Summary>
+	<rdfs:label>"This book examines how credit expansion has reshaped everyday life for Black residents of São Paulo's peripheries, where consumer goods coexist with infrastructural precarity. Drawing on more than a decade of research and 150 interviews, Kauê Lopes dos Santos shows how low-income populations have been incorporated into financial circuits through installment plans, retail credit, and digital platforms. Rather than signaling social mobility, this process produces new forms of indebtedness and vulnerability, embedding financial logics in domestic life. Centering race as a constitutive dimension of urban inequality, Lopes dos Santos argues that the financialization of poverty reconfigures--rather than reduces--inequality. Bridging urban geography and Black geographies, Financing Poverty offers a powerful account of how capital penetrates the margins of the city and reorganizes everyday survival"-- Provided by publisher.</rdfs:label>
+      </bf:Summary>
+    </bf:summary>
+    <dcterms:isPartOf rdf:resource="http://id.loc.gov/resources/works"/>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Consumer credit--Brazil--São Paulo</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Consumer credit--Brazil--São Paulo</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85031480">
+	    <rdfs:label xml:lang="en">Consumer credit</rdfs:label>
+	    <bflc:marcKey>150  $aConsumer credit</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	  <madsrdf:HierarchicalGeographic rdf:about="http://id.loc.gov/authorities/names/n79077404-781">
+	    <rdfs:label>Brazil--São Paulo</rdfs:label>
+	    <bflc:marcKey>181  $zBrazil$zSão Paulo</bflc:marcKey>
+	    <madsrdf:componentList rdf:parseType="Collection">
+	      <madsrdf:Geographic>
+		<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+		<madsrdf:authoritativeLabel>Brazil</madsrdf:authoritativeLabel>
+		<madsrdf:elementList rdf:parseType="Collection">
+		  <madsrdf:GeographicElement>
+		    <madsrdf:elementValue>Brazil</madsrdf:elementValue>
+		  </madsrdf:GeographicElement>
+		</madsrdf:elementList>
+	      </madsrdf:Geographic>
+	      <madsrdf:Geographic>
+		<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+		<madsrdf:authoritativeLabel>São Paulo</madsrdf:authoritativeLabel>
+		<madsrdf:elementList rdf:parseType="Collection">
+		  <madsrdf:GeographicElement>
+		    <madsrdf:elementValue>São Paulo</madsrdf:elementValue>
+		  </madsrdf:GeographicElement>
+		</madsrdf:elementList>
+	      </madsrdf:Geographic>
+	    </madsrdf:componentList>
+	  </madsrdf:HierarchicalGeographic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>consumercreditbrazilsãopaulo</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Black people--Brazil--São Paulo</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Black people--Brazil--São Paulo</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85014672">
+	    <rdfs:label xml:lang="en">Black people</rdfs:label>
+	    <bflc:marcKey>150  $aBlack people</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	  <madsrdf:HierarchicalGeographic rdf:about="http://id.loc.gov/authorities/names/n79077404-781">
+	    <rdfs:label>Brazil--São Paulo</rdfs:label>
+	    <bflc:marcKey>181  $zBrazil$zSão Paulo</bflc:marcKey>
+	    <madsrdf:componentList rdf:parseType="Collection">
+	      <madsrdf:Geographic>
+		<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+		<madsrdf:authoritativeLabel>Brazil</madsrdf:authoritativeLabel>
+		<madsrdf:elementList rdf:parseType="Collection">
+		  <madsrdf:GeographicElement>
+		    <madsrdf:elementValue>Brazil</madsrdf:elementValue>
+		  </madsrdf:GeographicElement>
+		</madsrdf:elementList>
+	      </madsrdf:Geographic>
+	      <madsrdf:Geographic>
+		<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+		<madsrdf:authoritativeLabel>São Paulo</madsrdf:authoritativeLabel>
+		<madsrdf:elementList rdf:parseType="Collection">
+		  <madsrdf:GeographicElement>
+		    <madsrdf:elementValue>São Paulo</madsrdf:elementValue>
+		  </madsrdf:GeographicElement>
+		</madsrdf:elementList>
+	      </madsrdf:Geographic>
+	    </madsrdf:componentList>
+	  </madsrdf:HierarchicalGeographic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>blackpeoplebrazilsãopaulo</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:subject>
+      <bf:Topic>
+	<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#ComplexSubject"/>
+	<rdfs:label>Poverty--Brazil--São Paulo</rdfs:label>
+	<madsrdf:authoritativeLabel xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">Poverty--Brazil--São Paulo</madsrdf:authoritativeLabel>
+	<madsrdf:isMemberOfMADSScheme xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:MADSScheme rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </madsrdf:MADSScheme>
+	</madsrdf:isMemberOfMADSScheme>
+	<madsrdf:componentList rdf:parseType="Collection" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+	  <madsrdf:Topic rdf:about="http://id.loc.gov/authorities/subjects/sh85105939">
+	    <rdfs:label xml:lang="en">Poverty</rdfs:label>
+	    <bflc:marcKey>150  $aPoverty</bflc:marcKey>
+	    <bf:source>
+	      <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+		<rdfs:label>LC Subject Headings</rdfs:label>
+	      </bf:Source>
+	    </bf:source>
+	  </madsrdf:Topic>
+	  <madsrdf:HierarchicalGeographic rdf:about="http://id.loc.gov/authorities/names/n79077404-781">
+	    <rdfs:label>Brazil--São Paulo</rdfs:label>
+	    <bflc:marcKey>181  $zBrazil$zSão Paulo</bflc:marcKey>
+	    <madsrdf:componentList rdf:parseType="Collection">
+	      <madsrdf:Geographic>
+		<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+		<madsrdf:authoritativeLabel>Brazil</madsrdf:authoritativeLabel>
+		<madsrdf:elementList rdf:parseType="Collection">
+		  <madsrdf:GeographicElement>
+		    <madsrdf:elementValue>Brazil</madsrdf:elementValue>
+		  </madsrdf:GeographicElement>
+		</madsrdf:elementList>
+	      </madsrdf:Geographic>
+	      <madsrdf:Geographic>
+		<rdf:type rdf:resource="http://www.loc.gov/mads/rdf/v1#Authority"/>
+		<madsrdf:authoritativeLabel>São Paulo</madsrdf:authoritativeLabel>
+		<madsrdf:elementList rdf:parseType="Collection">
+		  <madsrdf:GeographicElement>
+		    <madsrdf:elementValue>São Paulo</madsrdf:elementValue>
+		  </madsrdf:GeographicElement>
+		</madsrdf:elementList>
+	      </madsrdf:Geographic>
+	    </madsrdf:componentList>
+	  </madsrdf:HierarchicalGeographic>
+	</madsrdf:componentList>
+	<bflc:aap-normalized>povertybrazilsãopaulo</bflc:aap-normalized>
+	<bf:source>
+	  <bf:Source rdf:about="http://id.loc.gov/authorities/subjects">
+	    <rdfs:label xml:lang="en">Library of Congress Subject Headings</rdfs:label>
+	  </bf:Source>
+	</bf:source>
+      </bf:Topic>
+    </bf:subject>
+    <bf:relation>
+      <bf:Relation>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/vocabulary/relationship/otherphysicalformat">
+	    <rdfs:label>other physical format</rdfs:label>
+	    <bf:code>otherphysicalformat</bf:code>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:relationship>
+	  <bf:Relationship rdf:about="http://id.loc.gov/entities/relationships/onlineversion">
+	    <rdfs:label>Online version</rdfs:label>
+	  </bf:Relationship>
+	</bf:relationship>
+	<bf:associatedResource>
+	  <bf:Work>
+	    <bflc:aap>Santos, Kauê Lopes dos. Financing poverty</bflc:aap>
+	    <bflc:aap-normalized>santoskauêlopesdosfinancingpoverty</bflc:aap-normalized>
+	    <bf:title>
+	      <bf:Title>
+		<bf:mainTitle>Financing poverty</bf:mainTitle>
+	      </bf:Title>
+	    </bf:title>
+	    <bf:contribution>
+	      <bf:PrimaryContribution>
+		<bf:agent>
+		  <bf:Agent>
+		    <rdfs:label>Santos, Kauê Lopes dos</rdfs:label>
+		  </bf:Agent>
+		</bf:agent>
+	      </bf:PrimaryContribution>
+	    </bf:contribution>
+	    <bf:hasInstance>
+	      <bf:Instance>
+		<bf:title>
+		  <bf:Title>
+		    <bf:mainTitle>Financing poverty</bf:mainTitle>
+		  </bf:Title>
+		</bf:title>
+		<bf:provisionActivityStatement>Oakland, California : University of California Press, [2027]</bf:provisionActivityStatement>
+		<bf:identifiedBy>
+		  <bf:Isbn>
+		    <rdf:value>9780520427242</rdf:value>
+		  </bf:Isbn>
+		</bf:identifiedBy>
+		<bf:identifiedBy>
+		  <bf:Lccn>
+		    <rdf:value> 2026044747</rdf:value>
+		    <bf:assigner>
+		      <madsrdf:CorporateName rdf:about="http://id.loc.gov/vocabulary/organizations/dlc" xmlns:madsrdf="http://www.loc.gov/mads/rdf/v1#">
+			<rdfs:label>United States, Library of Congress</rdfs:label>
+			<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+			<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+			<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+		      </madsrdf:CorporateName>
+		    </bf:assigner>
+		  </bf:Lccn>
+		</bf:identifiedBy>
+	      </bf:Instance>
+	    </bf:hasInstance>
+	  </bf:Work>
+	</bf:associatedResource>
+      </bf:Relation>
+    </bf:relation>
+    <bf:hasInstance rdf:resource="http://id.loc.gov/resources/instances/in00024905054"/>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/n">
+	    <rdfs:label>new</rdfs:label>
+	    <bf:code>n</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-18T00:00:00</bf:date>
+	<bf:agent>
+	  <bf:Agent>
+	    <bf:code>CU-S/DLC</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:status>
+	  <bf:Status rdf:about="http://id.loc.gov/vocabulary/mstatus/c">
+	    <rdfs:label>changed</rdfs:label>
+	    <bf:code>c</bf:code>
+	  </bf:Status>
+	</bf:status>
+	<bf:agent>
+	  <bf:Agent rdf:about="http://id.loc.gov/vocabulary/organizations/dlcmrc">
+	    <rdf:type rdf:resource="http://id.loc.gov/ontologies/bibframe/Organization"/>
+	    <rdfs:label>United States, Library of Congress, Network Development and MARC Standards Office</rdfs:label>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC-MRC</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlcmrc</bf:code>
+	    <bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlcmrc</bf:code>
+	  </bf:Agent>
+	</bf:agent>
+	<bf:generationProcess rdf:resource="https://github.com/lcnetdev/marc2bibframe2/tree/v3.2-dev"/>
+	<bf:date rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-09-25T01:44:45.789594-04:00</bf:date>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+    <bf:adminMetadata>
+      <bf:AdminMetadata>
+	<bf:descriptionLevel rdf:resource="http://id.loc.gov/ontologies/bibframe-3-0-1/"/>
+	<bflc:encodingLevel>
+	  <bflc:EncodingLevel rdf:about="http://id.loc.gov/vocabulary/menclvl/8">
+	    <rdfs:label>prepublication</rdfs:label>
+	    <bf:code>8</bf:code>
+	  </bflc:EncodingLevel>
+	</bflc:encodingLevel>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/isbd">
+	    <rdfs:label>ISBD: International standard bibliographic description</rdfs:label>
+	    <bf:code>isbd</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:identifiedBy>
+	  <bf:Local>
+	    <rdf:value>in00024905054</rdf:value>
+	    <bf:assigner>
+	      <bf:Organization rdf:about="http://id.loc.gov/vocabulary/organizations/dlc">
+		<rdfs:label>United States, Library of Congress</rdfs:label>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/code">DLC</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/normalized">dlc</bf:code>
+		<bf:code rdf:datatype="http://id.loc.gov/datatypes/orgs/iso15511">US-dlc</bf:code>
+	      </bf:Organization>
+	    </bf:assigner>
+	  </bf:Local>
+	</bf:identifiedBy>
+	<bflc:marcKey>906  $a0$bibc$corignew$d1$eecip$f20$gy-gencatlg</bflc:marcKey>
+	<lclocal:d906>=906     $a 0 $b ibc $c orignew $d 1 $e ecip $f 20 $g y-gencatlg</lclocal:d906>
+	<bflc:marcKey>9250 $aacquire$b1 shelf copy$xpolicy default</bflc:marcKey>
+	<lclocal:d925>=925  0  $a acquire $b 1 shelf copy $x policy default</lclocal:d925>
+	<bflc:marcKey>955  $bCU-S 2026-09-18</bflc:marcKey>
+	<lclocal:d955>=955     $b CU-S 2026-09-18</lclocal:d955>
+	<bf:descriptionLanguage>
+	  <bf:Language rdf:about="http://id.loc.gov/vocabulary/languages/eng">
+	    <rdfs:label xml:lang="en">English</rdfs:label>
+	    <bf:code rdf:datatype="http://www.w3.org/2001/XMLSchema#string">eng</bf:code>
+	  </bf:Language>
+	</bf:descriptionLanguage>
+	<bf:descriptionConventions>
+	  <bf:DescriptionConventions rdf:about="http://id.loc.gov/vocabulary/descriptionConventions/rda">
+	    <rdfs:label>Resource description and access</rdfs:label>
+	    <bf:code>rda</bf:code>
+	  </bf:DescriptionConventions>
+	</bf:descriptionConventions>
+	<bf:note>
+	  <bf:Note>
+	    <rdf:type rdf:resource="http://id.loc.gov/vocabulary/mnotetype/internal"/>
+	    <rdfs:label>040  $aCU-S/DLC$beng$erda$cDLC</rdfs:label>
+	  </bf:Note>
+	</bf:note>
+	<bf:descriptionAuthentication>
+	  <bf:DescriptionAuthentication rdf:about="http://id.loc.gov/vocabulary/marcauthen/pcc">
+	    <rdfs:label>Program for Cooperative Cataloging</rdfs:label>
+	    <bf:code>pcc</bf:code>
+	  </bf:DescriptionAuthentication>
+	</bf:descriptionAuthentication>
+	<lclocal:d985>=985     $a CU-SCIP $d 2026-09-18</lclocal:d985>
+	<bflc:marcKey>999ff$i48b94b4a-8e0c-4f53-822f-4b5f360762c9$saebe647b-084d-440d-a0f0-9e649ea61830</bflc:marcKey>
+	<lclocal:d999>=999  ff $i 48b94b4a-8e0c-4f53-822f-4b5f360762c9 $s aebe647b-084d-440d-a0f0-9e649ea61830</lclocal:d999>
+      </bf:AdminMetadata>
+    </bf:adminMetadata>
+  </bf:Work>
+</rdf:RDF>

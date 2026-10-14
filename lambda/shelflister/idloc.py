@@ -51,6 +51,8 @@ class IdLocRecord:
     lcc: list[tuple[str, str]] = field(default_factory=list)     # (classificationPortion, itemPortion) as LC assigned
     contributors: list[str] = field(default_factory=list)        # everyone, "Label (role)"
     creator_uri: str | None = None                               # the PrimaryContribution agent's URI, when LC linked it
+    creator_as_given: str | None = None                          # the record's own form, when the NAF heading replaced it
+    authority: dict | None = None                                # authority_summary() of the main entry
     isbndb: dict | None = None                                   # the ISBNdb book record, if fetched
     isbndb_added: list[str] = field(default_factory=list)        # which Resource fields ISBNdb filled
 
@@ -189,6 +191,10 @@ def parse_cbd(xml: bytes) -> tuple[Resource, IdLocRecord]:
     if pa is not None:
         r.date = (pa.findtext("bflc:simpleDate", None, NS) or pa.findtext("bf:date", None, NS) or "").strip() or None
         r.publisher = (pa.findtext("bflc:simpleAgent", None, NS) or _label(pa.find("bf:agent/bf:Agent", NS)) or "").strip() or None
+        places = [x for x in ((pa.findtext("bflc:simplePlace", None, NS) or "").strip(),
+                              *(_label(pl) or "" for pl in pa.findall("bf:place/bf:Place", NS))) if x]
+        if places:
+            r.extra["place_of_publication"] = "; ".join(dict.fromkeys(places))
     if not r.date:
         stmt = inst.findtext("bf:publicationStatement", "", NS) or ""
         m = re.search(r"\b(1[5-9]\d\d|20\d\d)\b", stmt)
@@ -307,11 +313,190 @@ def enrich_from_isbndb(r: Resource, book: dict, rec: IdLocRecord) -> None:
     rec.isbndb, rec.isbndb_added = book, added
 
 
+# ------------------------------------------------------------------ LC name authority
+NAF = "https://id.loc.gov/authorities/names"
+
+
+def _name_tokens(label: str) -> tuple[set[str], set[str]]:
+    """(word tokens, date tokens) of a heading, diacritics stripped."""
+    from .filing import normalize_letters
+    words = re.findall(r"[a-z0-9]+", normalize_letters(label).lower())
+    return {w for w in words if not w.isdigit()}, {w for w in words if w.isdigit() and len(w) == 4}
+
+
+def naf_match(label: str, hits: list[dict]) -> dict | None:
+    """The authority whose authorized or variant heading contains every word of `label` (and agrees on
+    any dates): 'Donaldson, James, 1998-' matches the variant 'Donaldson, James Stephen, 1998-' of
+    'MrBeast, 1998-'. Returns {"label", "uri", "via"} or None."""
+    words, dates = _name_tokens(label)
+    if not words:
+        return None
+    for h in hits:
+        for cand, via in [(h.get("aLabel", ""), "authorized")] + [(v, "variant") for v in (h.get("more") or {}).get("variantLabels") or []]:
+            cw, cd = _name_tokens(cand)
+            if words <= cw and (not dates or not cd or dates & cd):
+                return {"label": h["aLabel"], "uri": h["uri"], "via": via, "matched": cand}
+    return None
+
+
+def reconcile_name(label: str, cache_dir: Path | None = CACHE_DIR, timeout: float = 20.0) -> dict | None:
+    """Look a heading up in the LC Name Authority File; exact (authorized or variant) first, then keyword."""
+    import hashlib
+    cache = cache_dir / f"naf_{hashlib.sha1(label.encode()).hexdigest()[:16]}.json" if cache_dir else None
+    if cache and cache.exists():
+        return json.loads(cache.read_text()) or None
+    result = None
+    try:
+        r = httpx.get(f"{NAF}/label/{label}", timeout=timeout, follow_redirects=False)
+        if r.status_code in (302, 303) and r.headers.get("x-preflabel"):
+            result = {"label": r.headers["x-preflabel"], "uri": r.headers.get("x-uri") or r.headers.get("location"), "via": "label", "matched": label}
+        else:
+            r = httpx.get(f"{NAF}/suggest2", params={"q": label, "searchtype": "keyword", "count": 8}, timeout=timeout)
+            r.raise_for_status()
+            result = naf_match(label, r.json().get("hits") or [])
+    except httpx.HTTPError:
+        return None
+    if cache:
+        _write_atomic(cache, json.dumps(result or {}, ensure_ascii=False).encode("utf-8"))
+    return result
+
+
+def apply_naf(r: Resource, rec: IdLocRecord, cache_dir: Path | None = CACHE_DIR) -> None:
+    """An unlinked main entry (CIP-level record) may be a variant of an established heading; the book
+    number is built on the authorized form, so use it and keep the record's form as a note."""
+    if not r.creator or rec.creator_uri:
+        return
+    m = reconcile_name(r.creator, cache_dir)
+    if not m:
+        r.notes.insert(0, f"Main entry '{r.creator}' is not linked to the LC Name Authority File (no match found); Cutter on it as given.")
+        return
+    rec.creator_uri = m["uri"]
+    if m["label"].rstrip(" ,.") != r.creator.rstrip(" ,."):
+        rec.creator_as_given = r.creator
+        r.extra["creator_as_given"] = r.creator
+        r.notes.insert(0, f"Main entry as given in the record: {r.creator}. LC Name Authority File authorized heading: "
+                          f"{m['label']} ({m['uri']}, matched via {m['via']} '{m['matched']}'). The book number is built on the authorized heading.")
+        r.creator = m["label"].rstrip(" ,.")
+
+
+# ------------------------------------------------------------------ name authority record
+def _authority_json(uri: str, cache_dir: Path | None = CACHE_DIR, timeout: float = 30.0) -> list | None:
+    """The MADS/RDF JSON-LD of an id.loc.gov authority (names, subjects; rwo/agents URIs map to names)."""
+    uri = uri.replace("http://", "https://").replace("/rwo/agents/", "/authorities/names/")
+    if not re.match(r"https://id\.loc\.gov/authorities/\w+/[\w.-]+$", uri):
+        return None
+    key = uri.rsplit("/", 1)[1]
+    cache = cache_dir / f"auth_{key}.json" if cache_dir else None
+    if cache and cache.exists():
+        return json.loads(cache.read_text())
+    r = httpx.get(uri + ".madsrdf.json", follow_redirects=True, timeout=timeout)
+    if r.status_code == 404:
+        data = []
+    else:
+        r.raise_for_status()
+        data = r.json()
+    if cache:
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        cache.write_text(json.dumps(data))
+    return data
+
+
+def _authority_label(uri: str, cache_dir: Path | None = CACHE_DIR) -> str | None:
+    try:
+        nodes = _authority_json(uri, cache_dir) or []
+    except httpx.HTTPError:
+        return None
+    want = uri.replace("https://", "http://").replace("/rwo/agents/", "/authorities/names/")
+    for n in nodes:
+        if n.get("@id") == want:
+            for k, v in n.items():
+                if k.endswith("#authoritativeLabel"):
+                    return (v[0].get("@value") if isinstance(v, list) and v else None)
+    return None
+
+
+def authority_summary(uri: str, cache_dir: Path | None = CACHE_DIR) -> dict:
+    """What the Name Authority File says about an agent: 053 class numbers (with their labels), associated
+    places (birthplace, locale), field of activity, occupations, and the sources' prose notes (670 $b)."""
+    out = {"uri": uri, "class_numbers": [], "places": [], "activity": [], "occupations": [], "notes": []}
+    nodes = _authority_json(uri, cache_dir) or []
+    byid = {n.get("@id"): n for n in nodes if isinstance(n, dict)}
+
+    def refs(v):
+        return [x for x in (v if isinstance(v, list) else [v]) if isinstance(x, dict)]
+
+    def label_of(x):
+        if "@value" in x:
+            return x["@value"]
+        node = byid.get(x.get("@id"))
+        if node:
+            for k, v in node.items():
+                if k.endswith("#authoritativeLabel") or k.endswith("#label"):
+                    return refs(v)[0].get("@value") if refs(v) else None
+        return _authority_label(x["@id"], cache_dir) if x.get("@id", "").startswith("http") else None
+
+    for n in nodes:
+        for k, v in n.items():
+            key = k.rsplit("#", 1)[-1]
+            if key == "classification":
+                for x in refs(v):
+                    b = byid.get(x.get("@id"), x)
+                    code = next((refs(vv)[0].get("@value") for kk, vv in b.items() if kk.endswith("#code") and refs(vv)), None)
+                    lab = next((refs(vv)[0].get("@value") for kk, vv in b.items() if kk.endswith("#label") and refs(vv)), None)
+                    if code:
+                        out["class_numbers"].append((code, lab))
+            elif key in ("birthPlace", "associatedLocale"):
+                out["places"].extend(f"{'born' if key == 'birthPlace' else 'associated with'}: {lab}"
+                                     for lab in (label_of(x) for x in refs(v)) if lab)
+            elif key == "fieldOfActivity":
+                out["activity"].extend(lab for lab in (label_of(x) for x in refs(v)) if lab)
+            elif key == "occupation":
+                out["occupations"].extend(lab for lab in (label_of(x) for x in refs(v)) if lab)
+            elif key == "citationNote":
+                for x in refs(v):
+                    t = (x.get("@value") or "").strip()
+                    if len(t) > 25 and not t.lower().startswith(("cip t.p.", "cip title page", "t.p.", "title page")):
+                        out["notes"].append(t[:300])
+    out["notes"] = out["notes"][:3]
+    return out
+
+
+def apply_authority(r: Resource, rec: IdLocRecord, cache_dir: Path | None = CACHE_DIR) -> None:
+    """Add what the Name Authority File knows about the main entry (after apply_naf set creator_uri)."""
+    if not rec.creator_uri:
+        return
+    try:
+        a = authority_summary(rec.creator_uri, cache_dir)
+    except Exception as e:  # noqa: BLE001
+        r.notes.append(f"(name authority record not read: {e})")
+        return
+    rec.authority = a
+    parts = []
+    if a["class_numbers"]:
+        parts.append("LC class number(s) established for this heading (053): "
+                     + "; ".join(c + (f" ({lab})" if lab else "") for c, lab in a["class_numbers"]))
+    if a["places"]:
+        parts.append("places: " + "; ".join(a["places"]))
+    if a["activity"]:
+        parts.append("field of activity: " + "; ".join(a["activity"][:4]))
+    if a["occupations"]:
+        parts.append("occupation: " + "; ".join(a["occupations"][:4]))
+    if a["notes"]:
+        parts.append("source notes: " + " | ".join(a["notes"]))
+    if parts:
+        r.extra["name_authority"] = f"({a['uri'].rsplit('/', 1)[-1]}) " + ". ".join(parts)
+    if a["class_numbers"]:
+        r.extra["authority_class_numbers"] = [c for c, _ in a["class_numbers"]]
+
+
 # ------------------------------------------------------------------ entry point
-def from_lccn(lccn: str | None = None, *, bibid: str | None = None, use_isbndb: bool = True,
+def from_lccn(lccn: str | None = None, *, bibid: str | None = None, use_isbndb: bool = True, use_naf: bool = True,
               cache_dir: Path | None = CACHE_DIR) -> tuple[Resource, IdLocRecord]:
     url = instance_url(bibid) if bibid else resolve_lccn(lccn)
     r, rec = parse_cbd(fetch_cbd(url, cache_dir))
+    if use_naf:
+        apply_naf(r, rec, cache_dir)
+        apply_authority(r, rec, cache_dir)
     if use_isbndb:
         for isbn in rec.isbns:
             try:

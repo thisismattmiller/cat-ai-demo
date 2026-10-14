@@ -37,8 +37,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--hide-class", action="store_true", help="with a record: ignore its 050 and classify from scratch")
     ap.add_argument("--no-lambda", action="store_true", help="do not consult the similar-records lambda")
     ap.add_argument("--no-isbndb", action="store_true", help="with --lccn/--bibid: do not enrich from ISBNdb")
+    ap.add_argument("--no-naf", action="store_true", help="with --lccn/--bibid: do not reconcile an unlinked main entry with the LC Name Authority File")
     ap.add_argument("--sru", action="store_true", help="with --lccn/--bibid: fetch MARC from LC's SRU server instead of id.loc.gov")
-    ap.add_argument("--model", help="gemini-3.8-flash (default), sonnet (claude-sonnet-5-5), opus, or any full model id")
+    ap.add_argument("--model", help="gemini-3.8-flash (default), sonnet (claude-sonnet-5-5), haiku (claude-haiku-5-5), opus, or any full model id")
     ap.add_argument("--effort", choices=["low", "medium", "high", "xhigh", "max"], help="Claude models only")
     ap.add_argument("--out", help="write the full result JSON here")
     ap.add_argument("--trace", action="store_true", help="print the tool traces")
@@ -60,7 +61,7 @@ def main(argv: list[str] | None = None) -> int:
                           publisher=a.publisher, edition=a.edition, subjects=a.subject or [])
     elif (a.lccn or a.bibid) and not a.sru:
         try:
-            res_in, idrec = idloc.from_lccn(a.lccn, bibid=a.bibid, use_isbndb=not a.no_isbndb)
+            res_in, idrec = idloc.from_lccn(a.lccn, bibid=a.bibid, use_isbndb=not a.no_isbndb, use_naf=not a.no_naf)
         except LookupError as e:
             print(f"{e}; trying LC's SRU server", file=sys.stderr)
             rec = marc.fetch_lc(lccn=a.lccn, bibid=a.bibid)
@@ -69,6 +70,8 @@ def main(argv: list[str] | None = None) -> int:
             print(f"id.loc.gov    : {idrec.instance_url}")
             if idrec.contributors:
                 print(f"contributors  : {'; '.join(idrec.contributors)}")
+            if idrec.creator_as_given:
+                print(f"main entry    : {res_in.creator}  (record has '{idrec.creator_as_given}'; LC NAF {idrec.creator_uri})")
             if idrec.isbndb_added:
                 print(f"ISBNdb added  : {', '.join(idrec.isbndb_added)}")
             if idrec.lcc:

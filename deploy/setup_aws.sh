@@ -43,6 +43,7 @@ v["SUBJECT_SUGGEST_URL"] = "$SUBJECT_SUGGEST_URL"
 v["SHELFLISTER_CACHE_DIR"] = "/tmp/cache"
 v["SHELFLISTER_LCC_DB"] = "/var/task/build/lcc.sqlite"
 v["TASK_FANOUT"] = os.environ.get("TASK_FANOUT", "threads")
+v["CAT_AI_MODEL"] = os.environ.get("CAT_AI_MODEL", "claude-haiku-5-5")
 json.dump({"Variables": v}, open(sys.argv[1], "w"))
 PY
 

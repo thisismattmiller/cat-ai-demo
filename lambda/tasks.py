@@ -26,6 +26,7 @@ from ws import Emitter
 SUBJECT_SUGGEST_URL = os.environ.get("SUBJECT_SUGGEST_URL") or "https://abeniabvmaysz2npcr3sr47fxq0xgoes.lambda-url.us-east-1.on.aws/"
 TASKS = ["record", "subjects", "shelflist", "names"]
 NAMES_WAIT_S = float(os.environ.get("NAMES_WAIT_S", "600"))
+DEFAULT_MODEL = os.environ.get("CAT_AI_MODEL", "claude-haiku-5-5")     # both tools, unless overridden per tool
 
 
 class RunContext:
@@ -65,8 +66,10 @@ def recommended_heading(names_result: dict | None, label: str) -> dict | None:
 
 # --------------------------------------------------------------------------- the record
 def load_record(lccn: str, *, use_isbndb: bool = True):
+    """The record as it stands on id.loc.gov (+ ISBNdb). The shelflister's own NAF lookup is NOT applied here
+    (use_naf=False): run_shelflist decides how the main entry is reconciled (the name task, else that lookup)."""
     from shelflister import idloc
-    return idloc.from_lccn(lccn, use_isbndb=use_isbndb)
+    return idloc.from_lccn(lccn, use_isbndb=use_isbndb, use_naf=False)
 
 
 def record_dict(resource, rec) -> dict:
@@ -95,26 +98,77 @@ def run_record(lccn: str, options: dict, em: Emitter) -> dict:
 
 
 # --------------------------------------------------------------------------- subject suggest
-def run_subjects(lccn: str, options: dict, em: Emitter) -> dict:
-    em.progress("fetching the record from id.loc.gov")
-    resource, rec = load_record(lccn, use_isbndb=options.get("isbndb", True))
-    body = {"action": "classify", "title": resource.title, "top_k": int(options.get("top_k", 10))}
-    if resource.creator:
-        body["creator"] = resource.creator
+def _subject_description(resource) -> str:
+    """Free text for the lambda's `user_description`: it expands this with an LLM into an English topical
+    document before embedding, which is what a romanized or untranslated title needs."""
+    parts = [f'A work titled "{resource.title}"']
+    for label, v in (("by", resource.creator), ("language:", resource.language), ("published by", resource.publisher),
+                     ("date:", resource.date), ("series:", resource.series),
+                     ("genre/form:", ", ".join(resource.genre_form) if resource.genre_form else None),
+                     ("bookseller subjects:", resource.extra.get("isbndb_subjects")),
+                     ("audience:", resource.extra.get("audience"))):
+        if v:
+            parts.append(f"{label} {v}")
+    text = "; ".join(parts) + "."
+    for n in resource.notes[:3]:
+        if not n.startswith(("Main entry", "(ISBNdb")):
+            text += f" {n[:300]}"
     if resource.summary:
-        body["summary"] = resource.summary
+        text += f" Summary: {resource.summary[:1500]}"
     if resource.contents:
-        body["content"] = resource.contents
-    if options.get("auto_filter"):
-        body["auto_filter"] = True
-    em.progress("querying the subject-suggest lambda (vector search over LC's catalog, then an LLM pick)",
-                fields=[k for k in ("title", "creator", "summary", "content") if k in body])
-    r = httpx.post(SUBJECT_SUGGEST_URL, json=body, headers={"Origin": "https://bibframe.org"},
-                   timeout=float(options.get("timeout", 240)))
+        text += f" Contents: {resource.contents[:1200]}"
+    return text + (" The title may be romanized from another language: work out what it means in English and what the "
+                   "work is about.")
+
+
+def _subject_call(body: dict, timeout: float) -> dict:
+    r = httpx.post(SUBJECT_SUGGEST_URL, json=body, headers={"Origin": "https://bibframe.org"}, timeout=timeout)
     r.raise_for_status()
     d = r.json()
     if "error" in d and "search_results" not in d:
         raise RuntimeError(f"subject-suggest lambda: {d['error']}")
+    return d
+
+
+def run_subjects(lccn: str, options: dict, em: Emitter) -> dict:
+    em.progress("fetching the record from id.loc.gov")
+    resource, rec = load_record(lccn, use_isbndb=options.get("isbndb", True))
+    timeout = float(options.get("timeout", 240))
+    base = {"action": "classify", "title": resource.title, "top_k": int(options.get("top_k", 10))}
+    if resource.creator:
+        base["creator"] = resource.creator
+    if options.get("auto_filter"):
+        base["auto_filter"] = True
+
+    # Direct mode embeds title + summary + contents as given: right for an English record with a real summary.
+    # A bare romanized title finds neighbours by its words ("Dirāsah ...", "Hakadhā ..."), not its topic, so a
+    # record with no summary/contents, or not in English, goes through the lambda's LLM expansion instead.
+    lang = (resource.language or "").lower()
+    english = not lang or lang.startswith("eng")
+    thin = not (resource.summary or resource.contents)
+    mode = options.get("mode") or ("description" if (thin or not english) else "direct")
+
+    def call(m: str) -> dict:
+        body = dict(base)
+        if m == "description":
+            body["user_description"] = _subject_description(resource)
+            em.progress("querying the subject-suggest lambda with an LLM-expanded description "
+                        + ("(no summary on the record)" if thin else f"(record language: {resource.language})"), mode=m)
+        else:
+            if resource.summary:
+                body["summary"] = resource.summary
+            if resource.contents:
+                body["content"] = resource.contents
+            em.progress("querying the subject-suggest lambda (vector search over LC's catalog, then an LLM pick)",
+                        fields=[k for k in ("title", "creator", "summary", "content") if k in body], mode=m)
+        return body, _subject_call(body, timeout)
+
+    body, d = call(mode)
+    if mode == "direct" and not d.get("recommended_subjects") and options.get("retry", True):
+        em.progress("no headings recommended from the nearest records; retrying with an LLM-expanded description")
+        mode = "description"
+        body, d = call(mode)
+
     enrich = d.get("enrichment", {}) or {}
     neighbours = []
     for s in d.get("search_results", []) or []:
@@ -142,9 +196,11 @@ def run_subjects(lccn: str, options: dict, em: Emitter) -> dict:
         "lc_subjects": lc_subjects,
         "lc_genre_form": list(resource.genre_form),
         "lc_classifications": lc_class,
+        "mode": mode,
+        "expanded_description": (d.get("expanded_description") or "")[:2500] or None,
         "auto_filter": d.get("auto_filter"),
         "performance": d.get("performance"),
-        "request": {k: (v if k != "summary" else v[:200] + ("…" if len(v) > 200 else "")) for k, v in body.items()},
+        "request": {k: (v if len(str(v)) <= 200 else str(v)[:200] + "…") for k, v in body.items()},
     }
 
 
@@ -176,29 +232,60 @@ def run_shelflist(lccn: str, options: dict, em: Emitter, ctx: "RunContext | None
     # reconciler and use the heading it recommends.
     main_entry = {"as_transcribed": resource.creator, "authority_uri": rec.creator_uri, "used": resource.creator, "source": "record"}
     heading_note = None
-    if resource.creator and not rec.creator_uri and ctx and "names" in ctx.tasks and options.get("wait_for_names", True):
-        em.progress(f"main entry '{resource.creator}' has no authority link on the record; waiting for name reconciliation "
-                    f"before building the Cutter", stage="waiting_for_names")
-        t0 = time.time()
-        names = ctx.wait_for_names()
+
+    def use_heading(label: str, uri: str, source: str, how: str) -> None:
+        """Swap the main entry for the authorized heading, the way shelflister.idloc.apply_naf records it."""
+        nonlocal heading_note
+        given = resource.creator
+        main_entry.update({"used": label.rstrip(" ,."), "authority_uri": uri, "source": source})
+        rec.creator_uri = uri
+        if _name_key(label) != _name_key(given):
+            rec.creator_as_given = given
+            resource.extra["creator_as_given"] = given
+            resource.notes.insert(0, f"Main entry as given in the record: {given}. LC Name Authority File authorized heading: "
+                                     f"{label} ({uri}, {how}). The book number is built on the authorized heading.")
+            # the model must Cutter and number the author by the heading as established, not the real surname
+            heading_note = (f"The main entry's authorized LC name heading is '{label}' ({uri}). The record transcribes the "
+                            f"name as '{given}', which is not the established heading. Base the individual author number, "
+                            f"the author Cutter, and any main-entry Cutter on the authorized heading exactly as it reads "
+                            f"(its first letters), never on the transcribed or real surname.")
+        resource.creator = label.rstrip(" ,.")
+
+    if resource.creator and not rec.creator_uri:
+        names = None
+        waited = ctx is not None and "names" in ctx.tasks and options.get("wait_for_names", True)
+        if waited:
+            em.progress(f"main entry '{resource.creator}' has no authority link on the record; waiting for name reconciliation "
+                        f"before building the Cutter", stage="waiting_for_names")
+            t0 = time.time()
+            names = ctx.wait_for_names()
+            main_entry["waited_s"] = round(time.time() - t0, 1)
         hit = recommended_heading(names, resource.creator)
         if hit:
-            main_entry.update({"used": hit["recommended_label"], "authority_uri": hit["recommended_authority_uri"],
-                               "source": hit.get("recommendation_source") or "lcnaf", "waited_s": round(time.time() - t0, 1)})
-            if _name_key(hit["recommended_label"]) != _name_key(resource.creator):
-                # the model must Cutter and number the author by the heading as established, not the real surname
-                heading_note = (f"The main entry's authorized LC name heading is '{hit['recommended_label']}' "
-                                f"({hit['recommended_authority_uri']}). The record transcribes the name as "
-                                f"'{resource.creator}', which is not the established heading. Base the individual "
-                                f"author number, the author Cutter, and any main-entry Cutter on the authorized heading "
-                                f"exactly as it reads (its first letters), never on the transcribed or real surname.")
-            resource.creator = hit["recommended_label"]
+            use_heading(hit["recommended_label"], hit["recommended_authority_uri"], hit.get("recommendation_source") or "lcnaf",
+                        "matched by name reconciliation")
             em.progress(f"name reconciliation recommends the authorized heading '{resource.creator}' "
                         f"({hit['recommended_authority_uri']}); using it as the main entry", stage="main_entry")
-        else:
-            main_entry["waited_s"] = round(time.time() - t0, 1)
-            em.progress("name reconciliation found no LCNAF heading for the main entry; using the name as transcribed"
-                        if names else "name reconciliation did not finish; using the name as transcribed", stage="main_entry")
+        elif names:
+            # the reconciler examined the candidates and rejected them: do not second-guess it with a looser lookup
+            resource.notes.insert(0, f"Main entry '{resource.creator}' is not linked to the LC Name Authority File "
+                                     f"(no match found); Cutter on it as given.")
+            em.progress("name reconciliation found no LCNAF heading for the main entry; using the name as transcribed",
+                        stage="main_entry")
+        elif options.get("naf_lookup", True):
+            # no name task in this run (or it failed): the shelflister's own mechanical NAF lookup
+            from shelflister import idloc
+            m = idloc.reconcile_name(resource.creator)
+            if m:
+                use_heading(m["label"], m["uri"], "naf-lookup", f"matched via {m['via']} '{m['matched']}'")
+                em.progress(f"NAF lookup: '{main_entry['as_transcribed']}' is {m['via']} of the authorized heading "
+                            f"'{resource.creator}' ({m['uri']}); using it as the main entry", stage="main_entry")
+            else:
+                resource.notes.insert(0, f"Main entry '{resource.creator}' is not linked to the LC Name Authority File "
+                                         f"(no match found); Cutter on it as given.")
+                em.progress(("name reconciliation did not finish; " if waited else "") +
+                            "NAF lookup found no heading for the main entry; using the name as transcribed", stage="main_entry")
+        resource.notes = resource.notes[:9]
     class_number = None
     if rec.lcc and not hide_class:
         class_number = rec.lcc[0][0]
@@ -209,7 +296,7 @@ def run_shelflist(lccn: str, options: dict, em: Emitter, ctx: "RunContext | None
     if hide_subjects:
         resource.subjects, resource.genre_form = [], []
 
-    pipe = Pipeline(model=options.get("model") or os.environ.get("SHELFLISTER_MODEL"),
+    pipe = Pipeline(model=options.get("model") or os.environ.get("SHELFLISTER_MODEL") or DEFAULT_MODEL,
                     effort=options.get("effort"), use_lambda=bool(options.get("use_lambda", True)))
     phase = {"name": "classify" if class_number is None else "compose"}
 
@@ -232,7 +319,7 @@ def run_shelflist(lccn: str, options: dict, em: Emitter, ctx: "RunContext | None
                                                      else "profiling the resource for the CSM rules"), phase=phase["name"])
     extra = "\n\n".join(x for x in (options.get("context"), heading_note) if x) or None
     res = pipe.run(resource, class_number, extra_context=extra, exclude_bibids={rec.bibid} if rec.bibid else None,
-                   on_stage=on_stage)
+                   exclude_record={"lccn": rec.lccn, "isbns": list(rec.isbns)}, on_stage=on_stage)
 
     out = {
         "class_number": res.class_number,
@@ -254,6 +341,8 @@ def run_shelflist(lccn: str, options: dict, em: Emitter, ctx: "RunContext | None
                                                        "reasoning", "alternatives", "confidence", "needs_new_number",
                                                        "open_questions")}
         out["classification"]["tool_calls"] = sum(1 for t in c.get("trace", []) if "tool" in t)
+        if c.get("board"):
+            out["classification"]["board"] = c["board"][:8]      # the fused candidate board the model started from
     if res.compose:
         cp = res.compose
         out["compose"] = {k: cp.get(k) for k in ("call_number", "reasoning", "citations", "confidence", "open_questions",
@@ -366,7 +455,7 @@ def run_names(lccn: str, options: dict, em: Emitter) -> dict:
     from nar_reconcile.pipeline import Options, reconcile_lccn
 
     provider_name = options.get("provider") or os.environ.get("NAR_PROVIDER", "claude")
-    model = options.get("model") or os.environ.get("NAR_MODEL") or None
+    model = options.get("model") or os.environ.get("NAR_MODEL") or (DEFAULT_MODEL if provider_name in ("claude", "anthropic", "sonnet") else None)
     kw = {"effort": options.get("effort", "medium")} if provider_name in ("claude", "anthropic", "sonnet") else {}
     prov = get_provider(provider_name, model, **kw)
     opts = Options(**{k: v for k, v in (options.get("nar") or {}).items() if k in Options.__dataclass_fields__})

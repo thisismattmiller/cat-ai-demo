@@ -10,6 +10,12 @@ anyio==4.15.1
     #   google-genai
     #   httpx
     #   httpx2
+boto3==1.43.105
+    # via cat-ai-demo
+botocore==1.43.105
+    # via
+    #   boto3
+    #   s3transfer
 certifi==2026.7.22
     # via
     #   httpcore
@@ -53,6 +59,10 @@ idna==3.20
     #   requests
 jiter==0.17.0
     # via anthropic
+jmespath==1.1.0
+    # via
+    #   boto3
+    #   botocore
 pyasn1==0.6.4
     # via pyasn1-modules
 pyasn1-modules==0.4.2
@@ -68,6 +78,8 @@ pydantic-core==2.46.5
     # via pydantic
 pymarc==5.4.0
     # via cat-ai-demo
+python-dateutil==2.9.0.post0
+    # via botocore
 pyyaml==6.0.3
     # via cat-ai-demo
 requests==2.34.2
@@ -75,6 +87,10 @@ requests==2.34.2
     #   cat-ai-demo
     #   google-auth
     #   google-genai
+s3transfer==0.19.2
+    # via boto3
+six==1.17.0
+    # via python-dateutil
 sniffio==1.3.1
     # via
     #   anthropic
@@ -99,6 +115,8 @@ typing-inspection==0.4.4
 unidecode==1.4.0
     # via cat-ai-demo
 urllib3==2.8.0
-    # via requests
+    # via
+    #   botocore
+    #   requests
 websockets==16.1.1
     # via google-genai

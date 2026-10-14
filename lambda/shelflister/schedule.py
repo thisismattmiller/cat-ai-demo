@@ -17,6 +17,7 @@ import json
 import os
 import re
 import sqlite3
+import threading
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -96,6 +97,7 @@ class Lookup:
     children: list[Node]
     siblings: list[Node]
     tables: dict[str, "Table"]
+    via: str | None = None        # "Table KDZ-KH2 (Brazil)" when the entry was expanded from a jurisdiction table
 
     @property
     def narrowest(self) -> Node | None:
@@ -118,6 +120,8 @@ class Lookup:
             lines.append("  " + "  " * i + n.label().replace("\n", "\n" + "  " * (i + 1)))
         d = len(self.ancestors)
         tag = "EXACT" if self.exact else "CONTAINING RANGE"
+        if self.via:
+            tag += f" (expanded from {self.via})"
         lines.append("  " + "  " * d + f"{tag}: " + self.narrowest.label().replace("\n", "\n" + "  " * (d + 1)))
         if self.children:
             lines.append(f"  Entries printed under it ({len(self.children)}):")
@@ -163,11 +167,17 @@ class Schedules:
         self.db_path, self.lcc_dir = db_path, lcc_dir
         if not db_path.exists():
             self.build()
-        # read-only + immutable: no journal/shm files, so it works on a read-only filesystem (Lambda image)
-        # check_same_thread=False: the shared instance is reused across Lambda invocations, whose worker threads
-        # differ; the DB is immutable and only the shelflist task reads it, so this is safe.
-        self.db = sqlite3.connect(f"file:{db_path}?mode=ro&immutable=1", uri=True, check_same_thread=False)
-        self.db.row_factory = sqlite3.Row
+        self._local = threading.local()
+
+    @property
+    def db(self) -> sqlite3.Connection:
+        """One read-only connection per thread (the eval runners query the schedules from worker threads)."""
+        conn = getattr(self._local, "conn", None)
+        if conn is None:
+            # read-only + immutable: no journal/shm files, so it works on Lambda's read-only image filesystem
+            conn = self._local.conn = sqlite3.connect(f"file:{self.db_path}?mode=ro&immutable=1", uri=True)
+            conn.row_factory = sqlite3.Row
+        return conn
 
     # -- build ----------------------------------------------------------
     def build(self):
@@ -304,13 +314,30 @@ class Schedules:
         for r, n in zip(rows, nodes):
             if r["start_key"] == key and (r["end_key"] == key or r["end_key"] == key + "~"):
                 exact = n
+        # for a bare number, the specific Cutters printed under it (G156.5.E26 ...) matched by prefix are its
+        # entries, not ranges containing it; only the A-Z range itself (start ...A, end ...Z~) contains it
+        extra_kids = []
+        if bare:
+            keep = []
+            for r, n in zip(rows, nodes):
+                if r["start_key"] > key and not (r["start_key"] == key + "A" and r["end_key"] >= key + "Z"):
+                    extra_kids.append(n)
+                else:
+                    keep.append(n)
+            nodes = keep
         # narrowest last: deeper in the tree = narrower
         order = sorted(nodes, key=lambda n: n.depth)
         containing = [n for n in order if n is not exact]
         narrow = exact or (containing[-1] if containing else None)
         anc = self.ancestors(narrow) if narrow else []
-        kids = self.children(narrow) if narrow else []
+        kids = (self.children(narrow) if narrow else []) or extra_kids
         sibs = self.children(anc[-1]) if (not kids and anc) else []
+        if narrow is not None and exact is None and re.search(r"\(Table\s+K", narrow.caption or ""):
+            jur = next((j for j in self.jurisdictions() if j["node"].id == narrow.id), None)
+            if jur:
+                L = self._lookup_in_table(jur, class_number)
+                if L:
+                    return L
         tables: dict[str, Table] = {}
         for n in anc + ([narrow] if narrow else []):
             codes = []
@@ -326,6 +353,119 @@ class Schedules:
         return Lookup(class_number, exact, containing, anc, kids, sibs, tables)
 
 
+    # -- jurisdiction tables (law) ---------------------------------------
+    # K schedules give each country a number range plus a form table ("KHD 1-5999 General (Table KDZ-KH2)",
+    # "KKY 1-4999 Ukraine (Table KJ-KKZ1 modified)"); the printed captions live in the table, so a number
+    # such as KHD2641 is table row 2641 shifted by the range start. Expanded at query time, no rebuild.
+    _JUR_STOP = {"general", "table", "modified", "south", "north", "central", "east", "west", "america",
+                 "asia", "europe", "africa", "and", "the", "of", "states", "provinces", "etc", "law", "other",
+                 "countries", "regions", "cities", "communities", "republic", "kingdom", "united", "federal"}
+
+    def jurisdictions(self) -> list[dict]:
+        """[{section, node, table, start, end, base, name, tokens}] for every range node that cites a numbered table."""
+        if getattr(self, "_jur", None) is not None:
+            return self._jur
+        out = []
+        rows = self.db.execute("SELECT * FROM nodes WHERE section LIKE 'K%' AND number LIKE '%-%' AND number NOT LIKE '%.%' "
+                               "AND caption LIKE '%(Table K%' ORDER BY section, ord").fetchall()
+        for r in rows:
+            m = re.match(r"^(\d+)-(\d+)$", r["number"] or "")
+            code = re.search(r"\(Table\s+([A-Z][A-Za-z0-9\-]*)", r["caption"])
+            if not m or not code:
+                continue
+            t = self.table(code.group(1))
+            if not t:
+                continue
+            nums = [int(re.match(r"^\d+", x["number"]).group(0)) for x in t.rows if x.get("number") and re.match(r"^\d+", x["number"])]
+            if not nums:
+                continue
+            node = self._node(r)
+            name = re.sub(r"\s*\(Table[^)]*\)", "", node.caption).strip()
+            if name.lower().startswith("general") and node.parent is not None:
+                name = self.get(node.parent).caption
+            name = name.rsplit(":", 1)[-1].strip()           # "South America: Brazil" -> "Brazil"
+            tokens = {w.lower() for w in re.findall(r"[A-Za-z]{4,}", name)} - self._JUR_STOP
+            out.append({"section": node.section, "node": node, "table": t, "start": int(m.group(1)), "end": int(m.group(2)),
+                        "base": max(int(m.group(1)) - 1, 0), "name": name, "tokens": tokens})   # '1-5999' -> +0, '6201-6299' -> +6200, '0-4890' -> +0
+        self._jur = out
+        return out
+
+    @staticmethod
+    def _table_paths(t: "Table") -> list[list[str]]:
+        """Ancestor captions for every table row, from the rows' indentation levels."""
+        paths, stack = [], []
+        for r in t.rows:
+            lvl = r.get("level") or 0
+            stack = stack[:lvl]
+            paths.append([c for c in stack])
+            stack = stack + [r["caption"]]
+        return paths
+
+    def _expand_row(self, jur: dict, row: dict) -> str:
+        """Table row number -> class number: ('KHD', base 0, '2642.P73') -> 'KHD2642.P73'."""
+        m = re.match(r"^(\d+)(.*)$", row["number"] or "")
+        return f"{jur['section']}{int(m.group(1)) + jur['base']}{m.group(2)}" if m else ""
+
+    def _lookup_in_table(self, jur: dict, class_number: str) -> Lookup | None:
+        m = re.match(r"^\s*[A-Z]{1,3}\s*(\d+)(.*)$", class_number.strip())
+        if not m:
+            return None
+        n = int(m.group(1)) - jur["base"]
+        rest = re.sub(r"\s.*$", "", m.group(2) or "")
+        t, paths = jur["table"], self._table_paths(jur["table"])
+        cands = [(i, r) for i, r in enumerate(t.rows) if r.get("number") and re.match(rf"^{n}(?![0-9])", r["number"])]
+        if not cands:   # a range row such as '18-19'
+            cands = [(i, r) for i, r in enumerate(t.rows) if r.get("number") and (m2 := re.match(r"^(\d+)-(\d+)$", r["number"]))
+                     and int(m2.group(1)) <= n <= int(m2.group(2))]
+        if not cands:
+            return None
+        exact = next(((i, r) for i, r in cands if r["number"] == f"{n}{rest}"), None)
+        if exact is None:
+            exact = next(((i, r) for i, r in cands if r["number"].split(".")[0] == str(n) and "." not in r["number"]), cands[0])
+        i, r = exact
+        mk = lambda k, rr: Node(-1 - k, t.schedule, jur["section"], "table-row", self._expand_row(jur, rr)[len(jur["section"]):]
+                                if rr.get("number") else None, rr["caption"], rr.get("notes") or [], None, None, None, None, 0)
+        node = mk(i, r)
+        anc_rows = []
+        lvl = r.get("level") or 0
+        for j in range(i - 1, -1, -1):
+            if (t.rows[j].get("level") or 0) < lvl:
+                anc_rows.append(mk(j, t.rows[j])); lvl = t.rows[j].get("level") or 0
+        kids = []
+        for j in range(i + 1, min(i + 30, len(t.rows))):
+            if (t.rows[j].get("level") or 0) <= (r.get("level") or 0):
+                break
+            kids.append(mk(j, t.rows[j]))
+        sibs = [mk(j, t.rows[j]) for j in range(max(0, i - 6), min(len(t.rows), i + 7))
+                if j != i and (t.rows[j].get("level") or 0) == (r.get("level") or 0)] if not kids else []
+        anc = self.ancestors(jur["node"]) + [jur["node"]] + list(reversed(anc_rows))
+        return Lookup(class_number, node, [], anc, kids, sibs, {}, via=f"Table {t.code} ({jur['name']})")
+
+    def search_tables(self, query: str, jurs: list[dict], limit: int = 8) -> list[dict]:
+        words = [w.lower() for w in re.findall(r"[A-Za-z0-9]+", query) if len(w) > 2]
+        hits = []
+        for jur in jurs:
+            t, paths = jur["table"], self._table_paths(jur["table"])
+            for r, path in zip(t.rows, paths):
+                if not r.get("number"):
+                    continue
+                cap, par, notes = r["caption"].lower(), " ".join(path).lower(), " ".join(r.get("notes") or []).lower()
+                score = 0.0
+                for w in words:
+                    if w in jur["tokens"]:
+                        continue
+                    if re.search(rf"\b{re.escape(w)}", cap):
+                        score += 4
+                    if re.search(rf"\b{re.escape(w)}", par):
+                        score += 6
+                    if re.search(rf"\b{re.escape(w)}", notes):
+                        score += 1
+                if score:
+                    hits.append({"class_number": self._expand_row(jur, r), "caption": r["caption"], "path": " -- ".join(path),
+                                 "notes": " ".join(r.get("notes") or []), "via": f"Table {t.code} for {jur['name']}", "rank": -score})
+        hits.sort(key=lambda h: h["rank"])
+        return hits[:limit]
+
     # -- search ---------------------------------------------------------
     @staticmethod
     def _fts_query(q: str) -> str:
@@ -334,10 +474,12 @@ class Schedules:
 
     def search(self, query: str, limit: int = 20, section: str | None = None) -> list[dict]:
         """Full-text search over schedule captions (with ancestor path and notes) and the
-        schedules' own index terms. Returns [{class_number, caption, path, notes, via}] ranked."""
+        schedules' own index terms. Returns [{class_number, caption, path, notes, via}] ranked.
+        The ancestor path outweighs the leaf caption: many numbers have a generic leaf ("General
+        works", "Relation to literature") with the topic words in the parents."""
         q = self._fts_query(query)
         out, seen = [], set()
-        sql = ("SELECT node_id, number, caption, path, notes, bm25(caption_fts, 0, 0, 0, 10.0, 3.0, 1.0) AS r FROM caption_fts "
+        sql = ("SELECT node_id, number, caption, path, notes, bm25(caption_fts, 0, 0, 0, 4.0, 6.0, 1.0) AS r FROM caption_fts "
                "WHERE caption_fts MATCH ? " + ("AND section=? " if section else "") + "ORDER BY r LIMIT ?")
         args = (q, section, limit * 2) if section else (q, limit * 2)
         for r in self.db.execute(sql, args):
@@ -360,7 +502,52 @@ class Schedules:
                 out.append({"class_number": ref, "caption": n.caption if n else "", "path": " -- ".join(a.caption for a in L.ancestors),
                             "notes": " ".join(n.notes) if n else "", "via": f"index: {r['term']}", "rank": r["r"]})
         out.sort(key=lambda x: x["rank"])
-        return out[:limit]
+        jurs = []
+        if section:
+            jurs = [j for j in self.jurisdictions() if j["section"] == section.upper()]
+        else:
+            qwords = {w.lower() for w in re.findall(r"[A-Za-z]{4,}", query)}
+            jurs = [j for j in self.jurisdictions()
+                    if any(qw.startswith(tok[:5]) and len(tok) >= 5 or qw == tok for tok in j["tokens"] for qw in qwords)]
+        table_hits = self.search_tables(query, jurs[:6], limit=max(4, limit // 2)) if jurs else []
+        sem_nodes, sem_tables = self._semantic_hits(query, limit, section, jurs)
+        # hybrid: alternate full-text and semantic node hits, then the jurisdiction-table hits
+        merged, used = [], set()
+        a, b = list(out), list(sem_nodes)
+        while (a or b) and len(merged) < limit:
+            for src in (a, b):
+                while src:
+                    h = src.pop(0)
+                    if h["class_number"] not in used:
+                        used.add(h["class_number"]); merged.append(h); break
+                if len(merged) >= limit:
+                    break
+        tabs = [h for h in table_hits + sem_tables if h["class_number"] not in used]
+        if tabs:
+            room = max(len(tabs[: max(4, limit // 2)]), 0)
+            merged = merged[: max(limit - room, 0)] + tabs[:room]
+        return merged[:limit]
+
+    def _semantic_hits(self, query: str, limit: int, section: str | None, jurs: list[dict]) -> tuple[list[dict], list[dict]]:
+        """Vector hits from the S3 Vectors index (empty when unavailable): caption nodes, and rows of the
+        jurisdiction tables in play, expanded to class numbers."""
+        try:
+            from .semantic import get_semantic
+            sem = get_semantic()
+        except Exception:  # noqa: BLE001
+            return [], []
+        nodes = [h for h in sem.search(query, max(8, limit), section=section) if h.get("kind") == "node" and h["class_number"]]
+        tables = []
+        for jur in jurs[:3]:
+            for h in sem.search(query, 4, table=jur["table"].code):
+                try:
+                    row = jur["table"].rows[int(h["row"])]
+                except (ValueError, IndexError, TypeError):
+                    continue
+                cn = self._expand_row(jur, row)
+                if cn:
+                    tables.append({**h, "class_number": cn, "via": f"semantic: Table {jur['table'].code} for {jur['name']}"})
+        return nodes, tables
 
     def search_text(self, query: str, limit: int = 20, section: str | None = None) -> str:
         hits = self.search(query, limit, section)
@@ -374,7 +561,7 @@ class Schedules:
             if h["notes"]:
                 lines.append(f"      notes: {h['notes'][:200]}")
             if h["via"] != "caption":
-                lines.append(f"      ({h['via']})")
+                lines.append(f"      ({h['via']}" + (f", similarity {h['score']:.2f}" if h.get("score") is not None else "") + ")")
         return "\n".join(lines)
 
 

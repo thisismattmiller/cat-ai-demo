@@ -50,17 +50,18 @@ class Pipeline:
         self.composer = Composer(self.provider, self.shelflist)
 
     def run(self, resource: Resource, class_number: str | None = None, *, extra_context: str | None = None,
-            exclude_bibids: set[str] | None = None, on_stage=None) -> Result:
+            exclude_bibids: set[str] | None = None, exclude_record: dict | None = None, on_stage=None) -> Result:
         """Classify (unless class_number given), then shelflist. `exclude_bibids` hides
-        records from the shelflist (the record under evaluation). `on_stage(name, info)`
-        is called as each stage completes (classified / profiled / composed)."""
+        records from the shelflist (the record under evaluation); `exclude_record` ({lccn, isbns}) also
+        drops that record from the embedded-catalog neighbours."""
         self.shelflist.exclude_bibids = set(exclude_bibids or ())
-        stage = on_stage or (lambda name, info: None)
+        stage = on_stage or (lambda name, info: None)     # progress hook: classified / profiled
         timing, usage = {}, {}
         classification: Classification | None = None
         t0 = time.time()
         if class_number is None:
-            classification = self.classifier.classify(resource, extra_context=extra_context)
+            classification = self.classifier.classify(resource, extra_context=extra_context,
+                                                      exclude={"ids": set(exclude_bibids or ()), **(exclude_record or {})})
             timing["classify_s"] = round(time.time() - t0, 1)
             usage["classify"] = classification.usage
             class_number = classification.class_number

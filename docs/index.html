@@ -200,6 +200,7 @@
         ${rec.length ? chips(rec, "rec", onLC) : `<span class="badge warn">none recommended</span>`}
         ${d.lc_subjects.length ? `<div class="sub">${agree} of ${rec.length} recommended also on LC's record (dashed outline). LC's: ${esc(d.lc_subjects.join("; "))}</div>` : `<div class="sub">LC's record carries no subject headings yet.</div>`}</div>
       ${recC.length ? `<div class="section"><h3>Recommended class numbers</h3>${recC.map(c => `<div><span class="mono">${esc(c.class_number)}</span>${c.on_lc_record ? ' <span class="badge ok">LC uses this</span>' : ""} <span class="sub" style="display:inline">${esc((c.hierarchy || []).join(" › "))}</span></div>`).join("")}</div>` : ""}
+      ${d.expanded_description ? `<div class="section"><details class="more"><summary>how the record was read (LLM-expanded description used for the search)</summary><div class="reason">${esc(d.expanded_description)}</div></details></div>` : ""}
       ${rest.length ? `<div class="section"><details class="more"><summary>${rest.length} other candidate headings from the neighbours</summary>${chips(rest, "dim", onLC)}</details></div>` : ""}
       <div class="section"><h3>Nearest LC records</h3><table><tr><th>score</th><th>class</th><th>record</th></tr>
         ${d.neighbours.map(n => `<tr><td class="num">${n.score.toFixed(3)}</td><td class="num">${esc(n.class_number || "")}</td><td>${esc(n.title)}${n.creator ? ` <span class="sub" style="display:inline">${esc(n.creator)}</span>` : ""}</td></tr>`).join("")}</table></div>`;
@@ -214,7 +215,7 @@
     const me = d.main_entry;
     let meHtml = "";
     if (me && me.as_transcribed) {
-      if (me.source !== "record") meHtml = `<div class="sub">Main entry: <b>${esc(me.used)}</b> <span class="badge ok">authorized heading from name reconciliation</span>${me.used !== me.as_transcribed ? ` — the record has <i>${esc(me.as_transcribed)}</i>, unlinked` : ""}${me.waited_s ? ` · waited ${me.waited_s}s` : ""}</div>`;
+      if (me.source !== "record") meHtml = `<div class="sub">Main entry: <b>${esc(me.used)}</b> <span class="badge ok">${me.source === "naf-lookup" ? "authorized heading from a NAF lookup" : "authorized heading from name reconciliation"}</span>${me.used !== me.as_transcribed ? ` — the record has <i>${esc(me.as_transcribed)}</i>, unlinked` : ""}${me.waited_s ? ` · waited ${me.waited_s}s` : ""}</div>`;
       else if (!me.authority_uri) meHtml = `<div class="sub">Main entry: <b>${esc(me.used)}</b> <span class="badge warn">unlinked on the record, no authority found</span></div>`;
       else meHtml = `<div class="sub">Main entry: <b>${esc(me.used)}</b> <span class="badge info">linked on the record</span></div>`;
     }
